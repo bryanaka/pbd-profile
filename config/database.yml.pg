@@ -1,0 +1,34 @@
+development: &postgres
+  adapter: postgresql
+  encoding: unicode
+  database: pbd_portal-dev
+  pool: 25
+  username: pbduser
+  password: Donnerpbd201!
+#########
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: pbd_portal-dev
+  pool: 5
+  username: pbduser
+  password: Donnerpbd201!
+  host: pbd-postgres.lbl.gov
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: pbd_portal-test
+  pool: 5
+  username: pbduser   
+  password: Donnerpbd201!
+  host: pbd-postgres.lbl.gov
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: pbd_portal
+  pool: 5
+  username: pbduser   
+  password: Donnerpbd201!
+  host: pbd-postgres.lbl.gov
