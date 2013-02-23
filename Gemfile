@@ -37,7 +37,8 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem "unicorn", ">= 4.3.1", :group => :production
-gem "pg", ">= 0.14.1"
+# gem "pg", ">= 0.14.1"
+gem "sqlite3"
 gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
 # gem "capybara", ">= 2.0.2", :group => :test
 gem "database_cleaner", ">= 0.9.1", :group => :test
