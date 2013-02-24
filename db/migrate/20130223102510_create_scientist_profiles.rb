@@ -18,6 +18,8 @@ class CreateScientistProfiles < ActiveRecord::Migration
       t.text :emphasis
       t.text :location
       t.integer :scientist_id
+      t.string :publications_url
+      t.integer :scientist_id
 
       t.timestamps
     end

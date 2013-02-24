@@ -11,7 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223013335) do
+ActiveRecord::Schema.define(:version => 20130224090647) do
+
+  create_table "scientist_profiles", :force => true do |t|
+    t.string   "prefix"
+    t.string   "department"
+    t.string   "department_url"
+    t.string   "company"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip_code"
+    t.string   "phone1"
+    t.string   "phone2_type"
+    t.string   "phone2"
+    t.string   "email"
+    t.text     "summary"
+    t.text     "emphasis"
+    t.text     "location"
+    t.integer  "scientist_id"
+    t.string   "publications_url"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "scientist_titles", :force => true do |t|
+    t.string  "title"
+    t.integer "scientist_id"
+  end
+
+  create_table "scientist_websites", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
+    t.integer  "scientist_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "scientists", :force => true do |t|
     t.string   "first_name"
