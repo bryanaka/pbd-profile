@@ -1,0 +1,14 @@
+<%= simple_form_for(@scientist) do |f| %>
+	<%= f.error_notification %>
+	<fieldset>
+		<%= f.input :first_name, label: "First Name" %>
+		<%= f.input :last_name, label: "Last Name" %>
+		<%= f.input :picture, label: "Upload Picture", as: :file %>
+		<%= f.input :title, label: "Primary Scientist Title" %>
+	</fieldset>
+	
+
+	<div class="form-actions">
+		<%= f.button :submit %>
+	</div>
+<% end %>

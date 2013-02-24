@@ -1,0 +1,21 @@
+<h1>Listing scientists</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scientists.each do |scientist| %>
+  <tr>
+    <td><%= link_to 'Show', scientist %></td>
+    <td><%= link_to 'Edit', edit_scientist_path(scientist) %></td>
+    <td><%= link_to 'Destroy', scientist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scientist', new_scientist_path %>
