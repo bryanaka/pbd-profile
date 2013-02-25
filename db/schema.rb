@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224090647) do
+ActiveRecord::Schema.define(:version => 20130224102941) do
 
   create_table "scientist_profiles", :force => true do |t|
     t.string   "prefix"
@@ -58,6 +58,22 @@ ActiveRecord::Schema.define(:version => 20130224090647) do
     t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "title"
+    t.string   "category"
+    t.string   "scientist"
+    t.text     "description"
+    t.date     "date"
+    t.string   "vid_type"
+    t.string   "vid_code"
+    t.string   "poster"
+    t.integer  "views"
+    t.string   "vid_link"
+    t.integer  "scientist_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

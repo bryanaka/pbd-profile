@@ -17,10 +17,12 @@
 	<%= yield(:head) %>
 </head>
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
-	<header>
+	<header class="mainHeader">
 		<%= render 'layouts/messages' %>
-		<%= render 'layouts/navigation' %>
+		<h1>Welcome to The Portal</h1>
 	</header>
+	<%= render 'layouts/navigation' %>
+		
   
 	<%= yield %>
 

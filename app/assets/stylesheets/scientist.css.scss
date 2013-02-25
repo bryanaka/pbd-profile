@@ -1,3 +1,18 @@
 // Place all the styles related to the scientist controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.scientistUnit {
+	text-align: center;
+	border:#000 2px solid;
+	min-width: 150px;
+	max-width: 200px;
+}
+.scientistCard {
+	padding: .35em;
+	padding: .35rem;
+}
+.scientistCard__thumb {
+	display: block;
+}
+.scientistCard__name {
+}

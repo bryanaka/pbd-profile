@@ -1,18 +1,16 @@
-<div class="scientistUnit" id="scientist--">
+<div class="scientistUnit grid__item" id="scientist--<%= scientist.slug %>">
 	<article class="scientistCard">
 		<a href="" title="">    
 			<img src="" class="scientistCard__thumb">
-			<span class="scientistCard__name">
-				$scientist->first_name $scientist->last_name<br>
-			</span>
+			<span class="scientistCard__name"><%=scientist.first_name%> <%=scientist.last_name%></span>
 		</a>
 	</article>
 	<article class="buttonGroup">
 		<a href="" class="">
-			Edit Scientist
+			<%= link_to 'Edit', edit_scientist_path(scientist) %>
 		</a>
 		<a href="" data-name="" class="">
-			Request Deletion
+			<%= link_to 'Show', scientist %>
 		</a>
 	</article>
 </div>

@@ -1,21 +1,14 @@
-<h1>Listing scientists</h1>
+<div class="mainContent grid">
+<h1 class="grid__item one-whole">Listing scientists</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+
 
 <% @scientists.each do |scientist| %>
-  <tr>
-    <td><%= link_to 'Show', scientist %></td>
-    <td><%= link_to 'Edit', edit_scientist_path(scientist) %></td>
-    <td><%= link_to 'Destroy', scientist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <%= render "scientist_card", :scientist => scientist %>
 <% end %>
-</table>
+
 
 <br />
 
 <%= link_to 'New Scientist', new_scientist_path %>
+</div>

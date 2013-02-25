@@ -9,13 +9,14 @@ gem "simple_form", ">= 2.0.4"
 gem "figaro", ">= 0.5.3"
 # pg is producing errors on test server. using sqlite temporarily
 # gem "pg", ">= 0.14.1"
-gem "sqlite3"
+# gem "sqlite3"
 gem "strong_parameters"
 gem 'carrierwave'
 
 group :development do
 	gem "better_errors", ">= 0.6.0"
 	gem "binding_of_caller", ">= 0.6.9"
+	gem "pg"
 end
 
 group :development, :test do
