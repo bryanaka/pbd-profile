@@ -1,13 +1,21 @@
-<%= simple_form_for(@scientist) do |f| %>
-	<%= f.error_notification %>
+<%= form_for @scientist do |f| %>
+	<% #f.error_notification %>
 	<fieldset>
-		<%= f.input :first_name, label: "First Name" %>
-		<%= f.input :last_name, label: "Last Name" %>
-		<%= f.input :picture, label: "Upload Picture", as: :file %>
-		<%= f.input :title, label: "Primary Scientist Title" %>
-	</fieldset>
-	
+		<%= f.text_field :first_name, placeholder: "First Name" %>
+		<%= f.text_field :last_name, placeholder: "Last Name" %>
+		<%= f.text_field :slug, placeholder: "URL Slug" %>
+		<%= f.file_field :picture, placeholder: "Upload Picture" %>
+		<%= f.hidden_field :picture_cache %>
+		<%= f.text_field :remote_picture_url %>
+		<%= f.text_field :title, placeholder: "Primary Scientist Title" %>
 
+	</fieldset>
+	<%= f.fields_for :scientist_profile do |p| %>
+		<%= render "profile_form", :p => p %>
+	<% end %>
+	<%= f.fields_for :scientist_websites do |w| %>
+		<%= render "websites_form", :w => w %>
+	<% end %>
 	<div class="form-actions">
 		<%= f.button :submit %>
 	</div>

@@ -10,10 +10,15 @@ class ScientistsController < ApplicationController
 
 	def edit
 		@scientist = Scientist.find(params[:id])
+		if @scientist.scientist_profile == nil
+			@scientist.build_scientist_profile 
+		end
 	end
 
 	def new
 		@scientist = Scientist.new
+		@scientist.build_scientist_profile
+		@scientist.scientist_websites.build
 	end
 
 	def create
@@ -34,10 +39,10 @@ class ScientistsController < ApplicationController
 		end
 	end
 
-	def destory
-		@person = Person.find(params[:id])
-		@person.destroy
-		redirect_to people_url
+	def destroy
+		@scientist = Scientist.find(params[:id])
+		@scientist.destroy
+		redirect_to scientist_index_path
 	end
 
 	private
@@ -45,7 +50,7 @@ class ScientistsController < ApplicationController
 	# params.require(:person).permit(:name, :age)
 	# Also, you can specialize this method with per-user checking of permissible attributes.
 	# 
-	# 1. clean up the code using lists and the splat operater
+	# 1. clean up the code, maybe abstract into class
 	# 2. The nested attributes are a bit hard to understand. I think I did them wrong
 	# 3. can we use cancan to alter which attributes can be modified? use cancan to alter the 
 	# 	permit_X_attributes local variable
@@ -54,12 +59,12 @@ class ScientistsController < ApplicationController
 
 	def scientist_params
 		permit_scientist_attributes = :first_name, :last_name, :picture, :title, :slug
-		#permit_scientist_profile_attributes = :id, :address1, :address2, :city, :company, 
-		#																			:department, :department_url, :email, :emphasis, 
-		#																			:location, :phone1, :phone2, :phone2_type, 
-		#																			:positions_held, :prefix, :scientist_id, :state, 
-		#																			:summary, :zip_code
-		params.require(:scientist).permit(*permit_scientist_attributes)
+		permit_scientist_profile_attributes = :id, :address1, :address2, :city, :company, 
+																					:department, :department_url, :email, :emphasis, 
+																					:location, :phone1, :phone2, :phone2_type, 
+																					:positions_held, :prefix, :scientist_id, :state, 
+																					:summary, :zip_code
+		params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes )
 	end
 
 end

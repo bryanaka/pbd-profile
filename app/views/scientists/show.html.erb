@@ -1,6 +1,6 @@
 <div class="mainContent">
 	<section id="scientist__info">
-		<img src="http://pbd.lbl.gov/resources/img/people/{{picture_url}}" class="scientist__picture">
+		<%= image_tag @scientist.picture_url %>
 		<h2>{{prefix}} {{first_name}} {{last_name}}</h2>
 		<h3>{{scientist_title}}</h3>
 		<article>
