@@ -7,13 +7,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<%= csrf_meta_tags %>
-	
+
 	<title><%= content_for?(:title) ? yield(:title) : "PBD Portal" %></title>
 	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "LBNL Physical Biosciences Division Portal"%>">
 	<%= stylesheet_link_tag "application", :media => "all" %>
 	<!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	-->
+	<%= javascript_include_tag "application" %>
 	<%= yield(:head) %>
 </head>
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
@@ -22,11 +23,9 @@
 		<h1>Welcome to The Portal</h1>
 	</header>
 	<%= render 'layouts/navigation' %>
-		
-  
-	<%= yield %>
 
-<%= javascript_include_tag "application" %>
+
+	<%= yield %>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 <script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
