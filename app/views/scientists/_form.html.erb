@@ -1,13 +1,29 @@
 <%= form_for @scientist do |f| %>
 	<% #f.error_notification %>
 	<fieldset>
-		<%= f.text_field :first_name, placeholder: "First Name" %>
-		<%= f.text_field :last_name, placeholder: "Last Name" %>
-		<%= f.text_field :slug, placeholder: "URL Slug" %>
-		<%= f.file_field :picture, placeholder: "Upload Picture" %>
-		<%= f.hidden_field :picture_cache %>
-		<%= f.text_field :remote_picture_url %>
-		<%= f.text_field :title, placeholder: "Primary Scientist Title" %>
+		<div class="formField">
+			<%= f.label :first_name, "First Name"%>
+			<%= f.text_field :first_name, placeholder: "First Name" %>
+		</div>
+		<div class="formField">
+			<%= f.label :last_name, "Last Name"%>
+			<%= f.text_field :last_name, placeholder: "Last Name" %>
+		</div>
+		<div class="formField">
+			<%= f.label :title, "Primary Scientist Title" %>
+			<%= f.text_field :title, placeholder: "Primary Scientist Title" %>
+		</div>
+		<div class="formField">
+			<%= f.label :picture, "Upload a Picture" %>
+			<%= f.file_field :picture, placeholder: "Upload Picture" %>
+			<%= f.hidden_field :picture_cache %>
+			<%= f.label :remote_picture_url, "Or Use an Image URL" %>
+			<%= f.text_field :remote_picture_url %>
+		</div>
+		<div class="formField">
+			<%= f.label :slug, "URL Slug" %>
+			<%= f.text_field :slug, placeholder: "URL Slug" %>
+		</div>
 
 	</fieldset>
 	<%= f.fields_for :scientist_profile do |p| %>

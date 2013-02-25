@@ -19,10 +19,11 @@ class ScientistsController < ApplicationController
 		@scientist = Scientist.new
 		@scientist.build_scientist_profile
 		@scientist.scientist_websites.build
+		@scientist.scientist_titles.build
 	end
 
 	def create
-	@scientist = Scientist.new(scientist_params)
+	@scientist = Scientist.new(permitted_params.scientist_full)
 		if @scientist.save
 			redirect_to @scientist, notice: 'Scientist was successfully created.'
 		else
@@ -32,7 +33,7 @@ class ScientistsController < ApplicationController
 
 	def update
 		@scientist = Scientist.find(params[:id])
-		if @scientist.update_attributes!(scientist_params)
+		if @scientist.update_attributes!(permitted_params.scientist_full)
 			redirect_to @scientist, notice: 'Scientist was successfully updated.'
 		else
 			render action: "edit"
@@ -50,22 +51,22 @@ class ScientistsController < ApplicationController
 	# params.require(:person).permit(:name, :age)
 	# Also, you can specialize this method with per-user checking of permissible attributes.
 	# 
-	# 1. clean up the code, maybe abstract into class
-	# 2. The nested attributes are a bit hard to understand. I think I did them wrong
+	# 1. See permitted_params.rb
+	# 
 	# 3. can we use cancan to alter which attributes can be modified? use cancan to alter the 
 	# 	permit_X_attributes local variable
 	# 
 	
 
-	def scientist_params
-		permit_scientist_attributes = :first_name, :last_name, :picture, :title, :slug
-		permit_scientist_profile_attributes = :id, :address1, :address2, :city, :company, 
-																					:department, :department_url, :email, :emphasis, 
-																					:location, :phone1, :phone2, :phone2_type, 
-																					:positions_held, :prefix, :scientist_id, :state, 
-																					:summary, :zip_code
-		permit_scientist_websites_attributes = :name, :url, :descirption
-		params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
-	end
+	# def scientist_params
+	# 	permit_scientist_attributes = :first_name, :last_name, :picture, :title, :slug
+	# 	permit_scientist_profile_attributes = :id, :address1, :address2, :city, :company, 
+	# 																				:department, :department_url, :email, :emphasis, 
+	# 																				:location, :phone1, :phone2, :phone2_type, 
+	# 																				:positions_held, :prefix, :scientist_id, :state, 
+	# 																				:summary, :zip_code
+	# 	permit_scientist_websites_attributes = :name, :url, :descirption
+	# 	params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
+	# end
 
 end
