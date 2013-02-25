@@ -64,7 +64,8 @@ class ScientistsController < ApplicationController
 																					:location, :phone1, :phone2, :phone2_type, 
 																					:positions_held, :prefix, :scientist_id, :state, 
 																					:summary, :zip_code
-		params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes )
+		permit_scientist_websites_attributes = :name, :url, :descirption
+		params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
 	end
 
 end
