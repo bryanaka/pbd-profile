@@ -1,10 +1,10 @@
 <%= simple_form_for(@video) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.input :title %>
+  <%= f.input :date %>
+  <%= f.input :scientist %>
+  <%= f.input :vid_link %>
+  <%= f.input :category, collection: ["Sci-Ops Series", "Brown Bag Series", "Invited Speaker", "Press Release", "Event", "Other"] %>
+  <%= f.button :submit %>
 <% end %>

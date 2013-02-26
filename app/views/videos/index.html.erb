@@ -1,21 +1,79 @@
-<h1>Listing videos</h1>
+<section id="all_videos">
+    <div class="grouped">
+        <div class="bttn icon add video-action top_bttn" name="new" title="Add new video">New Video</div>
+        <div class="bttn icon delete video_action" name="delte" title="Delete selected video">Delete</div>
+    </div>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+    <table cellspacing="0">
+        <thread>
+            <th style="padding-left:60px"><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
+            <th></th>
+            <th>Video Title</th>
+            <th>Scientist</th>
+            <th>Date Filmed</th>
+            <th>Views</th>
+        </thread>
+        <tbody>
+            <% @videos.each do |video| %>
+                <tr class="single-video">
+                    <td><input type="checkbox" name="delete" value="<%= video.id %>"></td>
+                    <td style="min-width: 55px;padding: 10px 0;">
+                        <div name="edit" class="bttn icon edit video_action" title="Edit video" data-id="<%= video.id %>">Edit</div>
+                    </td>
+                    <td><%= video.vid_title %></td>
+                    <td><%= video.scientist %></td>
+                    <td><%= video.date %></td>
+                    <td><%= video.views %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</section>
 
-<% @videos.each do |video| %>
-  <tr>
-    <td><%= link_to 'Show', video %></td>
-    <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+<script type="text/javascript">
+    //Control which action to do through GET request
+    //delete will be ajax
+    $('.video_action').on('click', function (evt) {
 
-<br />
+        //Use array-join to concat strings (faster)
+        var action  = $(this).attr('name'),
+            baseUrl = "<%= url_for :controller => videos %>";
+            requestType = "";
 
-<%= link_to 'New Video', new_video_path %>
+        if (action === "new" || action === "edit") {
+            //Set GET url arguments
+            baseUrl += "/" + action;
+            requestType = "GET";
+            if (action === "edit") {
+
+            }
+
+        } else if (action === "delete") {
+            //URL arguments
+            baseUrl.push("?action=delete");
+            $('input[name="delete"]:checked').each(function () {
+                //IDs of videos to be removed from db added to url
+                baseUrl.push("&id[]=" + $(this).attr('value'));
+                //Animate remove videos from page
+                var $single_video = $(this).closest('tr'); //Get containing tr
+                $single_video.fadeOut(600, function(){ $(this).remove();});
+            });
+            //Do GET request to remove videos from db
+            $.get(baseUrl.join(""));
+
+        } else {
+            //Redirect to video display page if invalid action
+            window.location.href = "";
+        }
+    });
+
+    //If the checkAll box is checked, check all the boxes, and uncheck if checkAll is not checked
+    $('input[name="checkAll"]').on('click', function (evt) {
+        if ($(this).is(':checked')) {
+            $('input[name="delete"]').prop('checked', true);
+        } else {
+            $('input[name="delete"]').prop('checked', false);
+        }
+    });
+</script>
+
