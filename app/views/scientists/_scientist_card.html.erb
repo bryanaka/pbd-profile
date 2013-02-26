@@ -1,16 +1,12 @@
-<div class="scientistUnit grid__item" id="scientist--<%= scientist.slug %>">
-	<article class="scientistCard">
-		<a href="" title="">    
-			<img src="" class="scientistCard__thumb">
-			<span class="scientistCard__name"><%=scientist.first_name%> <%=scientist.last_name%></span>
+<article class="scientistUnit grid__item" id="scientist--<%= scientist.slug %>">
+	<div class="scientistCard">
+		<a href="/scientist/<%=scientist.id%>">
+			<span class="scientistCard__name"><%=scientist.first_name%> <%=scientist.last_name%></span><br>
+			<img src="<%= scientist.picture_url%>" class="scientistCard__thumb">
 		</a>
-	</article>
-	<article class="buttonGroup">
-		<a href="" class="">
-			<%= link_to 'Edit', edit_scientist_path(scientist) %>
-		</a>
-		<a href="" data-name="" class="">
-			<%= link_to 'Show', scientist %>
-		</a>
-	</article>
-</div>
+		<section class="scientistCard__buttonGroup">
+			<%= link_to 'Edit', edit_scientist_path(scientist), :class =>"btn--blue" %>
+			<%= link_to 'Show', scientist, :class => "btn" %>
+		</section>
+	</div>
+</article>
