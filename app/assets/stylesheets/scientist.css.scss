@@ -23,6 +23,9 @@
 	width:150px;
 	margin: 0 1em 1em 0;
 	margin: 0 1rem 1rem 0;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+			border-radius: 3px;	
 
 	&:hover {
 		background: #EDEDED;
