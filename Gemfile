@@ -38,7 +38,7 @@ group :test do
 	gem "database_cleaner", ">= 0.9.1"
 	gem "email_spec", ">= 1.4.0"
 	# nokogiri is producing errors on server, a dependency of capybara
-	# gem "capybara", ">= 2.0.2"
+	gem "capybara", ">= 2.0.2"
 end
 
 group :production do
