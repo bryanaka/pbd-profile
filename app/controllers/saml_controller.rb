@@ -1,6 +1,6 @@
 class SamlController < ApplicationController
 
-  skip_filter :check_session  
+  skip_filter :check_session
 
   BerkeleyFingerprint = "15:48:E2:28:E7:53:79:C0:96:32:52:FC:00:FF:28:7B:92:50:A8:97"
 
@@ -42,6 +42,8 @@ class SamlController < ApplicationController
     settings.idp_sso_target_url = "https://login.lbl.gov/idp/profile/SAML2/Redirect/SSO"
     settings.idp_cert_fingerprint = BerkeleyFingerprint
     settings.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+
+    settings
   end
 
   def authorize_success(user)
