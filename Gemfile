@@ -12,11 +12,11 @@ gem "figaro", ">= 0.5.3"
 # gem "sqlite3"
 gem "strong_parameters"
 gem 'carrierwave'
+gem "pg"
 
 group :development do
 	gem "better_errors", ">= 0.6.0"
 	gem "binding_of_caller", ">= 0.6.9"
-	gem "pg"
 end
 
 group :development, :test do
