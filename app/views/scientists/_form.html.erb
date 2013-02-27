@@ -26,11 +26,11 @@
 		</div>
 
 	</fieldset>
-	<%= f.fields_for :scientist_profile do |p| %>
-		<%= render "profile_form", :p => p %>
+	<%= f.fields_for :profile do |p| %>
+		<%= render "profile_fields", :p => p %>
 	<% end %>
-	<%= f.fields_for :scientist_websites do |w| %>
-		<%= render "websites_form", :w => w %>
+	<%= f.fields_for :websites do |w| %>
+		<%= render "websites_fields", :w => w %>
 	<% end %>
 	<div class="form-actions">
 		<%= f.button :submit %>

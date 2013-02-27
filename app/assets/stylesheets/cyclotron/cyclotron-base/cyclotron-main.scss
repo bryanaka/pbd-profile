@@ -45,14 +45,14 @@ $page-max-width:1200px;
 	padding: .25em .5em;
 	padding: .25rem .5rem;
 	text-decoration: none;
-	background: $color;
-	background-image: -webkit-gradient(linear,left top,left bottom,from($color),to(darken($color, $percent)));
-	background-image: -webkit-linear-gradient(top,$color,darken($color, $percent));
-	background-image: -moz-linear-gradient(top,$color,darken($color, $percent));
-	background-image: -ms-linear-gradient(top,$color,darken($color, $percent));
-	background-image: -o-linear-gradient(top,$color,darken($color, $percent));
-	background-image: linear-gradient(top,$color,darken($color, $percent));
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='$color',EndColorStr='darken($color, $percent)');
+	background: $color; /* fallback */
+	background-image: -webkit-gradient(linear,left top,left bottom,from($color),to(darken($color, $percent))); /* chrome 2+, safari 4+ */
+	background-image: -webkit-linear-gradient(top,$color,darken($color, $percent)); /* chrome 10+, safari 5.1+ */
+	background-image: -moz-linear-gradient(top,$color,darken($color, $percent)); /* firefox */
+	background-image: -ms-linear-gradient(top,$color,darken($color, $percent)); /* IE10 */
+	background-image: -o-linear-gradient(top,$color,darken($color, $percent)); /* Opera 11.1 + */
+	background-image: linear-gradient(top,$color,darken($color, $percent)); /* Standard */
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$color}', endColorstr='#{darken($color, $percent)}')";
 	-webkit-border-radius: 4px;
 	   -moz-border-radius: 4px;
 			border-radius: 4px;
@@ -242,15 +242,15 @@ table.stripped {
 .btn {
 	margin: 0 .25em 0 0;
 	margin: 0 .25rem 0 0;
-	color: #ffffff;
-	@include buttonize($brand-color1, 4%);
+	color: darken(#ffffff, 16%);
+	@include buttonize(#757575, 4%);
 
 	&:hover {
-		color: $brand-color2;
-		@include buttonize($brand-color1, 5%);
+		color: #FFFFFF;
+		@include buttonize(#757575, 8%);
 	}
 	&:active {
-		@include buttonize($brand-color1, 10%);
+		@include buttonize(#757575, 12%);
 	}
 }
 
@@ -273,19 +273,32 @@ table.stripped {
 .btn--blue {
 	margin: 0 .25em 0 0;
 	margin: 0 .25rem 0 0;
-	color: lighten(#145aca, 70%);
-	@include buttonize(#145aca, 3%);
+	color: lighten(#145aca, 40%);
+	@include buttonize(#145aca, 4%);
 	
 	&:hover {
 		color: #FFFFFF;
-		@include buttonize(#145aca, 6%);
+		@include buttonize(#145aca, 8%);
 	}
 	&:active {
 		@include buttonize(#145aca, 12%);
 	}
 }
 
-.btn--green {}
+.btn--green {
+	margin: 0 .25em 0 0;
+	margin: 0 .25rem 0 0;
+	color: darken(#ffffff, 16%);
+	@include buttonize(#008000, 4%);
+
+	&:hover {
+		color: #FFFFFF;
+		@include buttonize(#008000, 8%);
+	}
+	&:active {
+		@include buttonize(#008000, 12%);
+	}
+}
 
 .btn--yellow {}
 

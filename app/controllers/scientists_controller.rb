@@ -13,8 +13,8 @@ class ScientistsController < ApplicationController
 
 	def edit
 		@scientist = Scientist.find(params[:id])
-		if @scientist.scientist_profile == nil
-			@scientist.build_scientist_profile 
+		if @scientist.profile == nil
+			@scientist.build_profile 
 		end
 	end
 
