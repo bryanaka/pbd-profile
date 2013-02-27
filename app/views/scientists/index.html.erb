@@ -1,14 +1,13 @@
-<div class="mainContent grid">
+<div class="mainContent--scientist grid">
 <h1 class="grid__item one-whole">Listing scientists</h1>
-
-
 
 <% @scientists.each do |scientist| %>
   <%= render "scientist_card", :scientist => scientist %>
 <% end %>
 
 
-<br />
-
+<br >
+<div class="grid__item">
 <%= link_to 'New Scientist', new_scientist_path %>
+</div>
 </div>

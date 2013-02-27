@@ -1,8 +1,8 @@
 class Scientist < ActiveRecord::Base
-	has_one :scientist_profile, :dependent => :destroy
-	has_many :scientist_websites, :dependent => :destroy
-	has_many :scientist_titles, :dependent => :destroy
-	accepts_nested_attributes_for :scientist_profile, :scientist_websites, :scientist_titles
+	has_one		:profile, :dependent => :destroy, :class_name => "ScientistProfile"
+	has_many	:websites,:dependent => :destroy, :class_name => "ScientistWebsite"
+	has_many	:titles, 	:dependent => :destroy, :class_name => "ScientistTitle"
+	accepts_nested_attributes_for :profile, :websites, :titles
 	validates_presence_of :first_name, :last_name, :slug, :picture, :title
 
 	mount_uploader :picture, PictureUploader

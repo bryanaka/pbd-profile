@@ -12,11 +12,11 @@ gem "figaro", ">= 0.5.3"
 # gem "sqlite3"
 gem "strong_parameters"
 gem 'carrierwave'
+gem "pg"
 
 group :development do
 	gem "better_errors", ">= 0.6.0"
 	gem "binding_of_caller", ">= 0.6.9"
-	gem "pg"
 end
 
 group :development, :test do
@@ -38,7 +38,7 @@ group :test do
 	gem "database_cleaner", ">= 0.9.1"
 	gem "email_spec", ">= 1.4.0"
 	# nokogiri is producing errors on server, a dependency of capybara
-	# gem "capybara", ">= 2.0.2"
+	gem "capybara", ">= 2.0.2"
 end
 
 group :production do
