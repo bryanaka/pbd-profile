@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 gem 'rails', '3.2.12'
 
 # Universal Gems
@@ -12,6 +12,7 @@ gem "figaro", ">= 0.5.3"
 gem "sqlite3"
 gem "strong_parameters"
 gem 'carrierwave'
+gem 'ruby-saml'
 
 group :development do
 	gem "better_errors", ">= 0.6.0"
