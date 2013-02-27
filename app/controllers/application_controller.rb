@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   load_and_authorize_resource
   skip_authorize_resource :only => :check_session
 
-  protect_fom_forgery
+  protect_from_forgery
 
   def check_session
     if !session[:user]

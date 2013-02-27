@@ -1,5 +1,7 @@
 class SamlController < ApplicationController
 
+  skip_filter :check_session  
+
   BerkeleyFingerprint = "15:48:E2:28:E7:53:79:C0:96:32:52:FC:00:FF:28:7B:92:50:A8:97"
 
   def init
