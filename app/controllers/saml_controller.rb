@@ -4,6 +4,9 @@ class SamlController < ApplicationController
 
   BerkeleyFingerprint = "15:48:E2:28:E7:53:79:C0:96:32:52:FC:00:FF:28:7B:92:50:A8:97"
 
+  def index
+  end
+
   def init
     request = Onelogin::Saml::Authrequest.new
     redirect_to(request.create(saml_settings))
@@ -41,7 +44,7 @@ class SamlController < ApplicationController
     settings.issuer = request.host
     settings.idp_sso_target_url = "https://login.lbl.gov/idp/profile/SAML2/Redirect/SSO"
     settings.idp_cert_fingerprint = BerkeleyFingerprint
-    settings.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+    settings.name_identifier_format = "urn:oasis:names:tc:SAML:2.0:protocol"
 
     settings
   end
