@@ -56,6 +56,7 @@ PbdPortal::Application.routes.draw do
   root :to => 'scientists#index'
   match "/saml/init" => 'saml#init', :as => :login
   match "/saml/consume" => "saml#consume"
+  match "/saml/metadata" => "saml#metadata"
 
   # See how all your routes lay out with "rake routes"
 
