@@ -50,7 +50,7 @@ class VideosController < ApplicationController
 	# POST /videos/batch_destroy
 	# delete many videos
 	def batch_destroy
-		Video.destroy(params[:delete])
+		Video.destroy(params[:ids])
 	end
 
 	private

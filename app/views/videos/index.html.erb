@@ -35,31 +35,38 @@
     //delete will be ajax
     $('.video_action').on('click', function (evt) {
 
-        //Use array-join to concat strings (faster)
         var action  = $(this).attr('name'),
-            baseUrl = "<%= url_for :controller => videos %>";
-            requestType = "";
+            requestURL = "<%= url_for :controller => videos %>";
 
         if (action === "new" || action === "edit") {
-            //Set GET url arguments
-            baseUrl += "/" + action;
-            requestType = "GET";
+            //Set url arguments
             if (action === "edit") {
-
+                requestURL += '/' + $(this).data('id') + '/edit';
+            } else {
+                requestURL += '/new';
             }
 
+            window.location.href = requestURL;
+
         } else if (action === "delete") {
-            //URL arguments
-            baseUrl.push("?action=delete");
+            requestType = "POST";
+            var toDelete = [];
+            //Set URL
+            baseUrl += '/batch_destroy';
             $('input[name="delete"]:checked').each(function () {
                 //IDs of videos to be removed from db added to url
-                baseUrl.push("&id[]=" + $(this).attr('value'));
+                toDelete.push($(this).attr('value'));
                 //Animate remove videos from page
                 var $single_video = $(this).closest('tr'); //Get containing tr
                 $single_video.fadeOut(600, function(){ $(this).remove();});
             });
             //Do GET request to remove videos from db
-            $.get(baseUrl.join(""));
+            $.ajax({
+                type: "POST",
+                url: requestURL,
+                data: {"ids": toDelete},
+                success: function() {}
+            });
 
         } else {
             //Redirect to video display page if invalid action
