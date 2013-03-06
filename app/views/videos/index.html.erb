@@ -1,7 +1,7 @@
 <section id="all_videos">
     <div class="grouped">
         <div class="bttn icon add video-action top_bttn" name="new" title="Add new video">New Video</div>
-        <div class="bttn icon delete video_action" name="delte" title="Delete selected video">Delete</div>
+        <div class="bttn icon delete video_action" name="delete" title="Delete selected video">Delete</div>
     </div>
 
     <table cellspacing="0">
@@ -36,7 +36,7 @@
     $('.video_action').on('click', function (evt) {
 
         var action  = $(this).attr('name'),
-            requestURL = "<%= url_for :controller => videos %>";
+            requestURL = "<%= url_for :controller => :videos %>"
 
         if (action === "new" || action === "edit") {
             //Set url arguments

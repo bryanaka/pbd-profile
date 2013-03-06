@@ -1,0 +1,33 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
+$('.video_action').on 'click', ->
+    action = $(this).attr('name')
+    requestURL = "<%= url_for :controller => :videos %>"
+
+    if action is "new" or action is "edit"
+        if action is "edit"
+            requestURL += '/' + $(this).data('id') + '/edit'
+        else
+            requestURL += '/new'
+
+        window.location.href = requestURL
+
+    else if action is "delete"
+        toDelete = []
+        requestURL += '/batch_destroy'
+        $('input[name="delete"]:checked').each ->
+            toDelete.push $(element).attr('value')
+
+            single_video = $(element).closest('tr')
+            single_video.fadeOut 600, ->
+                $(this).remove()
+                return
+            return
+
+        $.ajax requestURL,
+            type: "POST",
+            data: {"ids": toDelete}
+
+    return
