@@ -1,3 +1,50 @@
+<div class="mainContent--scientist grid">
+	<article class="grid__item one-sixth lap-two-thirds">
+		<%= image_tag @scientist.picture_url, :class => "profile__img" %>
+	</article>
+	
+	<article class="grid__item one-sixth lap-one-whole">&nbsp;</article>
+	<article class="grid__item two-thirds lap-one-whole">	
+		<h1><%= @scientist.first_name %> <%= @scientist.last_name %></h1>
+		<h2><%= @scientist.title %></h2>
+	</article>
+
+	<article class="grid__item one-half scientist__address lap-one-whole">
+		<h3>Location Information</h3>
+		<%= @scientist.profile.company %><br>
+		<%= @scientist.profile.address1 %><br>
+		<%= @scientist.profile.address2 %><br>
+		<%= @scientist.profile.city %>, <%= @scientist.profile.state %> <%= @scientist.profile.zip_code %> USA
+	</article>
+	<article class="grid__item one-half scientist__location lap-one-whole">
+		<h3>Contact Information</h3>
+		Primary Number: <%= @scientist.profile.phone1 %><br>
+		<%= @scientist.profile.phone2_type %>: <%= @scientist.profile.phone2 %><br>
+		E-Mail: <%= @scientist.profile.email %><br>
+
+		
+	</article>
+	<section class="scientist__bio">
+		<article class="grid__item one-half scientist__emphasis lap-one-whole">
+			<h3>Research Emphasis:</h3>
+			<p>
+				<%= @scientist.profile.emphasis %>
+			</p>
+		</article>
+		<article id="scientist__summary" class="grid__item one-half lap-one-whole">
+			<h3>Summary:</h3>
+			<p>
+				<%= @scientist.profile.summary %>
+			</p>
+		</article>
+	</section>
+<%= link_to 'Edit', edit_scientist_path(@scientist) %> |
+<%= link_to 'Back', scientists_path %>
+
+</div>
+
+
+<!--
 <div class="mainContent">
 	<section id="scientist__info">
 		<%= image_tag @scientist.picture_url %>
@@ -67,7 +114,6 @@
 		</article>
 	</section>
 </div>
-<%= @scientist.first_name %>
+-->
 
-<%= link_to 'Edit', edit_scientist_path(@scientist) %> |
-<%= link_to 'Back', scientists_path %>
+
