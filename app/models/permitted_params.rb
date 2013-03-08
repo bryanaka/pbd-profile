@@ -36,4 +36,9 @@ class PermittedParams < Struct.new(:params, :user)
 		params.require(:scientist).permit( *scientist_params, profile_attributes: profile_params, websites_attributes: website_params, titles_attrbutes: :title )
 	end
 
+	# have to use this name to avoid conflicts
+	def user_permit
+		params.require(:user).permit(:mail, :name, :picture)
+	end
+
 end
