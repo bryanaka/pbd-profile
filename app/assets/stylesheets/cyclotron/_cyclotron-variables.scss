@@ -1,0 +1,119 @@
+/* =================================================
+   Layout Options
+   ================================================= */
+
+$use-page-max-width: false;
+$page-max-width: 1300px;
+
+@if $use-page-max-width == true {
+	$container-max-width: $page-max-width;
+}
+
+/* ================================================
+   Typography Variables
+   ================================================ */
+   
+$header-fonts: "Raleway", "Source Sans Pro","Helvetica", "Arial", sans-serif;
+$subheader-fonts: "Source Sans Pro","Helvetica", "Arial", sans-serif;
+$main-fonts: "Source Sans Pro","Helvetica", "Arial", sans-serif;
+$serif-fonts:serif;
+
+$base-font-size: 18px;
+
+
+/* ================================================
+	Grid Variables
+   ================================================ */
+
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to false:
+ */
+$responsive-grid:            true;
+
+/**
+ * Is this build mobile first? Setting to true means that all grids will be 100%
+ * width if you do not apply a more specific class to them.
+ */
+$mobile-first:          true;
+
+
+/**
+ * Set the spacing between your grid items.
+ */
+
+$gutter-base:    20px;
+
+$gutter: $gutter-base + ($base-font-size / 4);
+
+
+/** Would you like Sass’s silent classes, or regular CSS classes? */
+/** true evaluates to using silent classes */
+$use-silent-grid-classes:    false;
+
+/* 
+** At which point should lap(read lap sized devices) and 
+** desk(read desk sized devices) breakpoints kick in? 
+*/
+$lap-start:             481px;
+$desk-start:            800px;
+
+/* This allows you to use "push--one-half" class to push a grid 
+** item a half width of the screen to the right */
+$use-push-utils: false;
+/* This allows you to use "pull--one-half" class to pull a grid 
+** item a half width of the screen to the left */
+$use-pull-utils: false;
+
+/* Responsive counterparts to push and pull classes seen above */
+$responsive-pull: false;
+$responsive-push: false;
+
+/* Similar to the classes seen in Twitter Bootstrap or Foundation. */
+$use-visibility-utils: true;
+
+/* ================================================
+	Color Variables
+   ================================================ */
+
+$off-black:    #444444;
+$off-white:    #FAFAFA;
+
+$lab-blue: 	   #00395A; 	/* Laboratory Blue (Slightly better version) */
+$lab-old-blue: #0F405B; 	/* Laboratory Blue, According to lbl.gov banner */
+$brand-color1: #008000; 	/* PBD Green */
+$brand-color2: #ffd059; 	/* PBD Yellow */
+$brand-color3: #9ACD32; 	/* PBD Yellow-Green */
+$brand-color4: papayawhip;/* A nice cream color that goes well with green */
+$brand-color5: #252525; 	/* An off black */
+
+/* --------------------------
+   Navigation Color Variables
+   -------------------------- */
+	  $nav-color:       #FFFFFF;
+$nav-color-hover:      #FFFFFF;
+
+	  $nav-bgcolor:     #008000;
+$nav-bgcolor-hover:    #008000;
+
+/* --------------------------
+   Subnavigation Color Variables
+   -------------------------- */
+	  $subnav-color:    #008000;
+$subnav-color-hover:   #FAFAFA;
+
+	  $subnav-bgcolor:  $off-white;
+$subnav-bgcolor-hover: #008000;
+
+$nav-border-color: 	  #9ACD32;
+
+/* ================================================
+	UI Variables
+   ================================================ */
+
+$use-forms:    true;
+$use-buttons:  true;
+$use-badges:   true;
+
+$use-tooltips: true;
+$use-modal:    true;

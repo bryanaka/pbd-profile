@@ -1,0 +1,22 @@
+/* ***************************************
+   Footers
+   *************************************** */
+
+.mainFooter {
+	border-top: lighten(#252525, 10%) 4px solid;
+	background: #252525;
+	padding: 1.5em;
+	padding: 1.5rem;
+	color: #FFFFFF;
+	margin: 0 auto;
+	@include border-box();
+}
+
+.mainFooter__item {
+	vertical-align: top;
+	text-align: left;
+}
+.mainFooter__link {
+	text-decoration: none;
+	color:lighten($lab-blue, 15%);
+}

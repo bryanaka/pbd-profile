@@ -58,18 +58,24 @@
 .scientistCard__name {
 	text-align: center;
 	position: relative;
-	left:-6px;
 }
 .scientistCard__buttonGroup {
 	text-align: center;
 	position: relative;
 	top:-12px;
+	width:113%;
+	left:-5px;
+	.button, .button--blue {
+		margin: 0;
+	}
 }
 .profile__img {
-	border-radius: 100%;
-	padding: 5px;
+	padding: 3px;
 	border: #252525 2px solid;
 	max-width: 100%;
 	min-width: 100px;
 
+}
+.profile__name, .profile__contact {
+	text-align: left;
 }

@@ -1,0 +1,124 @@
+	/* ====================================================
+	   Buttons
+	   ==================================================== */
+	%btn{
+		display: inline-block;
+		cursor: pointer;
+		vertical-align: middle;
+		text-align: center;
+		padding: .25em .5em;
+		padding: .25rem .5rem;
+		margin: .25em;
+		margin: .25rem;
+		text-decoration: none;
+		-webkit-border-radius: 4px;
+		   -moz-border-radius: 4px;
+				border-radius: 4px;
+		@include border-box();
+		@include transition(all 0.4s ease-in-out);
+
+	}
+
+
+	/* make colors for buttons more flexible with variables */
+	.button {
+		@extend %btn;
+		color: darken(#ffffff, 16%);
+		@include buttonify(#757575, 4%);
+		&:hover {
+			color: #FAFAFA;
+			@include buttonify(#757575, 8%);
+		}
+		&:active {
+			@include buttonify(#757575, 12%);
+		}
+	}
+	
+	.button--red {
+		@extend %btn;
+		color: darken(#ffffff, 16%);
+		@include buttonify(#B22222, 4%);
+	
+		&:hover {
+			color: #FAFAFA;
+			@include buttonify(#B22222, 8%);
+		}
+		&:active {
+			@include buttonify(#B22222, 12%);
+		}
+	}
+	
+	.button--blue {
+		@extend %btn;
+		color: lighten(#145aca, 30%);
+		@include buttonify(#145aca, 4%);
+		
+		&:hover {
+			color: #FAFAFA;
+			@include buttonify(#145aca, 8%);
+		}
+		&:active {
+			@include buttonify(#145aca, 12%);
+		}
+	}
+	
+	.button--green {
+		@extend %btn;
+		color: darken(#ffffff, 16%);
+		@include buttonify(#008000, 4%);
+	
+		&:hover {
+			color: #FAFAFA;
+			@include buttonify(#008000, 8%);
+		}
+		&:active {
+			@include buttonify(#008000, 12%);
+		}
+	}
+	
+	.button--yellow {
+		@extend %btn;
+		color: darken(#ffffff, 16%);
+		@include buttonify(#DD7500, 4%);
+	
+		&:hover {
+			color: #FAFAFA;
+			@include buttonify(#DD7500, 8%);
+		}
+		&:active {
+			@include buttonify(#DD7500, 12%);
+		}
+	}
+	
+	.button--small {}
+	
+	.button--large {
+
+		-webkit-border-radius: 6px;
+		   -moz-border-radius: 6px;
+				border-radius: 6px;
+		padding: 11px 19px;
+		&:hover {
+			padding: 11px 19px;
+		}
+		&:active {
+			padding: 11px 19px;
+		}
+	}
+	
+	.button--3x {
+		-webkit-border-radius: 6px;
+		   -moz-border-radius: 6px;
+				border-radius: 6px;
+		padding: 16px 26px;
+		&:hover {
+			padding: 16px 26px;
+		}
+		&:active {
+			padding: 16px 26px;
+		}
+	}
+	
+	/* ====================================================
+	   Button Groups
+	   ==================================================== */

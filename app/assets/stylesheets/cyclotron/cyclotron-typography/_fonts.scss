@@ -1,0 +1,23 @@
+
+/* Mixin defined here because this is the only place it should be used. */
+@mixin font-add( $font-family: "", $url: "", $font-weight: normal, $font-style: normal ) {
+	@font-face {
+    	font-family: "#{$font-family}";
+    	src: url('../fonts/#{$url}.eot');
+    	src: url('../fonts/#{$url}.eot?#iefix') format('embedded-opentype'),
+    	     url('../fonts/#{$url}.woff') format('woff'),
+    	     url('../fonts/#{$url}.ttf') format('truetype'),
+    	     url('../fonts/#{$url}.svg##{$font-family}') format('svg');
+    	font-weight: $font-weight;
+    	font-style:  $font-style;
+	}
+}
+
+/* ========================================
+	Custom Fonts
+   ======================================== */
+@include font-add("SourceSansProRegular", "source-sans-pro/SourceSansPro-Regular-webfont");
+@include font-add("SourceSansProLight", "source-sans-pro/SourceSansPro-Light-webfont");
+@include font-add("Raleway", "raleway/raleway_thin-webfont");
+@include font-add("Steelfish", "steelfish/steelfish");
+@include font-add("Steelfish", "steelfish/steelfish-italics", normal, italic);

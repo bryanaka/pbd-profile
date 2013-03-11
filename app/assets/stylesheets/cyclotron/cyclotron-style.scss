@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 ** Cyclotron Framwework
 ** Author: Bryan M. Robles
@@ -17,13 +16,30 @@
 **
 ** TO-DO
 ** =================================
-** Add Cyclotron-Base.scss - the opinioned defaults
+** Make variables and framework set up easy to use.
+** Reduce CSS with some silent classes. Make Silent Classes an easy addition. 
 **
 */
 
-@import "cyclotron-boilerplate.scss";
-@import "csswizardry-grid/csswizardry-grids.scss";
-@import "twitter-utilities.scss";
-@import "../../fonts/fonts.scss";
-@import "cyclotron-base/cyclotron-main.scss";
-@import "author-styles.scss";
+/* Normalize for normalization */
+@import "vendor/normalize";
+/* Settings and Important Variables */
+@import "cyclotron-settings",
+		"cyclotron-variables";
+/* Mixins and Functions */
+@import "cyclotron-mixins/mixins",
+		"cyclotron-functions/functions";
+/* Base Files */
+@import "cyclotron-base/cyclotron-base.scss";
+/* Grid and responsive related manners */
+@import "cyclotron-grid-responsive/cyclotron-grid-responsive.scss";
+/* Typography and text Styling */
+@import "cyclotron-typography/cyclotron-typography.scss";
+/* Navigation */
+@import "cyclotron-nav/cyclotron-nav.scss";
+/* Helper Classes and Utilities */
+@import "cyclotron-helpers/cyclotron-helpers.scss";
+/* User Interface Elements */
+@import "cyclotron-ui/cyclotron-ui.scss";
+/* Author Styles */
+@import "author-styles/author-styles.scss";

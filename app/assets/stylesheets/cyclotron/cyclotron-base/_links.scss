@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+a {
+	color: #08C;
+	position: relative;
+	margin: -0.3em;
+	margin: -0.3rem;
+	padding: 0.3em;
+	padding: 0.3rem;
+	@include transition(all 0.3s ease-in-out);
+
+	&:visited{}
+	
+	&:active{}
+	
+	&:hover{
+		color: #0AF;
+	}
+	
+	&:focus{}
+	
+	&[href^="mailto"]{}
+	
+	&[href^="tel"]{}
+}
+/* special link types */
+.navLink {
+	font-size: 1.125rem;
+	text-decoration:none;
+	font-family: "SourceSansProRegular";
+	color: darken(#08C, 10%);
+	padding-top: .5rem;
+	font-weight: 300;
+
+	&:hover {
+		color:#FAFAFA;
+	}
+
+}
