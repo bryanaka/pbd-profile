@@ -81,7 +81,7 @@
 	text-align: left;
 }
 .profile__contact {
-	background:#EDEDED;
+	text-align: left;
 }
 .profile__name {
 	h1,h2,ul {
@@ -90,14 +90,14 @@
 	}
 }
 .profile__head {
-	background: darken(#FAFAFA, 7%);
 	padding: 0.5rem 0;
-	
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QMMAAMz+/9S7AAAAEdJREFUaN7tzzERADAIBDCof4OoeVx04BIH6SRTB7w6QkREREREREREREREREREREREREREREREREREREREREREREREROSPBWk2BDoxiiAEAAAAAElFTkSuQmCC),
-    url(http://newscenter.lbl.gov/wp-content/uploads/als-interior.jpg);
-   
-
+    background: #EDEDED;
+    border-bottom: darken(#EDEDED, 10%) 3px solid;
+    margin-bottom: 1.5rem;
+}
+.profile__bio {
+	text-align: left;
 }
 .profile__address, .profile__location {
-
+	margin-bottom: 1.5rem;
 }

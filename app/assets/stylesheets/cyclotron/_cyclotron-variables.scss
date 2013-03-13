@@ -3,7 +3,7 @@
    ================================================= */
 
 $use-page-max-width: false;
-$page-max-width: 1300px;
+$page-max-width: 1200px;
 
 @if $use-page-max-width == true {
 	$container-max-width: $page-max-width;
@@ -13,10 +13,10 @@ $page-max-width: 1300px;
    Typography Variables
    ================================================ */
    
-$header-fonts: "Raleway", "Source Sans Pro","Helvetica", "Arial", sans-serif;
-$subheader-fonts: "Source Sans Pro","Helvetica", "Arial", sans-serif;
-$main-fonts: "Source Sans Pro","Helvetica", "Arial", sans-serif;
-$serif-fonts:serif;
+$header-fonts: "Raleway", "Source Sans Pro", "Helvetica", sans-serif;
+$subheader-fonts: "Ubuntu", "Raleway", "Source Sans Pro", "Helvetica", sans-serif;
+$main-fonts: "Source Sans Pro", "Helvetica", "Arial", sans-serif;
+$serif-fonts:"Times New Roman", serif;
 
 $base-font-size: 18px;
 
@@ -47,7 +47,6 @@ $gutter-base:    20px;
 $gutter: $gutter-base + ($base-font-size / 4);
 
 
-/** Would you like Sass’s silent classes, or regular CSS classes? */
 /** true evaluates to using silent classes */
 $use-silent-grid-classes:    false;
 

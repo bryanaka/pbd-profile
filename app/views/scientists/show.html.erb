@@ -1,6 +1,6 @@
 <div class="mainContent grid">
 	<div class="profile__head" style="">
-		<article class="grid__item one-quarter lap-one-whole">
+		<article class="grid__item one-quarter portable-one-whole">
 			<%= image_tag @scientist.picture_url, :class => "profile__img" %>
 		</article>
 		
@@ -8,8 +8,7 @@
 			<h1><%= @scientist.first_name %> <%= @scientist.last_name %></h1>
 			<h2><%= @scientist.title %></h2>
 			<!-- This needs to be associated to scientist__titles model -->
-			<article class="profile__titles grid__item one-half">
-				<h5>
+			<article class="profile__titles grid__item one-half hidden-palm">
 					<ul>
 						<li>Senior Scientist</li>
 						<li>Adjunct Professor - Dept. of Bioengineering</li>
@@ -18,22 +17,19 @@
 						<li>Chair of the ALS Biosciences Council</li>
 						<li>The Joint BioEnergy Institute</li>
 					</ul>
-				</h5>
 			</article>
-			<article class="profile__websites grid__item one-half">
+			<article class="profile__websites grid__item one-half hidden-palm">
 				<h4>Websites:</h4>
-				<h5>
 					<a href="#">Advanced Light Source</a> &bull;
 					<a href="#">Physical Biosciences</a><br>
 					<a href="#">Joint BioEnergy Institute</a> &bull;
 					<a href="#">Berkeley Center of Structrual Biology</a><br>
-				</h5>
 			</article>
 		</section>
 	</div>
-	<section class="profile__contact">
+	<section class="profile__contact grid__item one-third portable-one-whole">
 
-		<article class="profile__address grid__item desk-one-half lap-one-half">
+		<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
 			<h3>Location Information</h3>
 			<%= @scientist.profile.company %><br>
 			<%= @scientist.profile.address1 %><br>
@@ -41,23 +37,22 @@
 			<%= @scientist.profile.city %>, <%= @scientist.profile.state %> <%= @scientist.profile.zip_code %> USA
 		</article>
 	
-		<article class="profile__location grid__item one-half lap-one-half">
+		<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 			<h3>Contact Information</h3>
 			Primary Number: <%= @scientist.profile.phone1 %><br>
 			<%= @scientist.profile.phone2_type %>: <%= @scientist.profile.phone2 %><br>
 			E-Mail: <%= @scientist.profile.email %><br>
 		</article>
-
+	
 	</section>
-
-	<section class="scientist__bio">
-		<article class="grid__item one-half scientist__emphasis lap-one-whole">
+	<section class=" profile__bio grid__item two-thirds lap-one-whole">
+		<article class="profile__emphasis">
 			<h3>Research Emphasis:</h3>
 			<p>
-				<%= @scientist.profile.emphasis %>
+				<%=raw @scientist.profile.emphasis %>
 			</p>
 		</article>
-		<article id="scientist__summary" class="grid__item one-half lap-one-whole">
+		<article id="scientist__summary" class="profile__summary">
 			<h3>Summary:</h3>
 			<p>
 				<%= @scientist.profile.summary %>
