@@ -36,7 +36,7 @@
     $('.video_action').on('click', function (evt) {
 
         var action  = $(this).attr('name'),
-            requestURL = "<%= url_for :controller => :videos %>"
+            requestURL = "<%= url_for :controller => :videos %>";
 
         if (action === "new" || action === "edit") {
             //Set url arguments
@@ -64,8 +64,7 @@
             $.ajax({
                 type: "POST",
                 url: requestURL,
-                data: {"ids": toDelete},
-                success: function() {}
+                data: {"ids": toDelete}
             });
 
         } else {
