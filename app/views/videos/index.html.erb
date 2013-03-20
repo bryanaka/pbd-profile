@@ -36,14 +36,14 @@
     $('.video_action').on('click', function (evt) {
 
         var action  = $(this).attr('name'),
-            requestURL = "";
+            requestURL = "<%= url_for :controller => :videos %>";
 
         if (action === "new" || action === "edit") {
             //Set url arguments
             if (action === "edit") {
-                requestURL = "<%= url_for :controller => :videos %>";
+                requestURL += "/" + $(this).attr('data-id') + '/edit';
             } else if (action == "new") {
-                requestURL = "<%= url_for :controller => :videos, :action => :new %>";
+                requestURL += "/new";
             }
 
             window.location.href = requestURL;
@@ -52,7 +52,7 @@
             requestType = "POST";
             var toDelete = [];
             //Set URL
-            requestURL = "<%= url_for :controller => :videos, :action => :batch_destroy %>";
+            requestURL += '/batch_destroy';
             $('input[name="delete"]:checked').each(function () {
                 //IDs of videos to be removed from db added to url
                 toDelete.push($(this).attr('value'));

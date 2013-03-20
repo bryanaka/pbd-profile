@@ -1,9 +1,8 @@
 PbdPortal::Application.routes.draw do
 
-  root :to => 'videos#index'
   resources :scientists, :videos
-  
-  match "/video/new" => 'videos#new'
+
+  root :to => 'videos#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
