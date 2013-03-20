@@ -1,6 +1,6 @@
 PbdPortal::Application.routes.draw do
 
-  resources :scientists
+  resources :scientists, :videos
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,6 +52,11 @@ PbdPortal::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
+
+  root :to => 'saml#index'
+  match "/saml/init" => 'saml#init', :as => :login
+  match "/saml/consume" => "saml#consume"
+  match "/saml/metadata" => "saml#metadata"
 
   # See how all your routes lay out with "rake routes"
 

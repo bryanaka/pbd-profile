@@ -24,9 +24,9 @@ class VideosController < ApplicationController
 	def create
 		@video = Video.new(video_params)
 		if @video.save
-			redirect_to @video, notice: 'Video was successfully created.'
+			redirect_to @video, :notice => 'Video was successfully created.'
 		else
-			render action: "new"
+			render :action => "new"
 		end
 	end
 
@@ -34,9 +34,9 @@ class VideosController < ApplicationController
 	def update
 		@video = Video.find(params[:id])
 		if @video.update_attributes(video_params)
-			redirect_to @video, notice: 'Video was successfully updated.'
+			redirect_to @video, :notice => 'Video was successfully updated.'
 		else
-			render action: "edit"
+			render :action => "edit"
 		end
 	end
 
@@ -45,6 +45,12 @@ class VideosController < ApplicationController
 		@video = Video.find(params[:id])
 		@video.destroy
 		redirect_to videos_url
+	end
+
+	# POST /videos/batch_destroy
+	# delete many videos
+	def batch_destroy
+		Video.destroy(params[:ids])
 	end
 
 	private
