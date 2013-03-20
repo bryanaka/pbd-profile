@@ -6,7 +6,7 @@
 
     <table cellspacing="0">
         <thread>
-            <th style="padding-left:60px"><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
+            <th><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
             <th></th>
             <th>Video Title</th>
             <th>Scientist</th>
@@ -36,7 +36,7 @@
     $('.video_action').on('click', function (evt) {
 
         var action  = $(this).attr('name'),
-            requestURL = "<%= url_for :controller => :videos %>";
+            requestURL = "<%= videos_path %>";
 
         if (action === "new" || action === "edit") {
             //Set url arguments

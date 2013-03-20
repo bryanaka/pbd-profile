@@ -53,6 +53,12 @@ PbdPortal::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 
+  #compass compilation
+  config.compass.sass_dir = "app/stylesheets/cyclotron"
+
+  #Enable live compilation
+  # config.assets.compile = true
+
   # Expands the lines which load the assets
   config.assets.debug = true
 
