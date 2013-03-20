@@ -1,3 +1,3 @@
 class User < ActiveRecord::Base
-	validates_uniqueness_of :eppn, :mail, :name
+	validates_uniqueness_of :eppn, :email, :name
 end

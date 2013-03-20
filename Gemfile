@@ -10,6 +10,7 @@ gem "figaro", ">= 0.5.3"
 gem "strong_parameters"
 gem "carrierwave"
 gem "pg"
+gem "ember-rails"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

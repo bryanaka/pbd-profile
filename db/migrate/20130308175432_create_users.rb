@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :eppn
       t.string :name
-      t.string :mail
+      t.string :email
       t.string :picture
       t.boolean :confirmed
 
