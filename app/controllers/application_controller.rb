@@ -2,7 +2,7 @@ require 'ruby-saml'
 
 class ApplicationController < ActionController::Base
 
-  before_filter :check_session
+  # before_filter :check_session
   # load_and_authorize_resource
   # skip_authorize_resource :only => :check_session
 
