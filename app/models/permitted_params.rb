@@ -7,7 +7,7 @@ class PermittedParams < Struct.new(:params, :user)
 		params.require(:scientist).permit(*scientist_params)
 	end
 	
-	def scientist_profile
+	def profile
 		scientist_profile_params = [:address1, :address2, :city, :company, 
 																:department, :department_url, :email, :emphasis, 
 																:location, :phone1, :phone2, :phone2_type, 
@@ -16,24 +16,29 @@ class PermittedParams < Struct.new(:params, :user)
 		params.require(:scientist_profile).permit(*scientist_profile_params)
 	end
 
-	def scientist_website
+	def website
 		scientist_website_params = [:name, :url, :description]
 		params.require(:scientist_website).permit(*scientist_website_params)
 	end
 
-	def scientist_titles
+	def title
 		params.require(:scientist_title).permit(:title)
 	end
 
 	def scientist_full
 		scientist_params = [:first_name, :last_name, :picture, :title, :slug]
-		scientist_profile_params = [:address1, :address2, :city, :company, 
-																:department, :department_url, :email, :emphasis, 
-																:location, :phone1, :phone2, :phone2_type, 
-																:positions_held, :prefix, :state, 
-																:summary, :zip_code]
-		scientist_website_params = [:name, :url, :description]	
-		params.require(:scientist).permit( *scientist_params, scientist_profile_attributes: scientist_profile_params, scientist_websites_attributes: scientist_website_params, scientist_titles_attrbutes: :title )
+		profile_params = [:address1, :address2, :city, :company, 
+											:department, :department_url, :email, :emphasis, 
+											:location, :phone1, :phone2, :phone2_type, 
+											:positions_held, :prefix, :state, 
+											:summary, :zip_code]
+		website_params = [:name, :url, :description]	
+		params.require(:scientist).permit( *scientist_params, profile_attributes: profile_params, websites_attributes: website_params, titles_attrbutes: :title )
+	end
+
+	# have to use this name to avoid conflicts
+	def user_permit
+		params.require(:user).permit(:mail, :name, :picture)
 	end
 
 end

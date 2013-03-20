@@ -1,0 +1,53 @@
+.labNav {
+	background: $lab-blue;
+	color:#ffffff;
+	font-weight:500;
+	padding:.25em 0 .25em 0;
+	border-bottom: lighten($lab-blue, 10%) 4px solid;
+
+}
+	.labNav__brand {
+		max-width:80px;
+		height:auto;
+		padding-left:1em;
+		padding-right: 1em;
+		display:inline;
+		margin-top: -.35em;
+	}
+
+	.labNav__headline {
+		@include font-size(1.25);
+		
+	}
+
+	.labNav__links {
+		margin-top: .25em;
+		text-align: right;
+	}
+
+	.labNav__link {
+		text-decoration: none;
+		font-size: .75em;
+		color: #ffffff;
+		text-decoration:none;
+		padding:.25em 0;
+		display:block;
+
+		&:hover {
+			color: lighten($lab-blue, 25%);
+		}	
+	}
+
+	.labNav__DOE {
+		text-align:right;
+		padding-right: 1em;
+		padding-right: 1rem;
+		background:url('/resources/img/doe_seal_white_o35.png') no-repeat 83%;
+		-webkit-background-size:auto 100%;
+		@include font-size(.70);
+
+		.DOE__energy {
+			@include font-size(1.7);
+		}
+
+	}

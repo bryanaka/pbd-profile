@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Visibility Utilities
+   Inspired by Twitter Bootstrap and Foundation
+   ========================================================================== */
+
+@-ms-viewport{
+  width: device-width;
+}
+@if $use-visibility-utils == true {
+	/* for lap sized devices */
+	@media only screen and (min-width: $lap-start) and (max-width: $lap-end) {
+	
+		.hidden-palm,
+		.visible-lap,
+		.visible-portable,
+		.hidden-desk 	{ display: inherit !important; }
+	
+		.visible-palm, 
+		.hidden-lap, 
+		.hidden-portable, 
+		.visable-desk { display: none !important;}
+	
+	}
+	/* for palm sized devices */
+	@media only screen and (max-width: $palm-end){
+		
+		.visible-palm, 
+		.hidden-lap, 
+		.visible-portable, 
+		.hidden-desk 	{ display: inherit !important; }
+	
+		.hidden-palm, 
+		.visible-lap, 
+		.hidden-portable, 
+		.visible-desk { display: none !important; }
+	
+	}
+	/* for desktop sized devices */
+	@media only screen and (min-width:$desk-start){
+	
+		.hidden-palm, 
+		.hidden-lap, 
+		.hidden-portable, 
+		.visible-desk { display: inherit !important; }
+	
+	
+		.visible-palm, 
+		.visible-lap, 
+		.visible-portable, 
+		.hidden-desk  { display: none !important; }
+	
+	}
+	
+	/* for Print */
+	@media print {
+	  .visible-print  	{ display: inherit !important; }
+	  .hidden-print   	{ display: none	   !important; }
+	}
+} /* End if statement */

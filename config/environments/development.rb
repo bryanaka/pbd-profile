@@ -13,6 +13,10 @@ PbdPortal::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+
+  # Configure Rails to run under a subdirectory
+  # config.action_controller.relative_url_root = '/pbdportal'
+
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
@@ -51,4 +55,7 @@ PbdPortal::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Ember Configurations
+  config.ember.variant = :development
 end

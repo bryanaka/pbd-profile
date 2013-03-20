@@ -2,22 +2,27 @@ class ScientistsController < ApplicationController
 
 	def index
 		@scientists = Scientist.all
+		@scientists.sort! do |a,b|
+			a.last_name.downcase <=> b.last_name.downcase
+		end
 	end
 
 	def show
 		@scientist = Scientist.find(params[:id])
+		render :layout => "site_template"
 	end
 
 	def edit
 		@scientist = Scientist.find(params[:id])
-		if @scientist.scientist_profile == nil
-			@scientist.build_scientist_profile
+		if @scientist.profile == nil
+			@scientist.build_profile
 		end
 	end
 
 	def new
 		@scientist = Scientist.new
 		@scientist.build_scientist_profile
+		# needs to be able to add many at a time
 		@scientist.scientist_websites.build
 		@scientist.scientist_titles.build
 	end
@@ -46,6 +51,7 @@ class ScientistsController < ApplicationController
 		redirect_to scientist_index_path
 	end
 
+<<<<<<< HEAD
 	private
 	# Use this method to whitelist the permissible parameters. Example:
 	# params.require(:person).permit(:name, :age)
@@ -69,4 +75,6 @@ class ScientistsController < ApplicationController
 	# 	params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
 	# end
 
+=======
+>>>>>>> master
 end

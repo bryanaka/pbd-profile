@@ -1,13 +1,12 @@
-<!-- Video index view -->
 <section id="all_videos">
     <div class="grouped">
-        <div class="bttn icon add video_action top_bttn" name="new" title="Add new video">New Video</div>
+        <div class="bttn icon add video-action top_bttn" name="new" title="Add new video">New Video</div>
         <div class="bttn icon delete video_action" name="delete" title="Delete selected video">Delete</div>
     </div>
 
     <table cellspacing="0">
         <thread>
-            <th><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
+            <th style="padding-left:60px"><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
             <th></th>
             <th>Video Title</th>
             <th>Scientist</th>
@@ -42,9 +41,9 @@
         if (action === "new" || action === "edit") {
             //Set url arguments
             if (action === "edit") {
-                requestURL += '/' + $(this).data('id') + '/edit';
-            } else {
-                requestURL += '/new';
+                requestURL += "/" + $(this).attr('data-id') + '/edit';
+            } else if (action == "new") {
+                requestURL += "/new";
             }
 
             window.location.href = requestURL;
@@ -60,7 +59,6 @@
                 //Animate remove videos from page
                 var $single_video = $(this).closest('tr'); //Get containing tr
                 $single_video.fadeOut(600, function(){ $(this).remove();});
-                // $single_video.slideUp();
             });
             //Do GET request to remove videos from db
             $.ajax({

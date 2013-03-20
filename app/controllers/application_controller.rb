@@ -1,28 +1,20 @@
-require 'ruby-saml'
-
 class ApplicationController < ActionController::Base
+	protect_from_forgery
 
-  # before_filter :check_session
-  # load_and_authorize_resource
-  # skip_authorize_resource :only => :check_session
+	private
 
-  protect_from_forgery
+	def permitted_params
+		@permitted_params ||= PermittedParams.new(params, current_user)
+	end
 
-  def check_session
-    if !session[:user]
-      redirect_to login_path
-    end
-  end
+	def current_user
+		@current_user ||= User.find_by_eppn(session[:user_eppn]) if session[:user_eppn]
+	end
 
-  private
+	def shib_user
+		@shib_user ||= User.find_by_eppn(request.env[:HTTP_EPPN])
+	end
 
-  def current_user
-  end
-
-  def permitted_params
-  	@permitted_params ||= PermittedParams.new(params, current_user)
-  end
-
-
+	helper_method :current_user
 
 end

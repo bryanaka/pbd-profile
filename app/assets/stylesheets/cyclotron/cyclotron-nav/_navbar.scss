@@ -1,0 +1,117 @@
+/* Navigation */
+.mainNav {
+	background:$nav-bgcolor;
+	border-bottom: 4px $nav-border-color solid;
+	padding-left: 2.5em;
+	padding-left: 2.5rem;
+	text-align: center;
+}
+.mainNav__linkGroup {
+	display: inline-block;
+	padding: .4em .75em;
+	padding: .4rem .75rem;
+	position: relative;
+}
+.mainNav__link {
+	text-align: center;
+	color: $nav-color;
+	text-decoration: none;
+	font-size: 1.125em;
+	font-size: 1.125rem;
+	vertical-align: bottom;
+
+}
+.mainNav__linkGroup:hover .mainNav__link{
+	background: lighten($nav-bgcolor, 8%);
+	color: $nav-color;
+	-webkit-transition: all 0.5s;
+	   -moz-transition: all 0.5s;
+		 -o-transition: all 0.5s;
+		-ms-transition: all 0.5s;
+}
+
+/* Subnavigation */
+.subNav {
+	position:absolute;
+	opacity:0;
+	left: 0%;
+	top:99%;
+	-webkit-transition: opacity 0.5s;  
+	   -moz-transition: opacity 0.5s; 
+		-ms-transition: opacity 0.5s;  
+		 -o-transition: opacity 0.5s;  
+			transition: opacity 0.5s;
+	z-index:5;
+	border:$nav-border-color 4px solid;
+	border-top: none;
+	background: $subnav-bgcolor;
+		width: 150%;
+	min-width: 150px;
+	display: none;
+
+}
+
+.subNav .subNav__link{
+	color: $subnav-color;
+	display: block;
+	position: relative;
+	background: $subnav-bgcolor;
+	text-align:center;
+	-webkit-transition: opactiy 0.5s;  
+	   -moz-transition: opactiy 0.5s; 
+		-ms-transition: opacity 0.5s;  
+		 -o-transition: opacity 0.5s;  
+			transition: opactiy 0.5s;
+	z-index:5;
+}
+
+.subNav__link:hover{
+	color:#FAFAFA;
+	background: $subnav-bgcolor-hover;
+	-webkit-transition: all 0.5s;
+	   -moz-transition: all 0.5s; 
+		-ms-transition: all 0.5s;  
+		 -o-transition: all 0.5s;  
+			transition: all 0.5s;
+}
+
+.mainNav__linkGroup:hover > .subNav {
+	display:block;
+	opacity:1;
+}
+
+.subNav a{
+	text-decoration:none;
+	text-align: center;
+	padding:0.5em 0.5em;
+	padding:0.5rem 0.5rem;
+	color: $subnav-color;
+	margin:0;  
+}
+
+.subNav--bar {
+	color: #252525;
+	display: block;
+	position: relative;
+	background: lighten($subnav-bgcolor, 11%);
+	border-bottom: lighten($subnav-bgcolor, 20%) 5px solid;
+	font-size: 1.125rem;
+	padding: .25rem inherit;
+
+	.subNav__link {
+		color: $lab-blue;
+		display: inline-block;
+		background: none;
+		text-align:center;
+		font-size: 1.125rem;
+		text-decoration:none;
+		font-family: "SourceSansProRegular";
+		font-weight: 300;
+
+		&:hover {
+			color:#FAFAFA;
+			background: none;
+		}
+
+	}
+}
