@@ -3,7 +3,7 @@ PbdPortal::Application.routes.draw do
   root :to => 'videos#index'
   resources :scientists, :video
   match "/video/new" => 'videos#new'
-  
+
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
   
