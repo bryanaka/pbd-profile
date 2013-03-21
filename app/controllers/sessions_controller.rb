@@ -49,6 +49,8 @@ class SessionsController < ApplicationController
 		profile = ScientistProfile.find_by_email(user.email)
 		if profile && profile.scientist
 			user.confirmed = true
+			user.scientist_id = profile.scientist_id
+			user.add_role "scientist"
 			user.save!
 		end
 	end

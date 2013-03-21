@@ -5,7 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :picture
+      t.integer :scientist_id
       t.boolean :confirmed, :default => false
+
 
       t.timestamps
     end
