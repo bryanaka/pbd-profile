@@ -1,4 +1,4 @@
-<div class="mainContent grid">
+<div class="mainContent--site grid">
 	<div class="profile__head" style="">
 		<article class="grid__item one-quarter portable-one-whole">
 			<%= image_tag @scientist.picture_url, :class => "profile__img" %>
@@ -52,12 +52,14 @@
 				<%=raw @scientist.profile.emphasis %>
 			</p>
 		</article>
+		<% if @scientist.profile.summary %>
 		<article id="scientist__summary" class="profile__summary">
 			<h3>Summary:</h3>
 			<p>
-				<%= @scientist.profile.summary %>
+				<%=raw @scientist.profile.summary %>
 			</p>
 		</article>
+		<% end %>
 	</section>
 <%= link_to 'Edit', edit_scientist_path(@scientist) %> |
 <%= link_to 'Back', scientists_path %>

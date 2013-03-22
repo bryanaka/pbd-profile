@@ -1,1 +1,199 @@
-.container{max-width:75em;max-width:75rem;margin:0 auto;background:#FAFAFA;border-left:#e0e0e0 2px solid;border-right:#e0e0e0 2px solid}.topNav{background:#345C7F;color:#FAFAFA;text-align:right;padding:0.5rem 1rem;border-bottom:#4376a3 5px solid}.topNav a{margin:0 1.5em 0 0;color:#FAFAFA;text-decoration:none}.topNav__header{margin:0 0 0 1.5em;color:#FAFAFA;display:inline-block;float:left}.mainNav__link{text-align:center;color:#38679A;text-decoration:none;font-size:1.125em;font-size:1.125rem;vertical-align:bottom}.mainNav__link:hover{background:#38679A;color:#FAFAFA}.navLink:hover>.mainNav__link{background:#38679A;color:#FAFAFA}.subNav{position:absolute;opacity:0;top:-25em;-moz-transition:opacity 0.5s;-webkit-transition:opacity 0.5s;-ms-transition:opacity 0.5s;-o-transition:opacity 0.5s;transition:opacity 0.5s;z-index:5;width:13.4%;margin-left:auto;margin-right:auto}.subNav ul{padding:.5em;color:black;position:relative;background:white;list-style:none;padding:.75em;margin-top:.27em;border:#38679a 5px solid;text-align:center;display:block;top:-30em;-moz-transition:opactiy 0.5s;-webkit-transition:opactiy 0.5s;-ms-transition:opacity 0.5s;-o-transition:opacity 0.5s;transition:opactiy 0.5s;z-index:5}.subNav ul:before{position:absolute;width:0;height:0;top:0%;left:38%;border-width:17px;border-style:solid;border-color:#38679a transparent transparent;content:" ";z-index:10}.subNav li:first-child{margin-top:.5em}.subNav li:hover{color:#FAFAFA;background:#38679A;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-ms-transition:all 0.5s;-o-transition:all 0.5s;transition:all 0.5s}.navLink:hover .subNav{display:block;opacity:1;top:inherit}.navLink:hover .subNav ul{top:0;background:#FAFAFA}.subNav li{padding:0.25em 0.5em;border-bottom:none;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-ms-transition:all 0.5s;-o-transition:all 0.5s;transition:all 0.5s}.subNav a{text-decoration:none;color:#38679A;margin:0;padding:0}.subNav a:hover{text-decoration:none;color:#FAFAFA}.headline{font-family:"Roboto Condensed", sans-serif}.gallery{background:#252525}.gallery__tiles{margin-right:-9.5%}.gallery__item{padding:0.5rem 0;margin:0;max-width:1140px;display:inline-block;margin-right:-1.7% !important}.gallery__item img{padding:0;margin:0;width:100%;overflow:hidden}.moreInfo.row{padding:1.5rem inherit}.mainFooter{border-top:#737373 5px solid;background:#252525;padding:0.5rem 1rem;color:#FAFAFA}
+/* *****************************************************
+   Common Elements
+***************************************************** */
+.container {
+  max-width: 75em;
+  max-width: 75rem;
+  margin: 0 auto;
+  background: #FAFAFA;
+  border-left: #e0e0e0 2px solid;
+  border-right: #e0e0e0 2px solid;
+}
+
+/* *****************************************************
+   Navigation
+***************************************************** */
+.topNav {
+  background: #345C7F;
+  color: #FAFAFA;
+  text-align: right;
+  padding: 0.5rem 1rem;
+  border-bottom: #4376a3 5px solid;
+}
+
+.topNav a {
+  margin: 0 1.5em 0 0;
+  color: #FAFAFA;
+  text-decoration: none;
+}
+
+.topNav__header {
+  margin: 0 0 0 1.5em;
+  color: #FAFAFA;
+  display: inline-block;
+  float: left;
+}
+
+.mainNav__link {
+  text-align: center;
+  color: #38679A;
+  text-decoration: none;
+  font-size: 1.125em;
+  font-size: 1.125rem;
+  vertical-align: bottom;
+}
+
+.mainNav__link:hover {
+  background: #38679A;
+  color: #FAFAFA;
+}
+
+.navLink:hover > .mainNav__link {
+  background: #38679A;
+  color: #FAFAFA;
+}
+
+/* SUBNAVIGATION */
+.subNav {
+  position: absolute;
+  opacity: 0;
+  top: -25em;
+  -moz-transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  z-index: 5;
+  width: 13.4%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subNav ul {
+  padding: .5em;
+  color: black;
+  position: relative;
+  background: white;
+  list-style: none;
+  padding: .75em;
+  margin-top: .27em;
+  border: #38679a 5px solid;
+  text-align: center;
+  display: block;
+  top: -30em;
+  -moz-transition: opactiy 0.5s;
+  -webkit-transition: opactiy 0.5s;
+  -ms-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opactiy 0.5s;
+  z-index: 5;
+}
+
+.subNav ul:before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 0%;
+  left: 38%;
+  border-width: 17px;
+  border-style: solid;
+  border-color: #38679a transparent transparent;
+  content: " ";
+  z-index: 10;
+}
+
+.subNav li:first-child {
+  margin-top: .5em;
+}
+
+.subNav li:hover {
+  color: #FAFAFA;
+  background: #38679A;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.navLink:hover .subNav {
+  display: block;
+  opacity: 1;
+  top: inherit;
+}
+
+.navLink:hover .subNav ul {
+  top: 0;
+  background: #FAFAFA;
+  /*
+  -moz-box-shadow: 3px 6px 20px #888;
+  -webkit-box-shadow: 3px 6px 20px #888;
+  box-shadow: 3px 6px 20px #888;
+  */
+}
+
+.subNav li {
+  padding: 0.25em 0.5em;
+  border-bottom: none;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.subNav a {
+  text-decoration: none;
+  color: #38679A;
+  margin: 0;
+  padding: 0;
+}
+
+.subNav a:hover {
+  text-decoration: none;
+  color: #FAFAFA;
+}
+
+/* *****************************************************
+   Main Page
+   ***************************************************** */
+.headline {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.gallery {
+  background: #252525;
+}
+
+.gallery__tiles {
+  margin-right: -9.5%;
+}
+
+.gallery__item {
+  padding: 0.5rem 0;
+  margin: 0;
+  max-width: 1140px;
+  display: inline-block;
+  margin-right: -1.7% !important;
+}
+
+.gallery__item img {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.moreInfo.row {
+  padding: 1.5rem inherit;
+}
+
+/* *****************************************************
+   Footer
+   ***************************************************** */
+.mainFooter {
+  border-top: #737373 5px solid;
+  background: #252525;
+  padding: 0.5rem 1rem;
+  color: #FAFAFA;
+}
