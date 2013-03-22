@@ -6,7 +6,7 @@
 
     <table cellspacing="0">
         <thread>
-            <th style="padding-left:60px"><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
+            <th><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
             <th></th>
             <th>Video Title</th>
             <th>Scientist</th>
@@ -20,7 +20,7 @@
                     <td style="min-width: 55px;padding: 10px 0;">
                         <div name="edit" class="bttn icon edit video_action" title="Edit video" data-id="<%= video.id %>">Edit</div>
                     </td>
-                    <td><%= video.vid_title %></td>
+                    <td><%= video.title %></td>
                     <td><%= video.scientist %></td>
                     <td><%= video.date %></td>
                     <td><%= video.views %></td>
@@ -36,14 +36,14 @@
     $('.video_action').on('click', function (evt) {
 
         var action  = $(this).attr('name'),
-            requestURL = "<%= url_for :controller => :videos %>";
+            requestURL = "<%= videos_path %>";
 
         if (action === "new" || action === "edit") {
             //Set url arguments
             if (action === "edit") {
-                requestURL += '/' + $(this).data('id') + '/edit';
-            } else {
-                requestURL += '/new';
+                requestURL += "/" + $(this).attr('data-id') + '/edit';
+            } else if (action == "new") {
+                requestURL += "/new";
             }
 
             window.location.href = requestURL;
@@ -52,7 +52,7 @@
             requestType = "POST";
             var toDelete = [];
             //Set URL
-            baseUrl += '/batch_destroy';
+            requestURL += '/batch_destroy';
             $('input[name="delete"]:checked').each(function () {
                 //IDs of videos to be removed from db added to url
                 toDelete.push($(this).attr('value'));

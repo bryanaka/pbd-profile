@@ -1,5 +1,5 @@
 class ScientistsController < ApplicationController
-	
+
 	def index
 		@scientists = Scientist.all
 		@scientists.sort! do |a,b|
@@ -15,7 +15,7 @@ class ScientistsController < ApplicationController
 	def edit
 		@scientist = Scientist.find(params[:id])
 		if @scientist.profile == nil
-			@scientist.build_profile 
+			@scientist.build_profile
 		end
 	end
 
@@ -51,4 +51,30 @@ class ScientistsController < ApplicationController
 		redirect_to scientist_index_path
 	end
 
+<<<<<<< HEAD
+	private
+	# Use this method to whitelist the permissible parameters. Example:
+	# params.require(:person).permit(:name, :age)
+	# Also, you can specialize this method with per-user checking of permissible attributes.
+	#
+	# 1. See permitted_params.rb
+	#
+	# 3. can we use cancan to alter which attributes can be modified? use cancan to alter the
+	# 	permit_X_attributes local variable
+	#
+
+
+	# def scientist_params
+	# 	permit_scientist_attributes = :first_name, :last_name, :picture, :title, :slug
+	# 	permit_scientist_profile_attributes = :id, :address1, :address2, :city, :company,
+	# 																				:department, :department_url, :email, :emphasis,
+	# 																				:location, :phone1, :phone2, :phone2_type,
+	# 																				:positions_held, :prefix, :scientist_id, :state,
+	# 																				:summary, :zip_code
+	# 	permit_scientist_websites_attributes = :name, :url, :descirption
+	# 	params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
+	# end
+
+=======
+>>>>>>> master
 end
