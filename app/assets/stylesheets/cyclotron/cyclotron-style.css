@@ -1880,6 +1880,7 @@ h6 {
   margin: 0 0.5rem 0 0;
   border-right: #000 2px solid;
   height: 100%;
+  vertical-align: top;
 }
 
 .sideNav--fixed__link {

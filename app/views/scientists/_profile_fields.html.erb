@@ -1,30 +1,70 @@
-<%= p.label :address1, "Address Line 1" %><br>
-<%= p.text_field :address1, placeholder: "Address Line 1", required: "required" %><br>
+<section name="Contact info">
+	<div>
+		<h1>Contact Info</h1>
+		<p>Description</p>
+	</div>
+	<div class="formField">
+		<%= p.label :address1, "Address Line 1" %>
+		<%= p.text_field :address1, placeholder: "Address Line 1", required: "required" %>
+	</div>
+	<div class="formField">
+		<%= p.label :address2, "Address Line 2" %>
+		<%= p.text_field :address2, placeholder: "Address Line 2" %>
+	</div>
+	<div class="formField">
+		<%= p.label :city, "City" %>
+		<%= p.text_field :city, placeholder: "City" %>
+	</div>
+	<div class="formField">
+		<%= p.label :state, "State" %>
+		<%= p.text_field :state, placeholder: "State" %>
+	</div>
+	<div class="formField">
+		<%= p.label :zip_code, "Zip Code" %>
+		<%= p.text_field :zip_code, placeholder: "Zip Code" %>
+	</div>
+	<div class="formField">
+		<%= p.label :company, "Company" %>
+		<%= p.text_field :company, placeholder: "Company" %>
+	</div>
+	<div class="formField">
+		<%= p.label :department, "Department" %>
+		<%= p.text_field :department, placeholder: "Current Department or Branch" %>
+	</div>
+	<div class="formField">
+		<%= p.label :department_url, "Department Web Site URL"%>
+		<%= p.text_field :department_url, placeholder: "Department URL" %>
+	</div>
+	<div class="formField">
+		<%= p.label :email, "E-mail Address" %>
+		<%= p.email_field :email, placeholder: "E-Mail Address" %>
+	</div>
+	<div class="formField">
+		<%= p.label :phone1, "Primary Phone" %>
+		<%= p.text_field :phone1, placeholder: "Primary Phone" %>
+	</div>
+	<div class="formField">
+		<%= p.label :phone2_type, "Secondary Phone Type"%>
+		<%= p.text_field :phone2_type, placeholder: "Secondary Phone Type" %>
+	</div>
+	<div class="formField">
+		<%= p.label :phone2, "Secondary Phone Number"%>
+		<%= p.text_field :phone2, placeholder: "Secondary Phone Number" %>		
+	</div>
 
-<%= p.label :address2, "Address Line 2" %><br>
-<%= p.text_field :address2, placeholder: "Address Line 2" %><br>
+</section>
+<section name="Scientist Description">
+	<div>
+		<h1>Scientist Description</h1>
+		<p>Description</p>
+	</div>
 
-<%= p.label :city, "City" %><br>
-<%= p.text_field :city, placeholder: "City" %><br>
+	<div class="formField">
+		<%= p.text_area :emphasis, placeholder:"Research Emphasis" %>
+	</div>
+	<div class="formField">
+		<%= p.text_area :summary, placeholder: "Personal Summary" %>
+	</div>
 
-<%= p.text_field :state, placeholder: "State" %>
 
-<%= p.text_field :zip_code, placeholder: "Zip Code" %>
-
-<%= p.text_field :company, placeholder: "Company" %>
-
-<%= p.text_field :department, placeholder: "Current Department or Branch" %>
-
-<%= p.text_field :department_url, placeholder: "Department URL" %>
-
-<%= p.email_field :email, placeholder: "E-Mail Address" %>
-
-<%= p.text_field :phone1, placeholder: "Primary Phone" %>
-
-<%= p.text_field :phone2_type, placeholder: "Secondary Phone Type" %>
-
-<%= p.text_field :phone2, placeholder: "Secondary Phone Number" %>
-
-<%= p.text_area :emphasis, placeholder:"Research Emphasis" %>
-
-<%= p.text_area :summary, placeholder: "Personal Summary" %>
+</section>
