@@ -50,8 +50,6 @@ class ScientistsController < ApplicationController
 		@scientist.destroy
 		redirect_to scientist_index_path
 	end
-
-<<<<<<< HEAD
 	private
 	# Use this method to whitelist the permissible parameters. Example:
 	# params.require(:person).permit(:name, :age)
@@ -74,7 +72,4 @@ class ScientistsController < ApplicationController
 	# 	permit_scientist_websites_attributes = :name, :url, :descirption
 	# 	params.require(:scientist).permit( *permit_scientist_attributes, scientist_profile_attributes: permit_scientist_profile_attributes, scientist_websites_attributes: permit_scientist_websites_attributes )
 	# end
-
-=======
->>>>>>> master
 end
