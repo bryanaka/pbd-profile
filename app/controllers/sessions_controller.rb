@@ -1,23 +1,25 @@
 class SessionsController < ApplicationController
-	
+
 	def create
 		# Get Shibboleth Data, then digest it.
 		# finally, find the user based on shib data
 		@shibuser = User.new
 		digest_shib_data(@shibuser)
 		user = User.find_by_eppn(@shibuser.eppn)
-		
+
 		# check to see if there is a profile, confirm if yes.
 		profile_exists?(user) if user
 
-		# Handle the different states of a user account: 
-		# Exists and confirmed, 
+		# Handle the different states of a user account:
+		# Exists and confirmed,
 		# Exists and not confirmed,
 		# or doesn't exist
-		if user && user.confirmed == true
+		if user && user.confirmed
 			session[:user_eppn] = user.eppn
 			redirect_to portal_path, :notice => "You have been sucessfully logged in"
-		elsif user && user.confirmed == false
+		elsif user && user.confirmed
+			# Send email to webmaster for confirmation
+			WebmasterMailer.confirm_user_email(user).deliver
 			redirect_to root_url, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
 		else
 			user = @shibuser
@@ -41,7 +43,7 @@ class SessionsController < ApplicationController
 		user.name 	= request.env["HTTP_CN"]
 		user.email 	= request.env["HTTP_MAIL"]
 		user.eppn 	= request.env["HTTP_EPPN"]
-		raise Exception.new("Shibboleth Data Was not processed correctly") unless user.eppn 
+		raise Exception.new("Shibboleth Data Was not processed correctly") unless user.eppn
 		user
 	end
 
