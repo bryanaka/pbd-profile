@@ -14,12 +14,11 @@ class SessionsController < ApplicationController
 		# Exists and confirmed,
 		# Exists and not confirmed,
 		# or doesn't exist
-		if user && user.confirmed
+		if user && user.confirmed == true
 			session[:user_eppn] = user.eppn
 			redirect_to portal_path, :notice => "You have been sucessfully logged in"
-		elsif user && user.confirmed
+		elsif user && user.confirmed == false
 			# Send email to webmaster for confirmation
-			WebmasterMailer.confirm_user_email(user).deliver
 			redirect_to root_url, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
 		else
 			user = @shibuser
@@ -28,6 +27,7 @@ class SessionsController < ApplicationController
 				user.confirmed = false
 				user.save!
 			end
+			WebmasterMailer.confirm_user_email(user).deliver
 			redirect_to root_url, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
 		end
 	end
