@@ -4,6 +4,7 @@ PbdPortal::Application.routes.draw do
 
   root :to => 'videos#index'
   match "/video/new" => 'videos#new'
+  match "index" => "sessions#index"
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"

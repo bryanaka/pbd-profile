@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+	def index
+	end
+
 	def create
 		# Get Shibboleth Data, then digest it.
 		# finally, find the user based on shib data
