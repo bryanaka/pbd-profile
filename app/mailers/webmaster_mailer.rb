@@ -1,5 +1,5 @@
 class WebmasterMailer < ActionMailer::Base
-  default to: "pbdwebmaster@lbl.gov"
+  default to: "jerrychung@lbl.gov"
 
   def confirm_user_email(user)
     @user = user

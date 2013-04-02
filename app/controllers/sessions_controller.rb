@@ -22,6 +22,7 @@ class SessionsController < ApplicationController
 			redirect_to portal_path, :notice => "You have been sucessfully logged in"
 		elsif user && user.confirmed == false
 			# Send email to webmaster for confirmation
+			WebmasterMailer.confirm_user_email(user).deliver
 			redirect_to root_url, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
 		else
 			user = @shibuser
