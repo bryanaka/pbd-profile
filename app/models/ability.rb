@@ -2,16 +2,16 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-	user ||= User.new # guest user (not logged in)
-	if user.has_role? :superadmin
+	#user ||= User.new # guest user (not logged in)
+	#if user.has_role? :superadmin
 	  can :manage, :all
-	elsif user.has_role? :admin
-		can :manage, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle, Video]
-		can :read, User
-	elsif user.has_role? :scientist
-		can [:update, :read, :create], [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
-	else
-	  can :read, :all
+	#elsif user.has_role? :admin
+	#	can :manage, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle, Video]
+	#	can :read, User
+	#elsif user.has_role? :scientist
+	#	can [:update, :read, :create], [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
+	#else
+	#  can :read, :all
 	   
 	end
 	# Define abilities for the passed in user here. For example:
