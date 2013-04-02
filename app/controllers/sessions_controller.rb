@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		user = User.find_by_eppn(@shibuser.eppn)
 		
 		# check to see if there is a profile, confirm if yes.
-		profile_exists?(user)
+		profile_exists?(user) if user
 
 		# Handle the different states of a user account: 
 		# Exists and confirmed, 
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
 		elsif user && user.confirmed == false
 			redirect_to root_url, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
 		else
-			user = User.new(*@shibuser)
+			user = @shibuser
 			profile_exists?(user)
 			if user.confirmed == nil
 				user.confirmed = false
