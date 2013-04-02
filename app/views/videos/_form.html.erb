@@ -1,11 +1,15 @@
+<% content_for :head do %>
+    <%= stylesheet_link_tag "videos" %>
+<% end %>
+
 <%= simple_form_for(@video) do |f| %>
     <%= f.error_notification %>
-    <%= f.input :title, :input_html => {:value => @video['title']} %>
-    <%= f.input :date, :input_html => {:value => @video['date']} %>
-    <%= f.input :scientist, :input_html => {:value => @video['scientist']} %>
-    <%= f.input :vid_link, :input_html => {:value => @video['vid_link']} %>
+    <%= f.input :title, :input_html => {:class => "video_form"} %>
+    <%= f.input :date, :as => :date, :input_html => {:class => "video_form"} %>
+    <%= f.input :scientist, :input_html => {:class => "video_form"} %>
+    <%= f.input :vid_link, :input_html => {:class => "video_form"} %>
     <%= f.input :category,
         collection: ["Sci-Ops Series", "Brown Bag Series", "Invited Speaker", "Press Release", "Event", "Other"],
-        :input_html => {:value => @video['vid_type']} %>
+        :input_html => {:class => "video_form"} %>
     <%= f.button :submit %>
 <% end %>
