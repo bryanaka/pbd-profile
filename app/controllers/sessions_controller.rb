@@ -9,6 +9,9 @@ class SessionsController < ApplicationController
     if scientist
       @shibuser = User.new(request.env["HTTP_EPPN"])
       @shibuser.confirmed = true
+      @shibuser.add_role 'scientist'
+      @shibuser.scientist_id = scientist.scientist_id
+      @shibuser.save
     end
     # Handle the different states of a user account:
     # Exists and confirmed,
