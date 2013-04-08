@@ -5,11 +5,11 @@ class SessionsController < ApplicationController
     # finally, find the user based on shib data
     scientist = ScientistProfile.find_by_email(request.env["HTTP_EPPN"])
 
+    @shibuser = User.find_by_eppn(request.env["HTTP_EPPN"]) || NullUser.new
     if scientist
       @shibuser = User.new(request.env["HTTP_EPPN"])
+      @shibuser.confirmed = true
     end
-    @shibuser = User.new(User.find_by_eppn(request.env["HTTP_EPPN"]) || NullUser.new
-
     # Handle the different states of a user account:
     # Exists and confirmed,
     # Exists and not confirmed,
@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
     # User newly created
     if user.new?
       @shibuser = User.new(request.env)
-      set_role(user)
       redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       if user.confirmed
