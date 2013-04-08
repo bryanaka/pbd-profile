@@ -18,6 +18,7 @@ class SessionsController < ApplicationController
     # User newly created
     if user.new?
       @shibuser = User.new(request.env)
+      WebmasterMailer.confirm_user_email(user).deliver
       redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       if user.confirmed
@@ -77,8 +78,5 @@ class SessionsController < ApplicationController
       user.save!
     end
   end
-
-
-
 
 end

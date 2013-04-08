@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   attr_accessible :name, :email, :eppn, :confirmed
   rolify
 	validates_uniqueness_of :eppn, :email, :name
