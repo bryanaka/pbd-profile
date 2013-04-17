@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 # Universal Gems
 gem "jquery-rails"
 gem "cancan", ">= 1.6.8"
-gem "rolify", ">= 3.2.0"
+gem "rolify"
 gem "simple_form", ">= 2.0.4"
 gem "figaro", ">= 0.5.3"
 gem "strong_parameters"

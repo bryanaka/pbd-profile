@@ -1,0 +1,12 @@
+<% @news.each do |article| %>
+    <ul>
+        <li>
+            <div class="news_article">
+                <%= article.title %>
+                <%= article.date %>
+                <%= article.body %>
+                <%= article.url %>
+            </div>
+        </li>
+    </ul>
+<% end %>

@@ -12,7 +12,9 @@ class SessionsController < ApplicationController
       @shibuser.add_role 'scientist'
       @shibuser.scientist_id = scientist.scientist_id
       @shibuser.save
+      session[:user_role] = 'scientist' # not sure how to best create a session
     end
+
     # Handle the different states of a user account:
     # Exists and confirmed,
     # Exists and not confirmed,

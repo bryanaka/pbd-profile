@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 
-private
+	def home_page
+		render 'home'
+	end
+
+	private
 
 	def permitted_params
 		@permitted_params ||= PermittedParams.new(params, current_user)
@@ -14,7 +18,7 @@ private
 	def shib_user
 		@shib_user ||= User.find_by_eppn(request.env[:HTTP_EPPN])
 	end
-	
+
 	helper_method :current_user
 
 end
