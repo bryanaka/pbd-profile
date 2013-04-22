@@ -1,5 +1,5 @@
-<% @news.each do |article| %>
-    <ul>
+<ul>
+    <% @news.each do |article| %>
         <li>
             <div class="news_article">
                 <div class="title">
@@ -8,13 +8,14 @@
                 <div class="date">
                     <%= article.date %>
                 </div>
-                <div class="text">
+                <!--  <div class="text">
                     <%= article.body %>
-                </div>
+                </div> -->
                 <div class="url">
                     <%= article.url %>
                 </div>
+                <a href="../#{article.id}/edit">Edit Article</a>
             </div>
         </li>
-    </ul>
-<% end %>
+    <% end %>
+</ul>
