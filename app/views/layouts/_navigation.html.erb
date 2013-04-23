@@ -1,6 +1,6 @@
 <nav class="sideNav--fixed">
     <div id="sideNav--fixed__header">
-        Navigation 
+        Navigation
         <span class="icon-sitemap icon-large right"></span>
     </div>
     <div class="sideNav--fixed__linkGroup">
@@ -8,11 +8,13 @@
             Scientists<i class="icon-beaker icon-large right"></i>
         </a>
     </div>
-    <div class="sideNav--fixed__linkGroup">
-        <a href="#" class="sideNav--fixed__link">
-            Theater <i class="icon-facetime-video icon-large right"></i>
-        </a>
-    </div>
+    <% if can? Video %>
+        <div class="sideNav--fixed__linkGroup">
+            <a href="#" class="sideNav--fixed__link">
+                Theater <i class="icon-facetime-video icon-large right"></i>
+            </a>
+        </div>
+    <% end %>
     <div class="sideNav--fixed__linkGroup">
         <a href="#" class="sideNav--fixed__link">
             Users <i class="icon-group icon-large right"></i>
@@ -23,4 +25,4 @@
             Log Out <i class="icon-remove-sign icon-large right"></i>
         </a>
     </div>
-</nav> 
+</nav>

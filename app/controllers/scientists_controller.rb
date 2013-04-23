@@ -1,5 +1,7 @@
 class ScientistsController < ApplicationController
-	
+
+	load_and_authorize_resource
+
 	def index
 		@scientists = Scientist.all
 		@scientists.sort! do |a,b|
@@ -15,7 +17,7 @@ class ScientistsController < ApplicationController
 	def edit
 		@scientist = Scientist.find(params[:id])
 		if @scientist.profile == nil
-			@scientist.build_profile 
+			@scientist.build_profile
 		end
 	end
 
