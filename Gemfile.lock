@@ -212,7 +212,7 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 3.2.13)
-  rolify (>= 3.2.0)
+  rolify
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
   simple_form (>= 2.0.4)
