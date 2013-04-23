@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
 
+  load_and_authorize_resource
+
   def index
     @news = News.all
   end

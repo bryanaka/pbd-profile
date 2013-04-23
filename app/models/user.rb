@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_one :scientist
 
   attr_accessible :name, :email, :eppn, :confirmed, :scientist_id
 	validates_uniqueness_of :eppn, :email, :name

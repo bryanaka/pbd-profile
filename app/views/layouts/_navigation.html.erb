@@ -8,23 +8,30 @@
             Scientists<i class="icon-beaker icon-large right"></i>
         </a>
     </div>
-    <% if can? Video %>
-        <div class="sideNav--fixed__linkGroup">
+    <div class="sideNav--fixed__linkGroup">
             <a href="#" class="sideNav--fixed__link">
                 Theater <i class="icon-facetime-video icon-large right"></i>
             </a>
-        </div>
-    <% end %>
+    </div>
     <div class="sideNav--fixed__linkGroup">
         <a href="#" class="sideNav--fixed__link">
             Users <i class="icon-group icon-large right"></i>
         </a>
     </div>
-    <div class="sideNav--fixed__linkGroup">
-        <a href="/videos" class="sideNav--fixed__link">
-            Videos
-        </a>
-    </div>
+    <% if can? Video %>
+        <div class="sideNav--fixed__linkGroup">
+            <a href="/videos" class="sideNav--fixed__link">
+                Videos
+            </a>
+        </div>
+    <% end %>
+    <% if can? News %>
+        <div class="sideNav--fixed__linkGroup">
+            <a href="/news" class="sideNav--fixed__link">
+                News
+            </a>
+        </div>
+    <% end %>
     <div class="sideNav--fixed__linkGroup">
         <a href="#" class="sideNav--fixed__link">
             Log Out <i class="icon-remove-sign icon-large right"></i>
