@@ -3,7 +3,8 @@ PbdPortal::Application.routes.draw do
   resources :scientists, :videos
 
   root :to => 'videos#index'
-  match "/video/new" => 'videos#new'
+  match "/videos" => 'videos#index'
+  match "/videos/new" => 'videos#new'
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
