@@ -4,6 +4,7 @@ class Scientist < ActiveRecord::Base
 	has_many	:titles, 	:dependent => :destroy, :class_name => "ScientistTitle"
 	accepts_nested_attributes_for :profile, :websites, :titles
 	validates_presence_of :first_name, :last_name, :slug, :picture, :title
+  belongs_to :user
 
 	mount_uploader :picture, PictureUploader
 end

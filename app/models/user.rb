@@ -1,14 +1,13 @@
 class User < ActiveRecord::Base
+  has_one :scientist
 
-  attr_accessible :name, :email, :eppn, :confirmed
-  rolify
+  attr_accessible :name, :email, :eppn, :confirmed, :scientist_id
 	validates_uniqueness_of :eppn, :email, :name
 
-  def intialize(options_hash)
-    self.name = options_hash["HTTP_CN"]
-    self.email = options_hash["HTTP_MAIL"]
-    self.eppn = options_hash["HTTP_EPPN"]
-  end
+
+  # def current_user
+  #   @user = User.find_by_eppn(session[:user_eppn])
+  # end
 
   def new?
     false

@@ -2,12 +2,14 @@
 <h1 class="grid__item one-whole">Listing scientists</h1>
 
 <% @scientists.each do |scientist| %>
-  <%= render "scientist_card", :scientist => scientist %>
+    <% if can? :edit scientist %>
+        <%= render "scientist_card", :scientist => scientist %>
+    <% end %>
 <% end %>
 
 
 <br >
 <div class="grid__item">
-<%= link_to 'New Scientist', new_scientist_path %>
+    <%= link_to 'New Scientist', new_scientist_path %>
 </div>
 </div>

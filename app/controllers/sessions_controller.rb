@@ -4,57 +4,34 @@ class SessionsController < ApplicationController
     # Get Shibboleth Data, then digest it.
     # finally, find the user based on shib data
     scientist = ScientistProfile.find_by_email(request.env["HTTP_EPPN"])
+    shibuser = User.find_by_eppn(request.env["HTTP_EPPN"])
 
-    @shibuser = User.find_by_eppn(request.env["HTTP_EPPN"]) || NullUser.new
+    params = {eppn: request.env["HTTP_EPPN"], email: request.env["HTTP_MAIL"], name: request.env["HTTP_CN"]}
+
     if scientist
-      @shibuser = User.new(request.env["HTTP_EPPN"])
-      @shibuser.confirmed = true
-      @shibuser.add_role 'scientist'
-      @shibuser.scientist_id = scientist.scientist_id
-      @shibuser.save
+      if !shibuser
+        shibuser = User.new(params)
+        shibuser.confirmed = true
+        shibuser.add_role :scientist
+        shibuser.scientist_id = scientist.scientist_id
+        shibuser.save
+      end
     end
-    # Handle the different states of a user account:
-    # Exists and confirmed,
-    # Exists and not confirmed,
-    # or doesn't exist
 
-    # User newly created
-    if user.new?
-      @shibuser = User.new(request.env)
-      WebmasterMailer.confirm_user_email(user).deliver
+    shibuser ||= NullUser.new
+
+    if shibuser.new?
+      shibuser = User.new(params)
+      WebmasterMailer.confirm_user_email(shibuser).deliver
       redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       if user.confirmed
-        sessions[:user_eppn] = @shibuser.eppn
+        sessions[:user_eppn] = shibuser.eppn
         redirect_to root_path, :notice => "You have been sucessfully logged in"
       else
         redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
       end
     end
-
-
-
-    # if user.confirmed?
-    #   sessions[:user_eppn] = user.eppn
-    #   redirect_to root_path, :notice => "You have been successfully logged in"
-    # else
-    #   # User is unconfirmed
-    #   redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
-
-    # if user && user.confirmed == true
-    #   session[:user_eppn] = user.eppn
-    #   redirect_to root_path, :notice => "You have been sucessfully logged in"
-    # elsif user && user.confirmed == false
-    #   redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
-    # else
-    #   user = @shibuser
-    #   set_role(user)
-    #   if user.confirmed == nil
-    #     user.confirmed = false
-    #     user.save!
-    #   end
-    #   redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
-    # end
   end
 
   def destroy
@@ -62,7 +39,7 @@ class SessionsController < ApplicationController
     redirect_to root_path, :notice => "You have been logged out of PBD Portal"
   end
 
-  private
+  # private
 
   # def digest_shib_data(user)
   #   user.name   = request.env["HTTP_CN"]
@@ -72,14 +49,14 @@ class SessionsController < ApplicationController
   #   user
   # end
 
-  def set_role(user)
-    profile = ScientistProfile.find_by_email(user.email)
-    if profile && profile.scientist
-      user.confirmed = true
-      user.scientist_id = profile.scientist_id
-      user.add_role "scientist"
-      user.save!
-    end
-  end
+  # def set_role(user)
+  #   profile = ScientistProfile.find_by_email(user.email)
+  #   if profile && profile.scientist
+  #     user.confirmed = true
+  #     user.scientist_id = profile.scientist_id
+  #     user.add_role "scientist"
+  #     user.save!
+  #   end
+  # end
 
 end
