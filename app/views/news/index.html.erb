@@ -1,0 +1,21 @@
+<ul>
+    <% @news.each do |article| %>
+        <li>
+            <div class="news_article">
+                <div class="title">
+                    <%= article.title %>
+                </div>
+                <div class="date">
+                    <%= article.date %>
+                </div>
+                <!--  <div class="text">
+                    <%= article.body %>
+                </div> -->
+                <div class="url">
+                    <%= article.url %>
+                </div>
+                <a href="../#{article.id}/edit">Edit Article</a>
+            </div>
+        </li>
+    <% end %>
+</ul>

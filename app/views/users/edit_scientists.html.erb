@@ -1,0 +1,23 @@
+<% for @scientists.keys.sort.each do |starting_letter| %>
+
+    <div class="scientist-group">
+        <div class="letter">
+            <%= starting_letter %>
+        </div>
+        <div class="scientists">
+            <% for @scientists[starting_letter].each do |scientist| %>
+
+                <div class="scientist_unit">
+                    <div class="box">
+                        <a href="scientist_link_here">
+                            <%# image_tag 'scientist goes here' %>
+                            <%= scientist.first_name + " " + scientist.last_name %>
+                        </a>
+                    </div>
+                </div>
+
+            <% end %>
+        </div>
+    </div>
+
+<% end %>

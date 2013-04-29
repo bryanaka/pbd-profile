@@ -3,7 +3,7 @@
 		<article class="grid__item one-quarter portable-one-whole">
 			<%= image_tag @scientist.picture_url, :class => "profile__img" %>
 		</article>
-		
+
 		<section class="profile__name grid__item three-quarters lap-one-whole">
 			<h1><%= @scientist.first_name %> <%= @scientist.last_name %></h1>
 			<h2><%= @scientist.title %></h2>
@@ -36,14 +36,14 @@
 			<%= @scientist.profile.address2 %><br>
 			<%= @scientist.profile.city %>, <%= @scientist.profile.state %> <%= @scientist.profile.zip_code %> USA
 		</article>
-	
+
 		<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 			<h3>Contact Information</h3>
 			Primary Number: <%= @scientist.profile.phone1 %><br>
 			<%= @scientist.profile.phone2_type %>: <%= @scientist.profile.phone2 %><br>
 			E-Mail: <%= @scientist.profile.email %><br>
 		</article>
-	
+
 	</section>
 	<section class=" profile__bio grid__item two-thirds lap-one-whole">
 		<article class="profile__emphasis">
@@ -61,8 +61,10 @@
 		</article>
 		<% end %>
 	</section>
-<%= link_to 'Edit', edit_scientist_path(@scientist) %> |
-<%= link_to 'Back', scientists_path %>
+	<% if can? :update @scientist %>
+		<%= link_to 'Edit', edit_scientist_path(@scientist) %>
+	<% end %>
+	<%= link_to 'Back', scientists_path %>
 
 </div>
 
@@ -102,7 +104,7 @@
 			</tr>
 			{{#phone2}}
 				<tr>
-					<td>{{phone2_type}}:</td> 
+					<td>{{phone2_type}}:</td>
 					<td><a href="tel://{{phone2}}">{{phone2}}</a><td>
 				</tr>
 			{{/phone2}}

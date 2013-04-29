@@ -1,57 +1,62 @@
 class SessionsController < ApplicationController
-	
-	def create
-		# Get Shibboleth Data, then digest it.
-		# finally, find the user based on shib data
-		@shibuser = User.new
-		digest_shib_data(@shibuser)
-		user = User.find_by_eppn(@shibuser.eppn)
-		
-		# check to see if there is a profile, confirm if yes.
-		profile_exists?(user)
 
-		# Handle the different states of a user account: 
-		# Exists and confirmed, 
-		# Exists and not confirmed,
-		# or doesn't exist
-		if user && user.confirmed == true
-			session[:user_eppn] = user.eppn
-			redirect_to portal_path, :notice => "You have been sucessfully logged in"
-		elsif user && user.confirmed == false
-			redirect_to root_url, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
-		else
-			user = User.new(*@shibuser)
-			profile_exists?(user)
-			if user.confirmed == nil
-				user.confirmed = false
-				user.save!
-			end
-			redirect_to root_url, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
-		end
-	end
+  def create
+    # Get Shibboleth Data, then digest it.
+    # finally, find the user based on shib data
+    scientist = ScientistProfile.find_by_email(request.env["HTTP_EPPN"])
+    shibuser = User.find_by_eppn(request.env["HTTP_EPPN"])
 
-	def destroy
-		session[:user_eppn] = nil
-		redirect_to root_url, :notice => "You have been logged out of PBD Portal"
-	end
+    params = {eppn: request.env["HTTP_EPPN"], email: request.env["HTTP_MAIL"], name: request.env["HTTP_CN"]}
 
-	private
+    if scientist
+      if !shibuser
+        shibuser = User.new(params)
+        shibuser.confirmed = true
+        shibuser.add_role :scientist
+        shibuser.scientist_id = scientist.scientist_id
+        shibuser.save
+      end
+    end
 
-	def digest_shib_data(user)
-		user.name 	= request.env["HTTP_CN"]
-		user.email 	= request.env["HTTP_MAIL"]
-		user.eppn 	= request.env["HTTP_EPPN"]
-		raise Exception.new("Shibboleth Data Was not processed correctly") unless user.eppn 
-		user
-	end
+    shibuser ||= NullUser.new
 
-	def profile_exists?(user)
-		profile = ScientistProfile.find_by_email(user.email)
-		if profile && profile.scientist
-			user.confirmed = true
-			user.scientist_id = profile.scientist_id
-			user.add_role "scientist"
-			user.save!
-		end
-	end
+    if shibuser.new?
+      shibuser = User.new(params)
+      WebmasterMailer.confirm_user_email(shibuser).deliver
+      redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
+    else
+      if user.confirmed
+        sessions[:user_eppn] = shibuser.eppn
+        redirect_to root_path, :notice => "You have been sucessfully logged in"
+      else
+        redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
+      end
+    end
+  end
+
+  def destroy
+    session[:user_eppn] = nil
+    redirect_to root_path, :notice => "You have been logged out of PBD Portal"
+  end
+
+  # private
+
+  # def digest_shib_data(user)
+  #   user.name   = request.env["HTTP_CN"]
+  #   user.email  = request.env["HTTP_MAIL"]
+  #   user.eppn   = request.env["HTTP_EPPN"]
+  #   raise Exception.new("Shibboleth Data Was not processed correctly") unless user.eppn
+  #   user
+  # end
+
+  # def set_role(user)
+  #   profile = ScientistProfile.find_by_email(user.email)
+  #   if profile && profile.scientist
+  #     user.confirmed = true
+  #     user.scientist_id = profile.scientist_id
+  #     user.add_role "scientist"
+  #     user.save!
+  #   end
+  # end
+
 end

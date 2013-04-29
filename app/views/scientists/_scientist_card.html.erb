@@ -4,9 +4,11 @@
 			<span class="scientistCard__name"><%=scientist.first_name%> <%=scientist.last_name%></span><br>
 			<img src="<%= scientist.picture_url%>" class="scientistCard__thumb">
 		</a>
-		<section class="scientistCard__buttonGroup">
-			<%= link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" %>
-			<%= link_to 'Show', scientist, :class => "button" %>
-		</section>
+		<% if can? :update scientist %>
+			<section class="scientistCard__buttonGroup">
+				<%= link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" %>
+				<%= link_to 'Show', scientist, :class => "button" %>
+			</section>
+		<% end %>
 	</div>
 </article>

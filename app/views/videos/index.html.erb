@@ -1,24 +1,27 @@
-<div class="mainContent">
+<% content_for :head do %>
+    <%= stylesheet_link_tag "videos" %>
+<% end %>
+
 <section id="all_videos">
     <div class="grouped">
-        <div class="bttn icon add video-action top_bttn" name="new" title="Add new video">New Video</div>
+        <div class="bttn icon add video_action top_bttn" name="new" title="Add new video">New Video</div>
         <div class="bttn icon delete video_action" name="delete" title="Delete selected video">Delete</div>
     </div>
 
     <table cellspacing="0">
-        <thread>
+        <thead>
             <th><input type="checkbox" name="checkAll" title="Toggle all checkboxes"></th>
             <th></th>
             <th>Video Title</th>
             <th>Scientist</th>
             <th>Date Filmed</th>
             <th>Views</th>
-        </thread>
+        </thead>
         <tbody>
             <% @videos.each do |video| %>
                 <tr class="single-video">
                     <td><input type="checkbox" name="delete" value="<%= video.id %>"></td>
-                    <td style="min-width: 55px;padding: 10px 0;">
+                    <td>
                         <div name="edit" class="bttn icon edit video_action" title="Edit video" data-id="<%= video.id %>">Edit</div>
                     </td>
                     <td><%= video.title %></td>
@@ -30,7 +33,7 @@
         </tbody>
     </table>
 </section>
-</div>
+
 <script type="text/javascript">
     //Control which action to do through GET request
     //delete will be ajax
@@ -47,6 +50,7 @@
                 requestURL += "/new";
             }
 
+            // console.log(requestURL);
             window.location.href = requestURL;
 
         } else if (action === "delete") {
