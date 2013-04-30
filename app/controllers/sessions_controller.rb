@@ -8,14 +8,14 @@ class SessionsController < ApplicationController
 
     params = {eppn: request.env["HTTP_EPPN"], email: request.env["HTTP_MAIL"], name: request.env["HTTP_CN"]}
 
-    if scientist
-      if !shibuser
-        shibuser = User.new(params)
-        shibuser.confirmed = true
-        shibuser.add_role :scientist
-        shibuser.scientist_id = scientist.scientist_id
-        shibuser.save
-      end
+    # if the user is both a scientist and is registered already
+    # allow auto-confirmation and add scientist role
+    if scientist && !shibuser
+      shibuser = User.new(params)
+      shibuser.confirmed = true
+      shibuser.add_role :scientist
+      shibuser.scientist_id = scientist.scientist_id
+      shibuser.save
     end
 
     shibuser ||= NullUser.new
@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
       WebmasterMailer.confirm_user_email(shibuser).deliver
       redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
-      if user.confirmed
+      if shibuser.confirmed
         sessions[:user_eppn] = shibuser.eppn
         redirect_to root_path, :notice => "You have been sucessfully logged in"
       else
