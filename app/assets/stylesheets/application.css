@@ -13,3 +13,7 @@
  *= require scientist
  *= require vendor/jquery.idealforms.min.css
  */
+
+ .main-content {
+    display: inline-block;
+ }

@@ -15,6 +15,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	-->
 	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag params[:controller] %>
 	<%= yield(:head) %>
 </head>
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
@@ -23,7 +24,9 @@
 		<h1>Welcome to The Portal</h1>
 	</header>
 	<%= render 'layouts/navigation' %>
-	<%= yield %>
+	<div class="main-content">
+		<%= yield %>
+	</div>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID.
 <script>
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require vendor/idealforms/jquery.idealforms.min.js
 //= require vendor/tinymce/tiny_mce
-//= require scientist
 //= require_self

@@ -10,7 +10,7 @@ class Ability
 			can :read, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle]
 			can [:update, :create, :destroy], [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
 		else
-			can :read, :all
+			can :manage, :all
 		end
 
 	# Define abilities for the passed in user here. For example:
