@@ -2,15 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-options = 
-	inputs: 
-		'scientist[first_name]': 
+options =
+	inputs:
+		'scientist[first_name]':
 			filters: 'required name'
 		'scientist[last_name]':
 			filters: 'required name'
-		'scientist[slug]': 
+		'scientist[slug]':
 			filters: 'required name max',
-			data: 
+			data:
 				max: 20
 		'prefix':{}
 		'department':{}
@@ -36,7 +36,7 @@ options =
 		'summary':{}
 		'emphasis':
 			filters: 'required min',
-			data: 
+			data:
 				min: 20
 		'publications_url':{}
 
@@ -49,5 +49,5 @@ tinyMCE.init
 	theme_advanced_buttons1: "mymenubutton,bold,italic,underline,separator,strikethrough,justifyleft,justifycenter,justifyright,justifyfull,bullist,numlist,tablecontrols,undo,redo,link,unlink,image,cleanup,help,code",
 	theme_advanced_resizing: true,
 	theme_advanced_resize_horizontal: true,
-	theme_advanced_resize_vertical: true
+	theme_advanced_resize_vertical: true,
 	width:"30"
