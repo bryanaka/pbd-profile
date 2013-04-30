@@ -10,20 +10,18 @@
 			<!-- This needs to be associated to scientist__titles model -->
 			<article class="profile__titles grid__item one-half hidden-palm">
 					<ul>
-						<li>Senior Scientist</li>
-						<li>Adjunct Professor - Dept. of Bioengineering</li>
-						<li>U.C. Berkeley, Vice President for Technology</li>
-						<li>ALS Division Deputy for Biosciences</li>
-						<li>Chair of the ALS Biosciences Council</li>
-						<li>The Joint BioEnergy Institute</li>
+						<% for title in @scientist.titles %>
+							<li><%= title.title %></li>
+						<% end %>
 					</ul>
 			</article>
 			<article class="profile__websites grid__item one-half hidden-palm">
 				<h4>Websites:</h4>
-					<a href="#">Advanced Light Source</a> &bull;
-					<a href="#">Physical Biosciences</a><br>
-					<a href="#">Joint BioEnergy Institute</a> &bull;
-					<a href="#">Berkeley Center of Structrual Biology</a><br>
+				<ul>
+					<% for website in @scientist.websites %>
+						<li><a href="<%= website.url %>"><%= website.name %></a></li>
+					<% end %>
+				</ul>
 			</article>
 		</section>
 	</div>
@@ -52,7 +50,7 @@
 				<%=raw @scientist.profile.emphasis %>
 			</p>
 		</article>
-		<% if @scientist.profile.summary %>
+		<% if @scientist.profile.summary != "" %>
 		<article id="scientist__summary" class="profile__summary">
 			<h3>Summary:</h3>
 			<p>
@@ -61,7 +59,7 @@
 		</article>
 		<% end %>
 	</section>
-	<% if can? :update @scientist %>
+	<% if can? :update, @scientist %>
 		<%= link_to 'Edit', edit_scientist_path(@scientist) %>
 	<% end %>
 	<%= link_to 'Back', scientists_path %>

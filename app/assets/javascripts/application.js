@@ -12,12 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require handlebars
-//= require ember
-//= require ember-data
 //= require vendor/idealforms/jquery.idealforms.min.js
 //= require vendor/tinymce/tiny_mce
 //= require scientist
 //= require_self
-//= require ./ember_app/portal
-Portal = Ember.Application.create();

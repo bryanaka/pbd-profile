@@ -4,8 +4,8 @@
         <span class="icon-sitemap icon-large right"></span>
     </div>
     <div class="sideNav--fixed__linkGroup">
-        <a href="edit-scientist_controller.php" class="sidNav--fixed__link">
-            Scientists<i class="icon-beaker icon-large right"></i>
+        <a href="edit-scientist_controller.php" class="sideNav--fixed__link">
+            Scientists <i class="icon-beaker icon-large right"></i>
         </a>
     </div>
     <div class="sideNav--fixed__linkGroup">
@@ -18,14 +18,14 @@
             Users <i class="icon-group icon-large right"></i>
         </a>
     </div>
-    <% if can? Video %>
+    <% if can? :update, Video %>
         <div class="sideNav--fixed__linkGroup">
             <a href="/videos" class="sideNav--fixed__link">
                 Videos
             </a>
         </div>
     <% end %>
-    <% if can? News %>
+    <% if can? :update, News %>
         <div class="sideNav--fixed__linkGroup">
             <a href="/news" class="sideNav--fixed__link">
                 News

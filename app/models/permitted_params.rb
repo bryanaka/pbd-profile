@@ -22,7 +22,7 @@ class PermittedParams < Struct.new(:params, :user)
 	end
 
 	def title
-		params.require(:scientist_title).permit(:title)
+		params.require(:scientist_title).permit(:title, :order)
 	end
 
 	def scientist_full
@@ -33,7 +33,7 @@ class PermittedParams < Struct.new(:params, :user)
 											:positions_held, :prefix, :state, 
 											:summary, :zip_code]
 		website_params = [:name, :url, :description]	
-		params.require(:scientist).permit( *scientist_params, profile_attributes: profile_params, websites_attributes: website_params, titles_attrbutes: :title )
+		params.require(:scientist).permit( *scientist_params, profile_attributes: profile_params, websites_attributes: website_params, titles_attrbutes: [:title, :order])
 	end
 
 	# have to use this name to avoid conflicts

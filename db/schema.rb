@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417210747) do
+ActiveRecord::Schema.define(:version => 20130430162336) do
 
   create_table "news", :force => true do |t|
     t.string   "title"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130417210747) do
   create_table "scientist_titles", :force => true do |t|
     t.string  "title"
     t.integer "scientist_id"
+    t.integer "order"
   end
 
   create_table "scientist_websites", :force => true do |t|

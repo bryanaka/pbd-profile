@@ -1,15 +1,17 @@
 class Ability
-  include CanCan::Ability
+	include CanCan::Ability
 
-  def initialize(user)
-  	user ||= User.new
-  	if user.has_role? :admin
-  		can :manage, :all
-  	elsif user.has_role? :scientist
-  		can :read, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle]
-  		can [:update, :create, :destroy], [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
-  	end
-  end
+	def initialize(user)
+		# There is a problem with this...
+		user ||= User.new
+		if user.has_role? :admin
+			can :manage, :all
+		elsif user.has_role? :scientist
+			can :read, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle]
+			can [:update, :create, :destroy], [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
+		else
+			can :read, :all
+		end
 
 	# Define abilities for the passed in user here. For example:
 	#
@@ -34,4 +36,5 @@ class Ability
 	#
 	# See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
+	end
 end

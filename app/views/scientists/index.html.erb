@@ -2,9 +2,7 @@
 <h1 class="grid__item one-whole">Listing scientists</h1>
 
 <% @scientists.each do |scientist| %>
-    <% if can? :edit scientist %>
-        <%= render "scientist_card", :scientist => scientist %>
-    <% end %>
+    <%= render "scientist_card", :scientist => scientist %>
 <% end %>
 
 
