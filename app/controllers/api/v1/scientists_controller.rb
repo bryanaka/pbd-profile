@@ -9,7 +9,8 @@ module Api
 			end
 		
 			def show
-		
+				@scientist = Scientist.find(params[:id])
+				render :json => @scientist
 			end
 		
 			def edit
