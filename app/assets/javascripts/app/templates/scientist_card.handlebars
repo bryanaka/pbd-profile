@@ -1,0 +1,18 @@
+{{#with scientist}}
+<article class="scientistUnit grid__item" id="scientist--{{slug}}">
+	<div class="scientistCard">
+		<a href="/scientist/<{{id}}">
+			<span class="scientistCard__name">{{first_name}} {{last_name}}</span><br>
+			<img src="{{picture_url}}" class="scientistCard__thumb">
+		</a>
+		<section class="scientistCard__buttonGroup">
+			{{! if can? :read, scientist }}
+				{{! link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" }}
+			<a href="#" class="button--blue">Edit</a>
+			{{! end }}
+			{{! link_to 'Show', scientist, :class => "button" }}
+			<a href="#" class="button">Show</a>
+		</section>
+	</div>
+</article>
+{{/with}}

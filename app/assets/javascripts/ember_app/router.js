@@ -1,3 +1,0 @@
-Portal.Router.map(function() {
-
-});

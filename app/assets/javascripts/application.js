@@ -14,5 +14,9 @@
 //= require jquery_ujs
 //= require vendor/idealforms/jquery.idealforms.min.js
 //= require vendor/tinymce/tiny_mce
+//= require vendor/underscore/underscore-min
+//= require vendor/backbone/backbone-min
+//= require vendor/handlebars/handlebars.min.js
+//= require backbone-logic
 //= require scientist
 //= require_self

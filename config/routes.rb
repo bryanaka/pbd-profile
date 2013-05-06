@@ -9,6 +9,12 @@ PbdPortal::Application.routes.draw do
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
 
+  namespace :api, defaults: {format: 'json'} do
+    namespace :v1 do
+      resources :scientists
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
