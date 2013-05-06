@@ -9,7 +9,6 @@ class ScientistsController < ApplicationController
 
 	def show
 		@scientist = Scientist.find(params[:id])
-		@eppn = request.env['HTTP_EPPN']
 		render :layout => "site_template"
 	end
 
