@@ -11,17 +11,33 @@ window.App = {};
 // routers
 App.Router = Backbone.Router.extend({
 	routes:{
-		"":"index"
+		"":"index",
+		":id/edit":"edit-scientist",
+		"new":"edit-scientist"
 	}
 });
 // collections
 App.Scientists = Backbone.Collection.extend({
-	url: '/api/v1/scientists'
+	url: '/api/v1/scientists'	
 });
+App.Scientists.comparator = function(scientist) {
+	return scientist.get("last_name");
+};
 
 // models
 App.Scientist = Backbone.Model.extend({
-	urlRoot: '/api/v1/scientists'
+	urlRoot: '/api/v1/scientists',
+	defaults: {
+		first_name: "",
+		last_name: "",
+		picture: {
+			picture: {
+				url: ""
+			}
+		},
+		title: "Scientist"
+		// slug should be un-alterable
+	}
 });
 
 // views
@@ -33,9 +49,23 @@ App.ScientistIndexView = Backbone.View.extend({
 		scientists.fetch({
 			success: function (scientists) {
 				var data = scientists.toJSON()[0];
-				data.scientists = _.sortBy(data.scientists, "id");
 				console.log(data);
 				var template = Handlebars.compile( $("#scientist-index-template").html() );
+				that.$el.html( template(data) );
+			}
+		});
+	}
+});
+App.ScientistEditView = Backbone.View.extend({
+	el: "#bb-container",
+	render: function(id) {
+		var that = this,
+			scientist = new App.Scientist();
+		scientist.set('id', id).fetch({
+			success: function (scientist) {
+				var data = scientist.toJSON();
+				console.log(data);
+				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
 			}
 		});
@@ -47,6 +77,10 @@ router.on('route:index', function () {
 	var scientist_index_view = new App.ScientistIndexView();
 	scientist_index_view.render();
 });
-
+router.on('route:edit-scientist', function (id) {
+	
+	var scientist_edit_view = new App.ScientistEditView();
+	scientist_edit_view.render(id);
+});
 Backbone.history.start({pushState: true, root: "/scientists"});
 

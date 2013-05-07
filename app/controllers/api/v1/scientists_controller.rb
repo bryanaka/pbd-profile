@@ -5,6 +5,9 @@ module Api
 
 			def index
 				@scientists = Scientist.all
+				@scientists.sort! do |a,b|
+					a.last_name.downcase <=> b.last_name.downcase
+				end
 				render :json => @scientists, :each_serializer => ScientistListSerializer
 			end
 		
