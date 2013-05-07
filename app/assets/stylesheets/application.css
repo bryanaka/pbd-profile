@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require cyclotron/cyclotron-style.scss
- *= require scientist
  *= require vendor/jquery.idealforms.min.css
  */
 

@@ -2,12 +2,14 @@ PbdPortal::Application.routes.draw do
 
   resources :scientists, :videos
 
-  root :to => 'videos#index'
+  root :to => 'sessions#index'
   match "/videos" => 'videos#index'
   match "/videos/new" => 'videos#new'
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
+
+  match "/sessions/index" => 'sessions#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
