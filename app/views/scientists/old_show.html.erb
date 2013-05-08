@@ -1,0 +1,67 @@
+<div class="mainContent--site grid">
+	<div class="profile__head" style="">
+		<article class="grid__item one-quarter portable-one-whole">
+			<%= image_tag @scientist.picture_url, :class => "profile__img" %>
+		</article>
+
+		<section class="profile__name grid__item three-quarters lap-one-whole">
+			<h1><%= @scientist.first_name %> <%= @scientist.last_name %></h1>
+			<h2><%= @scientist.title %></h2>
+			<!-- This needs to be associated to scientist__titles model -->
+			<article class="profile__titles grid__item one-half hidden-palm">
+					<ul>
+						<% for title in @scientist.titles %>
+							<li><%= title.title %></li>
+						<% end %>
+					</ul>
+			</article>
+			<article class="profile__websites grid__item one-half hidden-palm">
+				<h4>Websites:</h4>
+				<ul>
+					<% for website in @scientist.websites %>
+						<li><a href="<%= website.url %>"><%= website.name %></a></li>
+					<% end %>
+				</ul>
+			</article>
+		</section>
+	</div>
+	<section class="profile__contact grid__item one-third portable-one-whole">
+
+		<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
+			<h3>Location Information</h3>
+			<%= @scientist.profile.company %><br>
+			<%= @scientist.profile.address1 %><br>
+			<%= @scientist.profile.address2 %><br>
+			<%= @scientist.profile.city %>, <%= @scientist.profile.state %> <%= @scientist.profile.zip_code %> USA
+		</article>
+
+		<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+			<h3>Contact Information</h3>
+			Primary Number: <%= @scientist.profile.phone1 %><br>
+			<%= @scientist.profile.phone2_type %>: <%= @scientist.profile.phone2 %><br>
+			E-Mail: <%= @scientist.profile.email %><br>
+		</article>
+
+	</section>
+	<section class=" profile__bio grid__item two-thirds lap-one-whole">
+		<article class="profile__emphasis">
+			<h3>Research Emphasis:</h3>
+			<p>
+				<%=raw @scientist.profile.emphasis %>
+			</p>
+		</article>
+		<% if @scientist.profile.summary != "" %>
+		<article id="scientist__summary" class="profile__summary">
+			<h3>Summary:</h3>
+			<p>
+				<%=raw @scientist.profile.summary %>
+			</p>
+		</article>
+		<% end %>
+	</section>
+	<% if can? :update, @scientist %>
+		<%= link_to 'Edit', edit_scientist_path(@scientist) %>
+	<% end %>
+	<%= link_to 'Back', scientists_path %>
+
+</div>

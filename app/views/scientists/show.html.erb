@@ -1,67 +1,144 @@
-<div class="mainContent--site grid">
-	<div class="profile__head" style="">
-		<article class="grid__item one-quarter portable-one-whole">
-			<%= image_tag @scientist.picture_url, :class => "profile__img" %>
-		</article>
+<style>
+	.bb-inedit {
+		display: inline-block;
+	}
+	.bb-inedit .bb-inedit__open {
+		display: inline-block;
+	}
+	.bb-inedit .bb-inedit__field {
+		display: none;
+	}
+	.bb-inedit.active .bb-inedit__open {
+		display: none;
+	}
+	.bb-inedit.active .bb-inedit__field {
+		display: inline-block;
+	}
+</style>
 
-		<section class="profile__name grid__item three-quarters lap-one-whole">
-			<h1><%= @scientist.first_name %> <%= @scientist.last_name %></h1>
-			<h2><%= @scientist.title %></h2>
-			<!-- This needs to be associated to scientist__titles model -->
-			<article class="profile__titles grid__item one-half hidden-palm">
-					<ul>
-						<% for title in @scientist.titles %>
-							<li><%= title.title %></li>
-						<% end %>
-					</ul>
-			</article>
-			<article class="profile__websites grid__item one-half hidden-palm">
-				<h4>Websites:</h4>
-				<ul>
-					<% for website in @scientist.websites %>
-						<li><a href="<%= website.url %>"><%= website.name %></a></li>
-					<% end %>
-				</ul>
-			</article>
-		</section>
+
+<div class="mainContent--scientist grid">
+	
+	<div id="bb-container">
+		
 	</div>
-	<section class="profile__contact grid__item one-third portable-one-whole">
 
-		<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
-			<h3>Location Information</h3>
-			<%= @scientist.profile.company %><br>
-			<%= @scientist.profile.address1 %><br>
-			<%= @scientist.profile.address2 %><br>
-			<%= @scientist.profile.city %>, <%= @scientist.profile.state %> <%= @scientist.profile.zip_code %> USA
-		</article>
+	<script id="scientist-index-template" type="text/x-handlebars-template">
+		<h1 class="grid__item one-whole">Listing scientists</h1>
+		{{#each scientists}}
+			<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
+				<div class="scientistCard">
+					<a href="/scientist/{{this.id}}">
+						<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
+						<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
+					</a>
+					<section class="scientistCard__buttonGroup">
+						{{! if can? :read, scientist }}
+							{{! link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" }}
+						<a href="#" class="button--blue">Edit</a>
+						{{! end }}
+						{{! link_to 'Show', scientist, :class => "button" }}
+						<a href="#" class="button">Show</a>
+					</section>
+				</div>
+			</article>
+		{{/each}}
+	</script>
 
-		<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
-			<h3>Contact Information</h3>
-			Primary Number: <%= @scientist.profile.phone1 %><br>
-			<%= @scientist.profile.phone2_type %>: <%= @scientist.profile.phone2 %><br>
-			E-Mail: <%= @scientist.profile.email %><br>
-		</article>
+	<script id="scientist-edit-template" type="text/x-handlebars-template">
+		<div class="mainContent--site grid">
+			<div class="profile__head" style="">
+				<article class="grid__item one-quarter portable-one-whole">
+					<img src="{{picture.picture.url}}" class="profile__img">
 
-	</section>
-	<section class=" profile__bio grid__item two-thirds lap-one-whole">
-		<article class="profile__emphasis">
-			<h3>Research Emphasis:</h3>
-			<p>
-				<%=raw @scientist.profile.emphasis %>
-			</p>
-		</article>
-		<% if @scientist.profile.summary != "" %>
-		<article id="scientist__summary" class="profile__summary">
-			<h3>Summary:</h3>
-			<p>
-				<%=raw @scientist.profile.summary %>
-			</p>
-		</article>
-		<% end %>
-	</section>
-	<% if can? :update, @scientist %>
-		<%= link_to 'Edit', edit_scientist_path(@scientist) %>
-	<% end %>
-	<%= link_to 'Back', scientists_path %>
+					<div class="bb-inedit">
+						<span class="bb-inedit__open">
+							<a href="#" class="button--blue bb--edit">Change Picture</a>
+						</span>
+						<span class="bb-inedit__field">
+							<input type="file" id="profile__img">
+							<a href="#" class="bb--close">Save</a>
+						</span>
+					</div>
 
+				</article>
+		
+				<section class="profile__name grid__item three-quarters lap-one-whole">
+					<div class="bb-inedit">
+						<span class="bb-inedit__open">
+							<h1 style="display:inline-block">{{first_name}} {{last_name}}</h1>
+							<a href="#" class="button--blue bb--edit">Edit Name</a>
+						</span>
+						<span class="bb-inedit__field">
+							<input type="text" id="profile_first_name" placeholder="First Name">
+							<input type="text" id="profile_last_name" placeholder="Last Name">
+							<a href="#" class="bb--close">Save</a>
+						</span>
+					</div>
+
+					<h2>{{title}}</h2>
+					{{! This needs to be associated to scientist__titles model }}
+					<article class="profile__titles grid__item one-half hidden-palm">
+							<ul>
+								{{#each titles}}
+									<li>{{title}}</li>
+								{{/each}}
+							</ul>
+					</article>
+					<article class="profile__websites grid__item one-half hidden-palm">
+						<h4>Websites:</h4>
+						<ul>
+							{{#each websites}}
+								<li><a href="{{url}}">{{name}}</a></li>
+							{{/each}}
+						</ul>
+					</article>
+				</section>
+			</div>
+			<section class="profile__contact grid__item one-third portable-one-whole">
+		
+				<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
+					<h3>Location Information</h3>
+					{{profile.company}}<br>
+					{{profile.address1}}<br>
+					{{profile.address2}}<br>
+					{{profile.city}}, {{profile.state}} {{profile.zip_code}} USA
+				</article>
+		
+				<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+					<h3>Contact Information</h3>
+					Primary Number: {{profile.phone1}}<br>
+					{{profile.phone2_type}}: {{profile.phone2}}<br>
+					E-Mail: {{profile.email}}<br>
+				</article>
+
+			</section>
+
+			<section class=" profile__bio grid__item two-thirds lap-one-whole">
+
+				<article class="profile__emphasis">
+					<h3>Research Emphasis:</h3>
+					<p>
+						{{{profile.emphasis}}}
+					</p>
+				</article>
+
+				{{#if profile.summary}}
+				<article id="scientist__summary" class="profile__summary">
+					<h3>Summary:</h3>
+					<p>
+						{{{profile.summary}}}
+					</p>
+				</article>
+				{{/if}}
+
+			</section>
+
+			{{! if can? :update, @scientist }}
+				{{! link_to 'Edit', edit_scientist_path(@scientist) }}
+			{{! end }}
+			{{! link_to 'Back', scientists_path }}
+
+		</div>
+	</script>
 </div>

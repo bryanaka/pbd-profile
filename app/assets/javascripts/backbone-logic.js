@@ -57,6 +57,9 @@ App.ScientistIndexView = Backbone.View.extend({
 	}
 });
 App.ScientistEditView = Backbone.View.extend({
+	initialize: function () {
+        this._modelBinder = new Backbone.ModelBinder();
+    },
 	el: "#bb-container",
 	render: function(id) {
 		var that = this,
@@ -67,8 +70,25 @@ App.ScientistEditView = Backbone.View.extend({
 				console.log(data);
 				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
+				that._modelBinder.bind(scientist, that.el);
+				console.log(that);
+				return that;
 			}
 		});
+		window.testscientist = scientist;
+		console.log("Model bound");
+	},
+	events: {
+		"click .bb--edit": "activateEdit",
+		"click .bb--close": "closeEdit"
+	},
+	activateEdit: function () {
+		$(event.target).closest(".bb-inedit").toggleClass("active");
+		return false;
+	},
+	closeEdit: function () {
+		$(event.target).closest(".bb-inedit").toggleClass("active");
+		return false;
 	}
 });
 
@@ -78,7 +98,7 @@ router.on('route:index', function () {
 	scientist_index_view.render();
 });
 router.on('route:edit-scientist', function (id) {
-	
+
 	var scientist_edit_view = new App.ScientistEditView();
 	scientist_edit_view.render(id);
 });

@@ -1,10 +1,8 @@
 PbdPortal::Application.routes.draw do
 
-  resources :scientists, :videos
+  resources :videos
 
   root :to => 'videos#index'
-  match "/videos" => 'videos#index'
-  match "/videos/new" => 'videos#new'
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
@@ -14,6 +12,12 @@ PbdPortal::Application.routes.draw do
       resources :scientists
     end
   end
+
+  # Use Routes with Backbone
+  get "/scientists/"          => "scientists#index"
+  get "/scientists/:id"       => "scientists#index"
+  get "/scientists/:id/edit"  => "scientists#index"
+  get "/scientists/new"       => "scientists#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
