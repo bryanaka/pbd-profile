@@ -20,7 +20,7 @@ module Api
 			def create
 				respond_with Scientist.create(permitted_params.scientist_full)
 			end
-			# PUT api/v1/scientist/:id
+			# PATCH/PUT api/v1/scientist/:id
 			def update
 				@scientist = Scientist.find(params[:id])
 				if @scientist.update_attributes!(permitted_params.scientist_full)

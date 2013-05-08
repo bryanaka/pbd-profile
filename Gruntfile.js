@@ -42,15 +42,15 @@ module.exports = function(grunt) {
 			}
 		},
 		handlebars: {
-			dist: {
+			compile: {
 				options: {
 					namespace: "JST",
 					wrapped: "true"
 				},
 				files: {
-					"JSTemplates.js": [
-						"./assets/javascripts/app/templates/*/*.handlebars",
-						"./assets/javascripts/app/templates/*/*.hbs"
+					"./app/assets/javascripts/app/templates/JSTemplates.js": [
+						"./app/assets/javascripts/app/templates/*.handlebars",
+						"./app/assets/javascripts/app/templates/*.hbs"
 					]
 				}
 			}
@@ -60,4 +60,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-handlebars');
+
+	grunt.registerTask('compile-handlebars', ['handlebars']);
+
 };

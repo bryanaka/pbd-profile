@@ -71,16 +71,16 @@
 					<div class="bb-inedit">
 						<span class="bb-inedit__open">
 							<h1 style="display:inline-block">
-								<span name="first_name">{{first_name}}</span>
-								<span name="last_name">{{last_name}}</span>
+								<span name="scientist_first_name">{{first_name}}</span>
+								<span name="scientist_last_name">{{last_name}}</span>
 							</h1>
 							<a href="#" class="button--blue bb--edit">
 								<i class="icon-edit icon-small"></i>
 							</a>
 						</span>
 						<span class="bb-inedit__field">
-							<input type="text" id="profile_first_name" name="first_name" placeholder="First Name" value="{{first_name}}">
-							<input type="text" id="profile_last_name" name="last_name"  placeholder="Last Name" value="{{last_name}}">
+							<input type="text" id="scientist_first_name" name="scientist_first_name" placeholder="First Name" value="{{first_name}}">
+							<input type="text" id="profile_last_name" name="scientist_last_name"  placeholder="Last Name" value="{{last_name}}">
 							<a href="#" class="bb--close button--blue">
 								<i class="icon-save"></i>
 							</a>
@@ -129,9 +129,24 @@
 
 				<article class="profile__emphasis">
 					<h3>Research Emphasis:</h3>
-					<p>
-						{{{profile.emphasis}}}
-					</p>
+					<div class="bb-inedit">
+						<span class="bb-inedit__open">
+							<span name="scientist[profile][emphasis]">
+								{{{profile.emphasis}}}
+							</span>
+							<a href="#" class="button--blue bb--edit">
+								<i class="icon-edit icon-small"></i>
+							</a>
+						</span>
+						<span class="bb-inedit__field">
+							<textarea type="text" name="scientist_profile_emphasis" id="profile_emphasis" >
+								{{{profile.emphasis}}}
+							</textarea>
+							<a href="#" class="bb--close button--blue">
+								<i class="icon-save"></i>
+							</a>
+						</span>
+					</div>
 				</article>
 
 				{{#if profile.summary}}

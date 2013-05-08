@@ -18,11 +18,15 @@ App.Router = Backbone.Router.extend({
 });
 // collections
 App.Scientists = Backbone.Collection.extend({
-	url: '/api/v1/scientists'	
+	url: '/api/v1/scientists'
 });
 App.Scientists.comparator = function(scientist) {
 	return scientist.get("last_name");
 };
+
+App.Websites = Backbone.Collection.extend({
+	url: '/api/v1/sc'
+});
 
 // models
 App.Scientist = Backbone.Model.extend({
@@ -61,6 +65,14 @@ App.ScientistEditView = Backbone.View.extend({
         this._modelBinder = new Backbone.ModelBinder();
     },
 	el: "#bb-container",
+	bindings: {
+		"first_name":"[name=scientist_first_name]",
+		"last_name":"[name=scientist_last_name]",
+		"profile": {
+			"emphasis":"[name=scientist_profile_emphasis]"
+		}
+		
+	},
 	render: function(id) {
 		var that = this,
 			scientist = new App.Scientist();
@@ -70,7 +82,7 @@ App.ScientistEditView = Backbone.View.extend({
 				console.log(data);
 				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
-				that._modelBinder.bind(scientist, that.el);
+				that._modelBinder.bind(scientist, that.el, that.bindings);
 				console.log(that);
 				return that;
 			}

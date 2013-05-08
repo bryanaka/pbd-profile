@@ -9,7 +9,10 @@ PbdPortal::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
-      resources :scientists
+      resources :scientists do
+        resources :websites
+      end
+      get "websites/all" => "websites#show_all"
     end
   end
 
