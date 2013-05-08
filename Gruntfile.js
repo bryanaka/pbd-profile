@@ -40,9 +40,24 @@ module.exports = function(grunt) {
 					Handlebars: true
 				}
 			}
+		},
+		handlebars: {
+			dist: {
+				options: {
+					namespace: "JST",
+					wrapped: "true"
+				},
+				files: {
+					"JSTemplates.js": [
+						"./assets/javascripts/app/templates/*/*.handlebars",
+						"./assets/javascripts/app/templates/*/*.hbs"
+					]
+				}
+			}
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-handlebars');
 };
