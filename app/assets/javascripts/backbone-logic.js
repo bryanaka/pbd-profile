@@ -29,7 +29,7 @@ App.Websites = Backbone.Collection.extend({
 });
 
 // models
-App.Scientist = Backbone.Model.extend({
+App.Scientist = Backbone.DeepModel.extend({
 	urlRoot: '/api/v1/scientists',
 	defaults: {
 		first_name: "",
@@ -68,10 +68,7 @@ App.ScientistEditView = Backbone.View.extend({
 	bindings: {
 		"first_name":"[name=scientist_first_name]",
 		"last_name":"[name=scientist_last_name]",
-		"profile": {
-			"emphasis":"[name=scientist_profile_emphasis]"
-		}
-		
+		"profile.emphasis": "[name=scientist_profile_emphasis]"
 	},
 	render: function(id) {
 		var that = this,

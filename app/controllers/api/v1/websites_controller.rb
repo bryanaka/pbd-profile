@@ -23,9 +23,9 @@ module Api
 			end
 			# PATCH/PUT api/v1/scientist/:id/websites/:id
 			def update
-				@scientist = ScientistWebsite.find(params[:id])
-				if @scientist.update_attributes!(permitted_params.website)
-					render :json => @scientists
+				@website = ScientistWebsite.find(params[:id])
+				if @website.update_attributes!(permitted_params.website)
+					render :json => @website
 				end
 			end
 			# DELETE api/v1/scientist/:id/websites/:id

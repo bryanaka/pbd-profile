@@ -16,6 +16,7 @@
 //= require vendor/underscore/underscore-min
 //= require vendor/handlebars/handlebars.min.js
 //= require vendor/backbone/backbone-min
+//= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
 //= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
 //= require backbone-logic
 //= require scientist

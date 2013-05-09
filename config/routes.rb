@@ -11,7 +11,9 @@ PbdPortal::Application.routes.draw do
     namespace :v1 do
       resources :scientists do
         resources :websites
+        resources :titles, :controller => "scientists_titles"
       end
+      resources :videos
       get "websites/all" => "websites#show_all"
     end
   end

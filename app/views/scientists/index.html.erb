@@ -28,7 +28,7 @@
 		{{#each scientists}}
 			<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
 				<div class="scientistCard">
-					<a href="/scientist/{{this.id}}">
+					<a href="/scientists/{{this.id}}">
 						<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
 						<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
 					</a>
@@ -131,7 +131,7 @@
 					<h3>Research Emphasis:</h3>
 					<div class="bb-inedit">
 						<span class="bb-inedit__open">
-							<span name="scientist[profile][emphasis]">
+							<span name="scientist_profile_emphasis">
 								{{{profile.emphasis}}}
 							</span>
 							<a href="#" class="button--blue bb--edit">
