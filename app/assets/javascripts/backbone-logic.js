@@ -60,6 +60,18 @@ App.ScientistIndexView = Backbone.View.extend({
 		});
 	}
 });
+var BindingHelpers = {};
+BindingHelpers.trim_p = function (direction, value) {
+	var pattern1 = /^<p>/i;
+	var pattern2 = /<\/p>$/i;
+	var pattern3 = /<br>/i;
+	var pattern4 = /&nbsp;/ig;
+	var new_value = value.replace(pattern1, "");
+	new_value = new_value.replace(pattern2, "");
+	new_value = new_value.replace(pattern3, "");
+	new_value = new_value.replace(pattern4, " ");
+	return new_value;
+};
 App.ScientistEditView = Backbone.View.extend({
 	initialize: function () {
         this._modelBinder = new Backbone.ModelBinder();
@@ -68,7 +80,20 @@ App.ScientistEditView = Backbone.View.extend({
 	bindings: {
 		"first_name":"[name=scientist_first_name]",
 		"last_name":"[name=scientist_last_name]",
-		"profile.emphasis": "[name=scientist_profile_emphasis]"
+		"profile.emphasis": {
+			selector: "[name=scientist_profile_emphasis]",
+			elAttribute: "html"
+		},
+		"profile.company": {
+			selector: "#profile_company",
+			elAttribute: "text",
+			converter: BindingHelpers.trim_p
+		},
+		"profile.address1": {
+			selector: "#profile__address1",
+			elAttribute: "text",
+			converter: BindingHelpers.trim_p
+		}
 	},
 	render: function(id) {
 		var that = this,
@@ -81,25 +106,15 @@ App.ScientistEditView = Backbone.View.extend({
 				that.$el.html( template(data) );
 				that._modelBinder.bind(scientist, that.el, that.bindings);
 				console.log(that);
+				Eventer.trigger("start_ckeditor", ".inline-editable");
 				return that;
 			}
 		});
 		window.testscientist = scientist;
 		console.log("Model bound");
-	},
-	events: {
-		"click .bb--edit": "activateEdit",
-		"click .bb--close": "closeEdit"
-	},
-	activateEdit: function () {
-		$(event.target).closest(".bb-inedit").toggleClass("active");
-		return false;
-	},
-	closeEdit: function () {
-		$(event.target).closest(".bb-inedit").toggleClass("active");
-		return false;
 	}
 });
+// router stuff
 
 var router = new App.Router();
 router.on('route:index', function () {
@@ -107,9 +122,19 @@ router.on('route:index', function () {
 	scientist_index_view.render();
 });
 router.on('route:edit-scientist', function (id) {
-
 	var scientist_edit_view = new App.ScientistEditView();
 	scientist_edit_view.render(id);
 });
+
+//events
+var Eventer = {};
+
+_.extend(Eventer, Backbone.Events);
+
+Eventer.on("start_ckeditor", function(selector) {
+	CKEDITOR.disableAutoInline = true;
+	CKEDITOR.inlineAll( $(selector) );
+});
+
 Backbone.history.start({pushState: true, root: "/scientists"});
 

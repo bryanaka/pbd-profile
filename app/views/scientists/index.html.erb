@@ -14,6 +14,13 @@
 	.bb-inedit.active .bb-inedit__field {
 		display: inline-block;
 	}
+	.inline-editable {
+		display: inline-block;
+		max-height: 100%;
+	}
+	.inline-editable.inline {
+		display: inline !important;
+	}
 </style>
 
 
@@ -68,24 +75,14 @@
 				</article>
 		
 				<section class="profile__name grid__item three-quarters lap-one-whole">
-					<div class="bb-inedit">
-						<span class="bb-inedit__open">
-							<h1 style="display:inline-block">
-								<span name="scientist_first_name">{{first_name}}</span>
-								<span name="scientist_last_name">{{last_name}}</span>
-							</h1>
-							<a href="#" class="button--blue bb--edit">
-								<i class="icon-edit icon-small"></i>
-							</a>
-						</span>
-						<span class="bb-inedit__field">
-							<input type="text" id="scientist_first_name" name="scientist_first_name" placeholder="First Name" value="{{first_name}}">
-							<input type="text" id="profile_last_name" name="scientist_last_name"  placeholder="Last Name" value="{{last_name}}">
-							<a href="#" class="bb--close button--blue">
-								<i class="icon-save"></i>
-							</a>
-						</span>
-					</div>
+					<h1 style="display:inline-block">
+						<div contenteditable="true" class="inline-editable" name="scientist_first_name">
+							{{first_name}}
+						</div>
+						<div contenteditable="true" class="inline-editable" name="scientist_last_name">
+							{{last_name}}
+						</div>
+					</h1>
 
 					<h2>{{title}}</h2>
 					{{! This needs to be associated to scientist__titles model }}
@@ -109,11 +106,29 @@
 			<section class="profile__contact grid__item one-third portable-one-whole">
 		
 				<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
-					<h3>Location Information</h3>
-					{{profile.company}}<br>
-					{{profile.address1}}<br>
-					{{profile.address2}}<br>
-					{{profile.city}}, {{profile.state}} {{profile.zip_code}} USA
+					<h3>Location Information</h3><br>
+					<div contenteditable="true" class="inline-editable" id="profile_company">
+						{{profile.company}}
+					</div>
+					<div contenteditable="true" class="inline-editable" id="profile__address1">
+						{{profile.address1}}
+					</div>
+					<div contenteditable="true" class="inline-editable" id="profile__address2">
+						{{profile.address2}}
+					</div>
+					<div contenteditable="true" class="inline-editable" id="profile__city">
+						{{profile.city}}
+					</div><!-- dirty hack to display correctly
+					--><div style="display:inline;">,</div>
+					<div contenteditable="true" class="inline-editable" id="profile__state">
+						{{profile.state}}
+					</div>
+					<div contenteditable="true" class="inline-editable" id="profile__zip_code">
+						{{profile.zip_code}}
+					</div>
+					<div>
+						USA
+					</div>
 				</article>
 		
 				<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
@@ -129,28 +144,13 @@
 
 				<article class="profile__emphasis">
 					<h3>Research Emphasis:</h3>
-					<div class="bb-inedit">
-						<span class="bb-inedit__open">
-							<span name="scientist_profile_emphasis">
-								{{{profile.emphasis}}}
-							</span>
-							<a href="#" class="button--blue bb--edit">
-								<i class="icon-edit icon-small"></i>
-							</a>
-						</span>
-						<span class="bb-inedit__field">
-							<textarea type="text" name="scientist_profile_emphasis" id="profile_emphasis" >
-								{{{profile.emphasis}}}
-							</textarea>
-							<a href="#" class="bb--close button--blue">
-								<i class="icon-save"></i>
-							</a>
-						</span>
+					<div contenteditable="true" class="inline-editable" name="scientist_profile_emphasis">
+						{{{profile.emphasis}}}
 					</div>
 				</article>
 
 				{{#if profile.summary}}
-				<article id="scientist__summary" class="profile__summary">
+				<article id="scientist__summary" contenteditable="true" class="profile__summary inline-editable">
 					<h3>Summary:</h3>
 					<p>
 						{{{profile.summary}}}
@@ -166,5 +166,7 @@
 			{{! link_to 'Back', scientists_path }}
 
 		</div>
+	</script>
+	<script>
 	</script>
 </div>

@@ -10,4 +10,4 @@ tinyMCE.init
 	theme_advanced_resize_horizontal: true,
 	theme_advanced_resize_vertical: true
 	width:"30"
-
+	

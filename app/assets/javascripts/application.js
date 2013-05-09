@@ -18,6 +18,7 @@
 //= require vendor/backbone/backbone-min
 //= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
 //= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
+//= require vendor/ckeditor/ckeditor.js
 //= require backbone-logic
 //= require scientist
 //= require_self
