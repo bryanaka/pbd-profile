@@ -25,25 +25,35 @@ App.Scientists.comparator = function(scientist) {
 };
 
 App.Websites = Backbone.Collection.extend({
-	url: '/api/v1/sc'
+
+});
+
+App.Titles = Backbone.Collection.extend({
+
 });
 
 // models
 App.Scientist = Backbone.DeepModel.extend({
 	urlRoot: '/api/v1/scientists',
 	defaults: {
-		first_name: "",
-		last_name: "",
+		first_name: "First Name",
+		last_name: "Last Name",
 		picture: {
 			picture: {
 				url: ""
 			}
 		},
-		title: "Scientist"
+		title: "Physical Biosciences Scientist"
 		// slug should be un-alterable
 	}
 });
 
+App.Website = Backbone.Model.extend({
+
+});
+App.Title = Backbone.Model.extend({
+
+});
 // views
 App.ScientistIndexView = Backbone.View.extend({
 	el: "#bb-container",
@@ -60,38 +70,71 @@ App.ScientistIndexView = Backbone.View.extend({
 		});
 	}
 });
-var BindingHelpers = {};
-BindingHelpers.trim_p = function (direction, value) {
-	var pattern1 = /^<p>/i;
-	var pattern2 = /<\/p>$/i;
-	var pattern3 = /<br>/i;
-	var pattern4 = /&nbsp;/ig;
-	var new_value = value.replace(pattern1, "");
-	new_value = new_value.replace(pattern2, "");
-	new_value = new_value.replace(pattern3, "");
-	new_value = new_value.replace(pattern4, " ");
-	return new_value;
+var BindingHelpers = {
+	patterns: {
+		"open_p":	/^<p>/i,
+		"close_p":	/<\/p>$/i,
+		"br":		/<br>/i,
+		"nbsp":    /&nbsp;/ig,
+		"html":    /(<([^>]+)>)/ig
+	},
+	trim_p: function (direction, value) {
+		var pattern1 = /^<p>/i;
+		var pattern2 = /<\/p>$/i;
+		var pattern3 = /<br>/i;
+		var pattern4 = /&nbsp;/ig;
+		var new_value = value.replace(pattern1, "");
+		new_value = new_value.replace(pattern2, "");
+		new_value = new_value.replace(pattern3, "");
+		new_value = new_value.replace(pattern4, " ");
+		return new_value;
+	},
+	strip_html: function (direction, value) {
+		return value.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/ig, "");
+	}
 };
+
 App.ScientistEditView = Backbone.View.extend({
 	initialize: function () {
-        this._modelBinder = new Backbone.ModelBinder();
-    },
+		this._modelBinder = new Backbone.ModelBinder();
+	},
 	el: "#bb-container",
 	bindings: {
 		"first_name":"[name=scientist_first_name]",
 		"last_name":"[name=scientist_last_name]",
 		"profile.emphasis": {
 			selector: "[name=scientist_profile_emphasis]",
-			elAttribute: "html"
+			elAttribute: "html",
+			converter: BindingHelpers.trim_p
 		},
 		"profile.company": {
 			selector: "#profile_company",
 			elAttribute: "text",
-			converter: BindingHelpers.trim_p
+			converter: BindingHelpers.strip_html
 		},
 		"profile.address1": {
-			selector: "#profile__address1",
+			selector: "#profile_address1",
 			elAttribute: "text",
+			converter: BindingHelpers.strip_html
+		},
+		"profile.address2": {
+			selector: "#profile_address2",
+			elAttribute: "text",
+			converter: BindingHelpers.strip_html
+		},
+		"profile.city": {
+			selector: "#profile_city",
+			elAttribute: "text",
+			converter: BindingHelpers.strip_html
+		},
+		"profile.email": {
+			selector: "#profile_email",
+			elAttribute: "text",
+			converter: BindingHelpers.strip_html
+		},
+		"profile.summary": {
+			selector: "#profile_summary",
+			elAttribute: "html",
 			converter: BindingHelpers.trim_p
 		}
 	},

@@ -17,6 +17,8 @@
 	.inline-editable {
 		display: inline-block;
 		max-height: 100%;
+		border: #0090D2 1px dashed;
+		padding: 5px;
 	}
 	.inline-editable.inline {
 		display: inline !important;
@@ -76,12 +78,12 @@
 		
 				<section class="profile__name grid__item three-quarters lap-one-whole">
 					<h1 style="display:inline-block">
-						<div contenteditable="true" class="inline-editable" name="scientist_first_name">
+						<span contenteditable="true" class="inline-editable" name="scientist_first_name">
 							{{first_name}}
-						</div>
-						<div contenteditable="true" class="inline-editable" name="scientist_last_name">
+						</span>
+						<span contenteditable="true" class="inline-editable" name="scientist_last_name">
 							{{last_name}}
-						</div>
+						</span>
 					</h1>
 
 					<h2>{{title}}</h2>
@@ -107,25 +109,27 @@
 		
 				<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
 					<h3>Location Information</h3><br>
-					<div contenteditable="true" class="inline-editable" id="profile_company">
+					<span contenteditable="true" class="inline-editable" id="profile_company">
 						{{profile.company}}
-					</div>
-					<div contenteditable="true" class="inline-editable" id="profile__address1">
+					</span>
+					<br>
+					<span contenteditable="true" class="inline-editable" id="profile_address1">
 						{{profile.address1}}
-					</div>
-					<div contenteditable="true" class="inline-editable" id="profile__address2">
+					</span>
+					<span contenteditable="true" class="inline-editable" id="profile_address2">
 						{{profile.address2}}
-					</div>
-					<div contenteditable="true" class="inline-editable" id="profile__city">
+					</span>
+					<br>
+					<span contenteditable="true" class="inline-editable" id="profile_city">
 						{{profile.city}}
-					</div><!-- dirty hack to display correctly
-					--><div style="display:inline;">,</div>
-					<div contenteditable="true" class="inline-editable" id="profile__state">
+					</span><!-- dirty hack to display correctly
+					--><span style="display:inline;">,</span>
+					<span contenteditable="true" class="inline-editable" id="profile_state">
 						{{profile.state}}
-					</div>
-					<div contenteditable="true" class="inline-editable" id="profile__zip_code">
+					</span>
+					<span contenteditable="true" class="inline-editable" id="profile_zip_code">
 						{{profile.zip_code}}
-					</div>
+					</span>
 					<div>
 						USA
 					</div>
@@ -133,9 +137,20 @@
 		
 				<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 					<h3>Contact Information</h3>
-					Primary Number: {{profile.phone1}}<br>
-					{{profile.phone2_type}}: {{profile.phone2}}<br>
-					E-Mail: {{profile.email}}<br>
+					Primary Number: 
+					<span contenteditable="true" class="inline-editable">
+						{{profile.phone1}}
+					</span><br>
+					<span contenteditable="true" class="inline-editable">
+						{{profile.phone2_type}}
+					</span>: 
+					<span contenteditable="true" class="inline-editable">
+						{{profile.phone2}}
+					</span><br>
+					E-Mail: 
+					<span contenteditable="true" class="inline-editable" id="profile_email">
+						<a href="{{profile.email}}">{{profile.email}}</a>
+					</span><br>
 				</article>
 
 			</section>
@@ -150,11 +165,11 @@
 				</article>
 
 				{{#if profile.summary}}
-				<article id="scientist__summary" contenteditable="true" class="profile__summary inline-editable">
+				<article id="scientist__summary" class="profile__summary">
 					<h3>Summary:</h3>
-					<p>
+					<div contenteditable="true" id="profile_summary" class="inline-editable">
 						{{{profile.summary}}}
-					</p>
+					</div>
 				</article>
 				{{/if}}
 

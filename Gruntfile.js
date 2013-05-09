@@ -45,11 +45,26 @@ module.exports = function(grunt) {
 			compile: {
 				options: {
 					namespace: "JST",
-					wrapped: "true"
+					wrapped: "true",
+					processName: function(filename) {
+						var pieces = filename.split("/"),
+							// -1 because length returns in normal length, not 0 indexed
+							length = pieces.length - 1,
+							namespace = "",
+							template_index = pieces.indexOf('templates');
+
+						for (var i = template_index + 1; i <= length ; i++) {
+							namespace += pieces[i] + "/";
+						}
+						namespace = namespace.replace(/\/?\.handlebars\/?/i, "");
+						return namespace;
+					}
 				},
 				files: {
 					"./app/assets/javascripts/app/templates/JSTemplates.js": [
+						"./app/assets/javascripts/app/templates/*/*.handlebars",
 						"./app/assets/javascripts/app/templates/*.handlebars",
+						"./app/assets/javascripts/app/templates/*/*.hbs",
 						"./app/assets/javascripts/app/templates/*.hbs"
 					]
 				}
