@@ -21,6 +21,8 @@ gem "active_model_serializers", "~> 0.8.1"
 group :development do
 	gem "better_errors", ">= 0.8.0"
 	gem "binding_of_caller", ">= 0.6.9"
+	# use this when you need new seed data
+	# gem "seed_dumper"
 end
 
 group :development, :test do
@@ -42,6 +44,9 @@ group :test do
 	gem "database_cleaner", ">= 0.9.1"
 	gem "email_spec", ">= 1.4.0"
 	gem "capybara", "~> 2.1.0"
+	gem "launchy"
+	gem "guard-rspec"
+	gem "faker"
 end
 
 group :production do

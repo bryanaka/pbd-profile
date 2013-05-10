@@ -9,6 +9,7 @@ PbdPortal::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      match "/scientists/:slug", :controller => "scientists", :action => "show_by_slug", :constraints => { :slug => /[a-zA-Z]+/ }
       resources :scientists do
         resources :websites
         resources :titles, :controller => "scientists_titles"

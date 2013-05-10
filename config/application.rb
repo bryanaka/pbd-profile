@@ -15,12 +15,15 @@ module PbdPortal
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       
-      g.test_framework :rspec, fixture: true
-      
+      g.test_framework :rspec,
+        :fixture            => true,
+        :view_specs         => false,
+        :helper_specs       => false,
+        :routing_specs      => true,
+        :controller_specs   => true,
+        :request_specs      => true
       
       g.fixture_replacement :fabrication
-      g.view_specs false
-      g.helper_specs false
     end
 
     # Settings in config/environments/* take precedence over those specified here.

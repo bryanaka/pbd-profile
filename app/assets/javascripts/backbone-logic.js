@@ -174,7 +174,16 @@ App.ScientistEditView = Backbone.View.extend({
 var router = new App.Router();
 router.on('route:index', function () {
 	var scientist_index_view = new App.ScientistIndexView();
-	scientist_index_view.render();
+	$("#bb-container").fadeOut(800, function () {
+		$(".sideNav--fixed").css({
+			"position":"relative"
+		})
+		.animate({ "left":"0px" }, 800, "swing", function () {
+			$("#bb-container").fadeIn(800);
+		});
+		document.querySelector('.mainContent--scientist').setAttribute('style', '');
+		scientist_index_view.render();
+	});
 });
 router.on('route:edit-scientist', function (id) {
 	var scientist_edit_view = new App.ScientistEditView();
