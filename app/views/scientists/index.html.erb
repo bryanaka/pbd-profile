@@ -137,7 +137,7 @@
 		
 				<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 					<h3>Contact Information</h3>
-					Primary Number: 
+					<span>Primary Number:</span> 
 					<span contenteditable="true" class="inline-editable">
 						{{profile.phone1}}
 					</span><br>
@@ -147,7 +147,7 @@
 					<span contenteditable="true" class="inline-editable">
 						{{profile.phone2}}
 					</span><br>
-					E-Mail: 
+					<span>E-Mail:</span> 
 					<span contenteditable="true" class="inline-editable" id="profile_email">
 						<a href="{{profile.email}}">{{profile.email}}</a>
 					</span><br>
@@ -169,6 +169,13 @@
 					<h3>Summary:</h3>
 					<div contenteditable="true" id="profile_summary" class="inline-editable">
 						{{{profile.summary}}}
+					</div>
+				</article>
+				{{else}}
+				<article id="scientist__summary" class="profile__summary">
+					<h3>Add a Summary! - Optional</h3>
+					<div contenteditable="true" id="profile_summary" class="inline-editable">
+						This is an **optional** area. Add a summary here!
 					</div>
 				</article>
 				{{/if}}

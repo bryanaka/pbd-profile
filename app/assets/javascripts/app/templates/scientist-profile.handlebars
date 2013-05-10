@@ -1,0 +1,114 @@
+<div class="mainContent--site grid">
+	<div class="profile__head" style="">
+		<article class="grid__item one-quarter portable-one-whole">
+			<img src="{{picture.picture.url}}" class="profile__img">
+				<input type="file" id="profile__img" style="width:90px;" value="Upload new Picture">
+			</div>
+
+		</article>
+
+		<section class="profile__name grid__item three-quarters lap-one-whole">
+			<h1 style="display:inline-block">
+				<span contenteditable="true" class="inline-editable" name="scientist_first_name">
+					{{first_name}}
+				</span>
+				<span contenteditable="true" class="inline-editable" name="scientist_last_name">
+					{{last_name}}
+				</span>
+			</h1>
+
+			<h2>{{title}}</h2>
+			{{! This needs to be associated to scientist__titles model }}
+			<article class="profile__titles grid__item one-half hidden-palm">
+					<ul>
+						{{#each titles}}
+							<li>{{title}}</li>
+						{{/each}}
+					</ul>
+			</article>
+			<article class="profile__websites grid__item one-half hidden-palm">
+				<h4>Websites:</h4>
+				<ul>
+					{{#each websites}}
+						<li><a href="{{url}}">{{name}}</a></li>
+					{{/each}}
+				</ul>
+			</article>
+		</section>
+	</div>
+	<section class="profile__contact grid__item one-third portable-one-whole">
+
+		<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
+			<h3>Location Information</h3><br>
+			<span contenteditable="true" class="inline-editable" id="profile_company">
+				{{profile.company}}
+			</span>
+			<br>
+			<span contenteditable="true" class="inline-editable" id="profile_address1">
+				{{profile.address1}}
+			</span>
+			<span contenteditable="true" class="inline-editable" id="profile_address2">
+				{{profile.address2}}
+			</span>
+			<br>
+			<span contenteditable="true" class="inline-editable" id="profile_city">
+				{{profile.city}}
+			</span><!-- dirty hack to display correctly
+			--><span style="display:inline;">,</span>
+			<span contenteditable="true" class="inline-editable" id="profile_state">
+				{{profile.state}}
+			</span>
+			<span contenteditable="true" class="inline-editable" id="profile_zip_code">
+				{{profile.zip_code}}
+			</span>
+			<div>
+				USA
+			</div>
+		</article>
+
+		<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+			<h3>Contact Information</h3>
+			Primary Number: 
+			<span contenteditable="true" class="inline-editable">
+				{{profile.phone1}}
+			</span><br>
+			<span contenteditable="true" class="inline-editable">
+				{{profile.phone2_type}}
+			</span>: 
+			<span contenteditable="true" class="inline-editable">
+				{{profile.phone2}}
+			</span><br>
+			E-Mail: 
+			<span contenteditable="true" class="inline-editable" id="profile_email">
+				<a href="{{profile.email}}">{{profile.email}}</a>
+			</span><br>
+		</article>
+
+	</section>
+
+	<section class=" profile__bio grid__item two-thirds lap-one-whole">
+
+		<article class="profile__emphasis">
+			<h3>Research Emphasis:</h3>
+			<div contenteditable="true" class="inline-editable" name="scientist_profile_emphasis">
+				{{{profile.emphasis}}}
+			</div>
+		</article>
+
+		{{#if profile.summary}}
+		<article id="scientist__summary" class="profile__summary">
+			<h3>Summary:</h3>
+			<div contenteditable="true" id="profile_summary" class="inline-editable">
+				{{{profile.summary}}}
+			</div>
+		</article>
+		{{/if}}
+
+	</section>
+
+	{{! if can? :update, @scientist }}
+		{{! link_to 'Edit', edit_scientist_path(@scientist) }}
+	{{! end }}
+	{{! link_to 'Back', scientists_path }}
+
+</div>

@@ -13,7 +13,8 @@ App.Router = Backbone.Router.extend({
 	routes:{
 		"":"index",
 		":id/edit":"edit-scientist",
-		"new":"edit-scientist"
+		"new":"edit-scientist",
+		":id":"edit-scientist"
 	}
 });
 // collections
@@ -43,8 +44,9 @@ App.Scientist = Backbone.DeepModel.extend({
 				url: ""
 			}
 		},
-		title: "Physical Biosciences Scientist"
+		title: "Physical Biosciences Scientist",
 		// slug should be un-alterable
+		"profile.summary": ""
 	}
 });
 
@@ -91,6 +93,18 @@ var BindingHelpers = {
 	},
 	strip_html: function (direction, value) {
 		return value.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/ig, "");
+	},
+	optional_add: function (direction, value) {
+		if (value === null) {
+			return " ";
+		}
+		var new_value = BindingHelpers.trim_p(direction, value);
+		match = new_value.match(/.*\*\*optional\*\*.*/ig, "");
+		if (match !== null){
+			return " ";
+		} else {
+			return new_value;
+		}
 	}
 };
 
@@ -135,7 +149,7 @@ App.ScientistEditView = Backbone.View.extend({
 		"profile.summary": {
 			selector: "#profile_summary",
 			elAttribute: "html",
-			converter: BindingHelpers.trim_p
+			converter: BindingHelpers.optional_add
 		}
 	},
 	render: function(id) {
@@ -149,12 +163,10 @@ App.ScientistEditView = Backbone.View.extend({
 				that.$el.html( template(data) );
 				that._modelBinder.bind(scientist, that.el, that.bindings);
 				console.log(that);
-				Eventer.trigger("start_ckeditor", ".inline-editable");
 				return that;
 			}
 		});
 		window.testscientist = scientist;
-		console.log("Model bound");
 	}
 });
 // router stuff
@@ -166,7 +178,23 @@ router.on('route:index', function () {
 });
 router.on('route:edit-scientist', function (id) {
 	var scientist_edit_view = new App.ScientistEditView();
-	scientist_edit_view.render(id);
+	// Messy as crap trasitions... 
+	$("#bb-container").fadeOut(800, function () {
+		$(".sideNav--fixed").css({
+			"position":"relative"
+		})
+		.animate({ "left":"-250px" }, 800, "swing", function () {
+			$("#bb-container").fadeIn(800, function(){
+				Eventer.trigger("start_ckeditor", ".inline-editable");
+			});
+		})
+		.css({"position":"absolute"});
+		$(".mainContent--scientist").css({
+			"width":"100%",
+			"max-width":"100%"
+		});
+		scientist_edit_view.render(id);
+	});
 });
 
 //events
