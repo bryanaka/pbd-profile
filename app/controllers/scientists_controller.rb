@@ -1,10 +1,7 @@
 class ScientistsController < ApplicationController
 
 	def index
-		@scientists = Scientist.all
-		@scientists.sort! do |a,b|
-			a.last_name.downcase <=> b.last_name.downcase
-		end
+		@scientists = Scientist.order("last_name").all
 	end
 
 	def show

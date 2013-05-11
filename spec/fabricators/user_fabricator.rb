@@ -1,6 +1,9 @@
+require 'faker'
+
 Fabricator(:user) do
-  eppn    "MyString"
-  name    "MyString"
-  mail    "MyString"
-  picture "MyString"
+	base_name = Faker::Name.name
+  eppn    { base_name + "@lbl.gov" }
+  name    { base_name }
+  email    { base_name + "@lbl.gov" }
+  picture { Faker::Internet.url + ".jpg" }
 end

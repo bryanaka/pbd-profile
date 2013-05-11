@@ -5,10 +5,7 @@ module Api
 
 			# GET api/v1/scientist, returns JSON list
 			def index
-				@scientists = Scientist.all
-				@scientists.sort! do |a,b|
-					a.last_name.downcase <=> b.last_name.downcase
-				end
+				@scientists = Scientist.order("last_name").all
 				render :json => @scientists, :each_serializer => ScientistListSerializer
 			end
 			# GET api/v1/scientist/:id, returns JSON with nested profile, titles, websites
@@ -30,6 +27,11 @@ module Api
 			# DELETE api/v1/scientist/:id
 			def destroy
 				respond_with Product.destroy(params[:id])
+			end
+
+			def show_by_slug
+				@scientist = Scientist.find_by_slug(params[:slug])
+				render :json => @scientist
 			end
 		
 		end

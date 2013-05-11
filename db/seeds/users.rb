@@ -1,0 +1,6 @@
+Jerry = User.create(:id => 1, :eppn => "jerrychung@lbl.gov", :name => "Jerry Chung", :email => "jerrychung@lbl.gov", :confirmed => true)
+Bryan = User.create(:id => 2, :eppn => "bmrobles@lbl.gov", :name => "Bryan Robles", :email => "bmrobles@lbl.gov", :confirmed => true)
+Adam 	= User.create(:id => 3, :eppn => "aparkin@lbl.gov", :name => "Adam Arkin", :email => "aparkin@lbl.gov", :confirmed => true)
+Paul 	= User.create(:id => 4, :eppn => "pdadams@lbl.gov", :name => "Paul Adams", :email => "pdadams@lbl.gov", :confirmed => false)
+Kelly = User.create(:id => 5, :eppn => "klmontgomery@lbl.gov", :name => "Kelly Montgomery", :email => "klmontgomery@lbl.gov", :confirmed => true)
+Ben 	= User.create(:id => 6, :eppn => "bjsandmann@lbl.gov", :name => "Ben Sandmann", :email => "bjsandmann@lbl.gov", :confirmed => false)
