@@ -77,33 +77,40 @@ var BindingHelpers = {
 		"open_p":	/^<p>/i,
 		"close_p":	/<\/p>$/i,
 		"br":		/<br>/i,
-		"nbsp":    /&nbsp;/ig,
+		"nbsp":    /&nbsp;/g,
 		"html":    /(<([^>]+)>)/ig
 	},
 	trim_p: function (direction, value) {
-		var pattern1 = /^<p>/i;
-		var pattern2 = /<\/p>$/i;
-		var pattern3 = /<br>/i;
-		var pattern4 = /&nbsp;/ig;
-		var new_value = value.replace(pattern1, "");
-		new_value = new_value.replace(pattern2, "");
-		new_value = new_value.replace(pattern3, "");
-		new_value = new_value.replace(pattern4, " ");
-		return new_value;
+		if (value === "" || value === "<p></p>" || value === "<p><br></p>") {
+			var pattern1 = /^<p>/i;
+			var pattern2 = /<\/p>$/i;
+			var pattern3 = /<br>/i;
+			var pattern4 = /&nbsp;/g;
+			var new_value = value.replace(pattern1, "");
+			new_value = new_value.replace(pattern2, "");
+			new_value = new_value.replace(pattern3, "");
+			new_value = new_value.replace(pattern4, " ");
+			return new_value;
+		} else {
+			return value;
+		}
 	},
 	strip_html: function (direction, value) {
 		return value.replace(/(<([^>]+)>)/ig,"").replace(/&nbsp;/ig, "");
 	},
 	optional_add: function (direction, value) {
-		if (value === null) {
-			return " ";
-		}
 		var new_value = BindingHelpers.trim_p(direction, value);
-		match = new_value.match(/.*\*\*optional\*\*.*/ig, "");
-		if (match !== null){
-			return " ";
+		// this allows us to designate an area as option by using **optional** 
+		if (new_value !== "" || new_value !== null || new_value !== undefined) {
+			console.log("binding optional, " + new_value);
+			match = new_value.match(/.*\*\*optional\*\*.*/ig, "");
+			if (match !== null || new_value === "<p>&nbsp;</p>"){
+				return "";
+			} else {
+				return new_value;
+			}
 		} else {
-			return new_value;
+			return "";
 		}
 	}
 };
@@ -123,28 +130,23 @@ App.ScientistEditView = Backbone.View.extend({
 		},
 		"profile.company": {
 			selector: "#profile_company",
-			elAttribute: "text",
-			converter: BindingHelpers.strip_html
+			elAttribute: "text"
 		},
 		"profile.address1": {
 			selector: "#profile_address1",
-			elAttribute: "text",
-			converter: BindingHelpers.strip_html
+			elAttribute: "text"
 		},
 		"profile.address2": {
 			selector: "#profile_address2",
-			elAttribute: "text",
-			converter: BindingHelpers.strip_html
+			elAttribute: "text"
 		},
 		"profile.city": {
 			selector: "#profile_city",
-			elAttribute: "text",
-			converter: BindingHelpers.strip_html
+			elAttribute: "text"
 		},
 		"profile.email": {
 			selector: "#profile_email",
-			elAttribute: "text",
-			converter: BindingHelpers.strip_html
+			elAttribute: "text"
 		},
 		"profile.summary": {
 			selector: "#profile_summary",
@@ -167,6 +169,12 @@ App.ScientistEditView = Backbone.View.extend({
 			}
 		});
 		window.testscientist = scientist;
+	},
+	events: {
+		"blur .inline-editable":"fix_ckeditor"
+	},
+	fix_ckeditor: function (e) {
+		$(e.target).css('top', '');
 	}
 });
 // router stuff
@@ -174,12 +182,12 @@ App.ScientistEditView = Backbone.View.extend({
 var router = new App.Router();
 router.on('route:index', function () {
 	var scientist_index_view = new App.ScientistIndexView();
-	$("#bb-container").fadeOut(800, function () {
+	$("#bb-container").fadeOut(600, function () {
 		$(".sideNav--fixed").css({
 			"position":"relative"
 		})
-		.animate({ "left":"0px" }, 800, "swing", function () {
-			$("#bb-container").fadeIn(800);
+		.animate({ "left":"0px" }, 600, "swing", function () {
+			$("#bb-container").fadeIn(600);
 		});
 		document.querySelector('.mainContent--scientist').setAttribute('style', '');
 		scientist_index_view.render();
@@ -188,12 +196,12 @@ router.on('route:index', function () {
 router.on('route:edit-scientist', function (id) {
 	var scientist_edit_view = new App.ScientistEditView();
 	// Messy as crap trasitions... 
-	$("#bb-container").fadeOut(800, function () {
+	$("#bb-container").fadeOut(600, function () {
 		$(".sideNav--fixed").css({
 			"position":"relative"
 		})
-		.animate({ "left":"-250px" }, 800, "swing", function () {
-			$("#bb-container").fadeIn(800, function(){
+		.animate({ "left":"-250px" }, 600, "swing", function () {
+			$("#bb-container").fadeIn(600, function(){
 				Eventer.trigger("start_ckeditor", ".inline-editable");
 			});
 		})
