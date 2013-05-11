@@ -31,8 +31,8 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-	gem 'sass-rails',   '~> 3.2.3'
- 	gem 'coffee-rails', '~> 3.2.1'
+	gem 'sass-rails',   '~> 3.2.8'
+ 	gem 'coffee-rails', '~> 4.0.0'
 	gem 'uglifier', '~> 2.1.0'
 	gem 'compass-rails'
 end
@@ -45,5 +45,5 @@ group :test do
 end
 
 group :production do
-	gem "unicorn", ">= 4.3.1"
+	gem "unicorn", ">= 4.6.2"
 end

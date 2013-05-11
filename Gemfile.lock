@@ -159,7 +159,7 @@ GEM
     uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    unicorn (4.6.0)
+    unicorn (4.6.2)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -191,4 +191,4 @@ DEPENDENCIES
   simple_form (~> 2.1.0)
   strong_parameters (~> 0.2.1)
   uglifier (~> 2.1.0)
-  unicorn (>= 4.3.1)
+  unicorn (>= 4.6.2)
