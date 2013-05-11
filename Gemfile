@@ -21,6 +21,7 @@ gem "active_model_serializers", "~> 0.8.1"
 group :development do
 	gem "better_errors", ">= 0.8.0"
 	gem "binding_of_caller", ">= 0.6.9"
+	gem 'quiet_assets'
 	# use this when you need new seed data
 	# gem "seed_dumper"
 end

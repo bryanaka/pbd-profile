@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  it "has a valid factory"
+  it "has a valid factory" do
+  	Fabricate(:user).should be_valid
+  end 
   it "is invalid without eppn"
   it "is invalid without name"
   it "is invalid without email"
