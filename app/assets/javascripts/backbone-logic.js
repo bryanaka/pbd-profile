@@ -203,6 +203,10 @@ router.on('route:edit-scientist', function (id) {
 		.animate({ "left":"-250px" }, 600, "swing", function () {
 			$("#bb-container").fadeIn(600, function(){
 				Eventer.trigger("start_ckeditor", ".inline-editable");
+				$("#titles_sortable").sortable({
+					handle:".sort-handle"
+				});
+				introJs().start();
 			});
 		})
 		.css({"position":"absolute"});

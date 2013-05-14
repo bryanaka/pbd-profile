@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.sortable
 //= require vendor/tinymce/tiny_mce
 //= require vendor/underscore/underscore-min
 //= require vendor/handlebars/handlebars.min.js
@@ -21,4 +22,5 @@
 //= require vendor/ckeditor/ckeditor.js
 //= require backbone-logic
 //= require scientist
+//= require vendor/intro/intro.js
 //= require_self

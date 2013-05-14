@@ -58,7 +58,7 @@
 		<div class="mainContent--site grid">
 			<div class="profile__head" style="">
 				<article class="grid__item one-quarter portable-one-whole">
-					<img src="{{picture.picture.url}}" class="profile__img">
+					<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hey There, {{first_name}}. This is your intro to PBD profile!" data-step="1">
 
 					<div class="bb-inedit">
 						<span class="bb-inedit__open">
@@ -78,7 +78,7 @@
 		
 				<section class="profile__name grid__item three-quarters lap-one-whole">
 					<h1 style="display:inline-block">
-						<span contenteditable="true" class="inline-editable" name="scientist_first_name">
+						<span contenteditable="true" class="inline-editable" name="scientist_first_name" data-intro="To edit fields such as your first name, just click and edit them inline. No forms required." data-step="2">
 							{{first_name}}
 						</span>
 						<span contenteditable="true" class="inline-editable" name="scientist_last_name">
@@ -89,23 +89,51 @@
 					<h2>{{title}}</h2>
 					{{! This needs to be associated to scientist__titles model }}
 					<article class="profile__titles grid__item one-half hidden-palm">
-							<ul>
+							<ul id="titles_sortable" data-intro="Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
 								{{#each titles}}
-									<li>{{title}}</li>
+									<li class="sortable clearfix">
+										<span class="float-left">
+											<i class="icon-sort sort-handle"></i><br>
+											<i class="icon-remove delete-title"></i>
+										</span> 
+										<span contenteditable="true" class="">
+											{{title}}
+										</span>
+									</li>
 								{{/each}}
 							</ul>
 					</article>
-					<article class="profile__websites grid__item one-half hidden-palm">
+					<article class="profile__websites grid__item one-half hidden-palm" data-intro="Websites work similarly to titles. Double check your URLs!" data-step="4">
 						<h4>Websites:</h4>
 						<ul>
 							{{#each websites}}
-								<li><a href="{{url}}">{{name}}</a></li>
+								<li class="sortable clearfix">
+									<span class="float-left">
+										<i class="icon-sort sort-handle"></i><br>
+										<i class="icon-remove delete-title"></i>
+									</span>
+									<span class="">
+										Name:
+										<span contenteditable="true" name="web_name">
+											{{name}}
+										</span><br>
+										URL:
+										<span name="web_url"contenteditable="true">
+											{{url}}
+										</span>
+									</span>
+								</li>
 							{{/each}}
 						</ul>
 					</article>
 				</section>
 			</div>
-			<section class="profile__contact grid__item one-third portable-one-whole">
+			<section class="profile__contact grid__item one-third portable-one-whole" 
+				data-intro="These Sections are just to make sure those who view your 
+				profile will be able to get in contact with you. Make sure these are 
+				correct. If you need support for multiple locations and emails, let 
+				<a href='mailto:pbdwebmaster@lbl.gov'>PBD</a> know about it and we 
+				will work with you" data-step="5">
 		
 				<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
 					<h3>Location Information</h3><br>
@@ -157,7 +185,12 @@
 
 			<section class=" profile__bio grid__item two-thirds lap-one-whole">
 
-				<article class="profile__emphasis">
+				<article class="profile__emphasis" 
+					data-intro="These larger areas are special ones. HTML is allowed 
+					inside this area, so you can style it however you 
+					please. Even thrown in some pictures from another website! 
+					We do not support direct uploads yet, but it is in the pipeline" 
+					data-step="6">
 					<h3>Research Emphasis:</h3>
 					<div contenteditable="true" class="inline-editable" name="scientist_profile_emphasis">
 						{{{profile.emphasis}}}
