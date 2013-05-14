@@ -3,6 +3,7 @@ gem 'rails', '3.2.13'
 
 # Universal Gems
 gem "jquery-rails"
+gem 'jquery-ui-rails'
 gem "cancan", "~> 1.6.10"
 gem "rolify"
 gem "simple_form", "~> 2.1.0"

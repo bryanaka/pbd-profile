@@ -101,3 +101,24 @@
 .profile__address, .profile__location {
 	margin-bottom: 1.5rem;
 }
+.sortable {
+	background: #DEDEDE;
+	border: #0090D2 1px dashed;
+	margin: 5px 0;
+	padding: 3px 0 3px 5px;
+	list-style: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.delete-title {
+	cursor: pointer;
+	color: red;
+}
+.sort-handle {
+	color: #0090D2;
+	cursor: move;
+}
+.float-left {
+	float: left;
+}
