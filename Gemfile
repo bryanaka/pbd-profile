@@ -7,7 +7,7 @@ gem 'jquery-ui-rails'
 gem "cancan", "~> 1.6.10"
 gem "rolify"
 gem "simple_form", "~> 2.1.0"
-gem "figaro", ">= 0.5.3"
+gem "figaro", ">= 0.6.4"
 gem "strong_parameters", "~> 0.2.1"
 gem "carrierwave"
 gem "pg", "~> 0.15.1"
@@ -29,22 +29,22 @@ end
 
 group :development, :test do
 	gem "rspec-rails", "~> 2.13.0"
-	gem "fabrication", ">= 2.7.0"
+	gem "fabrication", "~> 2.7.0"
 	gem "jasmine"
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-	gem 'sass-rails',   '~> 3.2.8'
- 	gem 'coffee-rails', '~> 4.0.0'
+	gem 'sass-rails',   '~> 3.2.6'
+ 	gem 'coffee-rails'
 	gem 'uglifier', '~> 2.1.0'
 	gem 'compass-rails'
 end
 
 
 group :test do
-	gem "database_cleaner", ">= 0.9.1"
+	gem "database_cleaner", "~> 1.0.1"
 	gem "email_spec", ">= 1.4.0"
 	gem "capybara", "~> 2.1.0"
 	gem "launchy"
@@ -53,5 +53,5 @@ group :test do
 end
 
 group :production do
-	gem "unicorn", ">= 4.6.2"
+	gem "unicorn", "~> 4.6.2"
 end

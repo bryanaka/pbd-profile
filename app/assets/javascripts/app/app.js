@@ -10,17 +10,14 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.ui.sortable
-//= require vendor/tinymce/tiny_mce
-//= require vendor/underscore/underscore-min
-//= require vendor/handlebars/handlebars.min.js
-//= require vendor/backbone/backbone-min
-//= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
-//= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
-//= require vendor/ckeditor/ckeditor.js
-//= require app/app.js
-//= require scientist
-//= require vendor/intro/intro.js
+//= require ./starter.js
+//= require_tree ./helpers
+//= require ./templates/JSTemplates.js
+//= require_tree ./collections
+//= require_tree ./models
+//= require_tree ./views
+//= require_tree ./routers
+//= require backbone-logic
 //= require_self
+
+Backbone.history.start({pushState: true, root: "/scientists"});
