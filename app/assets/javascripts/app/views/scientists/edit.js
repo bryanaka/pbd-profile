@@ -38,25 +38,29 @@ App.ScientistEditView = Backbone.View.extend({
 		}
 	},
 	render: function(id) {
-		var that = this,
-			scientist = new App.Scientist();
-		scientist.set('id', id).fetch({
+		var that = this;
+		this.model = new App.Scientist();
+		this.model.set('id', id).fetch({
 			success: function (scientist) {
 				var data = scientist.toJSON();
 				console.log(data);
 				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
-				that._modelBinder.bind(scientist, that.el, that.bindings);
+				that._modelBinder.bind(that.model, that.el, that.bindings);
 				console.log(that);
 				return that;
 			}
 		});
-		window.testscientist = scientist;
+		window.testscientist = this.model;
 	},
 	events: {
-		"blur .inline-editable":"fix_ckeditor"
+		"blur .inline-editable":"fix_ckeditor",
+		"click #save":"saveProfile"
 	},
 	fix_ckeditor: function (e) {
 		$(e.target).css('top', '');
+	},
+	saveProfile: function (){
+
 	}
 });

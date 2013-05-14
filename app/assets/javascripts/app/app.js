@@ -17,7 +17,6 @@
 //= require_tree ./models
 //= require_tree ./views
 //= require_tree ./routers
-//= require backbone-logic
 //= require_self
 
 Backbone.history.start({pushState: true, root: "/scientists"});

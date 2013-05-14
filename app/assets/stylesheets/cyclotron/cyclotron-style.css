@@ -222,7 +222,7 @@ figure {
  * Define consistent border, margin, and padding.
  */
 fieldset {
-  border: 1px solid silver;
+  border: 1px solid #c0c0c0;
   margin: 0 2px;
   padding: 0.35em 0.625em 0.75em; }
 
@@ -458,7 +458,7 @@ hr {
   display: block;
   height: 1px;
   border: 0;
-  border-top: 1px solid #cccccc;
+  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0; }
 
@@ -604,7 +604,7 @@ textarea {
 @media print {
   * {
     background: transparent !important;
-    color: black !important;
+    color: #000 !important;
     /* Black prints faster: h5bp.com/s */
     box-shadow: none !important;
     text-shadow: none !important; }
@@ -629,7 +629,7 @@ textarea {
 
   pre,
   blockquote {
-    border: 1px solid #999999;
+    border: 1px solid #999;
     page-break-inside: avoid; }
 
   thead {
@@ -749,7 +749,7 @@ h5 {
   font-size: 1em;
   font-size: 1rem;
   font-weight: normal;
-  margin: 0.25em 0;
+  margin: .25em 0;
   padding: 0;
   margin: 0; }
 
@@ -757,7 +757,7 @@ h6 {
   font-size: 0.83em;
   font-size: 0.83rem;
   font-weight: normal;
-  margin: 0.25em 0;
+  margin: .25em 0;
   padding: 0; }
 
 /* ***************************************
@@ -1407,7 +1407,7 @@ h6 {
     display: inherit !important; }
 
   .hidden-print {
-    display: none !important; } }
+    display: none	   !important; } }
 /* End if statement */
 /*------------------------------------*\
     $PUSH
@@ -1435,38 +1435,45 @@ h6 {
    ======================================== */
 @font-face {
   font-family: "SourceSansProRegular";
-  src: url("../fonts/source-sans-pro/SourceSansPro-Regular-webfont.eot");
-  src: url("../fonts/source-sans-pro/SourceSansPro-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/SourceSansPro-Regular-webfont.woff") format("woff"), url("../fonts/source-sans-pro/SourceSansPro-Regular-webfont.ttf") format("truetype"), url("../fonts/source-sans-pro/SourceSansPro-Regular-webfont.svg#SourceSansProRegular") format("svg");
+  src: url("../source-sans-pro/SourceSansPro-Regular-webfont.eot");
+  src: url("../source-sans-pro/SourceSansPro-Regular-webfont.eot?#iefix") format("embedded-opentype"), url("../source-sans-pro/SourceSansPro-Regular-webfont.woff") format("woff"), url("../source-sans-pro/SourceSansPro-Regular-webfont.ttf") format("truetype"), url("../source-sans-pro/SourceSansPro-Regular-webfont.svg#SourceSansProRegular") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "SourceSansProLight";
-  src: url("../fonts/source-sans-pro/SourceSansPro-Light-webfont.eot");
-  src: url("../fonts/source-sans-pro/SourceSansPro-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/source-sans-pro/SourceSansPro-Light-webfont.woff") format("woff"), url("../fonts/source-sans-pro/SourceSansPro-Light-webfont.ttf") format("truetype"), url("../fonts/source-sans-pro/SourceSansPro-Light-webfont.svg#SourceSansProLight") format("svg");
+  src: url("../source-sans-pro/SourceSansPro-Light-webfont.eot");
+  src: url("../source-sans-pro/SourceSansPro-Light-webfont.eot?#iefix") format("embedded-opentype"), url("../source-sans-pro/SourceSansPro-Light-webfont.woff") format("woff"), url("../source-sans-pro/SourceSansPro-Light-webfont.ttf") format("truetype"), url("../source-sans-pro/SourceSansPro-Light-webfont.svg#SourceSansProLight") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "Raleway";
-  src: url("../fonts/raleway/raleway.eot");
-  src: url("../fonts/raleway/raleway.eot?#iefix") format("embedded-opentype"), url("../fonts/raleway/raleway.woff") format("woff"), url("../fonts/raleway/raleway.ttf") format("truetype"), url("../fonts/raleway/raleway.svg#Raleway") format("svg");
+  src: url("../raleway/raleway.eot");
+  src: url("../raleway/raleway.eot?#iefix") format("embedded-opentype"), url("../raleway/raleway.woff") format("woff"), url("../raleway/raleway.ttf") format("truetype"), url("../raleway/raleway.svg#Raleway") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "Steelfish";
-  src: url("../fonts/steelfish/steelfish.eot");
-  src: url("../fonts/steelfish/steelfish.eot?#iefix") format("embedded-opentype"), url("../fonts/steelfish/steelfish.woff") format("woff"), url("../fonts/steelfish/steelfish.ttf") format("truetype"), url("../fonts/steelfish/steelfish.svg#Steelfish") format("svg");
+  src: url("../steelfish/steelfish.eot");
+  src: url("../steelfish/steelfish.eot?#iefix") format("embedded-opentype"), url("../steelfish/steelfish.woff") format("woff"), url("../steelfish/steelfish.ttf") format("truetype"), url("../steelfish/steelfish.svg#Steelfish") format("svg");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "Steelfish";
-  src: url("../fonts/steelfish/steelfish-italics.eot");
-  src: url("../fonts/steelfish/steelfish-italics.eot?#iefix") format("embedded-opentype"), url("../fonts/steelfish/steelfish-italics.woff") format("woff"), url("../fonts/steelfish/steelfish-italics.ttf") format("truetype"), url("../fonts/steelfish/steelfish-italics.svg#Steelfish") format("svg");
+  src: url("../steelfish/steelfish-italics.eot");
+  src: url("../steelfish/steelfish-italics.eot?#iefix") format("embedded-opentype"), url("../steelfish/steelfish-italics.woff") format("woff"), url("../steelfish/steelfish-italics.ttf") format("truetype"), url("../steelfish/steelfish-italics.svg#Steelfish") format("svg");
   font-weight: normal;
   font-style: italic; }
+
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../ubuntu/ubuntu.eot");
+  src: url("../ubuntu/ubuntu.eot?#iefix") format("embedded-opentype"), url("../ubuntu/ubuntu.woff") format("woff"), url("../ubuntu/ubuntu.ttf") format("truetype"), url("../ubuntu/ubuntu.svg#Ubuntu") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 
 /* Navigation */
 /* ==========================================================================
@@ -1476,7 +1483,7 @@ h6 {
   background: #00395a;
   color: #ffffff;
   font-weight: 500;
-  padding: 0.25em 0 0.25em 0;
+  padding: .25em 0 .25em 0;
   border-bottom: #00598d 4px solid; }
 
 .labNav__brand {
@@ -1500,7 +1507,7 @@ h6 {
   font-size: .75em;
   color: #ffffff;
   text-decoration: none;
-  padding: 0.25em 0;
+  padding: .25em 0;
   display: block; }
   .labNav__link:hover {
     color: #008ada; }
@@ -1527,8 +1534,8 @@ h6 {
 
 .mainNav__linkGroup {
   display: inline-block;
-  padding: 0.4em 0.75em;
-  padding: 0.4rem 0.75rem;
+  padding: .4em .75em;
+  padding: .4rem .75rem;
   position: relative; }
 
 .mainNav__link {
@@ -1607,7 +1614,7 @@ h6 {
   background: white;
   border-bottom: white 5px solid;
   font-size: 1.125rem;
-  padding: 0.25rem inherit; }
+  padding: .25rem inherit; }
   .subNav--bar .subNav__link {
     color: #00395a;
     display: inline-block;
@@ -1626,25 +1633,34 @@ h6 {
   display: inline-block;
   margin: 0 0.5em 0 0;
   margin: 0 0.5rem 0 0;
-  border-right: black 2px solid;
+  border-right: #D6D6D6 2px solid;
   height: 100%;
-  vertical-align: top; }
+  vertical-align: top;
+  background-color: #EAEAEA; }
+
+.sideNav--fixed__header {
+  text-align: center;
+  padding: 0.5rem;
+  color: #333; }
 
 .sideNav--fixed__link {
-  background: green;
-  color: #FFFFFF;
+  background-color: #DEDEDE;
+  color: #333;
   text-decoration: none;
   width: 100%;
   display: block;
-  border-top: black 2px solid;
-  text-align: center;
+  border-top: #DADADA 2px solid;
+  border-bottom: #DADADA 2px solid;
+  text-align: left;
   /* -webkit-transition: top 0.2s; */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0; }
+  margin: 2px 0 0 0;
+  padding-left: 45px; }
   .sideNav--fixed__link:hover {
-    color: #ffd059; }
+    color: #0AF;
+    background-color: #DADADA; }
 
 /* Helper Classes and Utilities */
 /* User Interface Elements */
@@ -1670,8 +1686,8 @@ h6 {
   cursor: pointer;
   vertical-align: middle;
   text-align: center;
-  padding: 0.25em 0.5em;
-  padding: 0.25rem 0.5rem;
+  padding: .25em .5em;
+  padding: .25rem .5rem;
   margin: .25em;
   margin: .25rem;
   text-decoration: none;
@@ -1985,6 +2001,16 @@ h6 {
    		Badges
    	   ==================================================== */
 /* Author Styles */
+.mainHeader {
+  width: 100%;
+  background-color: #333333;
+  border-bottom: #666 4px solid; }
+  .mainHeader h1 {
+    margin: 0;
+    color: #FAFAFA;
+    padding: 10px 10px 0 10px;
+    font-size: 1.75rem; }
+
 .right {
   text-align: right; }
 
@@ -1998,7 +2024,7 @@ h6 {
   letter-spacing: 10px;
   text-align: center;
   font-family: "Steelfish";
-  margin: 0.5rem 0 0.5rem 0.75rem; }
+  margin: .5rem 0 0.5rem .75rem; }
 
 .mainContent {
   text-align: center;
@@ -2046,7 +2072,7 @@ h6 {
   text-align: center;
   left: 0;
   float: left;
-  margin: 0 0.25rem 0.25rem 0; }
+  margin: 0 .25rem .25rem 0; }
   .card__sq h4 {
     position: absolute;
     top: 4%; }
@@ -2054,5 +2080,5 @@ h6 {
 .frame--circle {
   border-radius: 100%;
   padding: 3px;
-  border: #222222 4px solid;
+  border: #222 4px solid;
   background: #fafafa; }

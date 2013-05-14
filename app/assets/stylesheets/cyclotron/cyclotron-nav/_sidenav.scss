@@ -3,27 +3,37 @@
 	display: inline-block;
 	margin:0 0.5em 0 0;
 	margin:0 0.5rem 0 0;
-	border-right: #000 2px solid;
+	border-right: #D6D6D6 2px solid;
 	height: 100%;
 	vertical-align: top;
+	background-color: #EAEAEA;
 
 }
+.sideNav--fixed__header {
+	text-align: center;
+	padding: 0.5rem;
+	color: #333;
+}
+
 .sideNav--fixed__linkGroup {
 
 }
 .sideNav--fixed__link {
-	background: $brand-color1;
-	color: #FFFFFF;
+	background-color: #DEDEDE;
+	color: #333;
 	text-decoration: none;
 	width:100%;
 	display: block;
-	border-top: #000 2px solid;
-	text-align: center;
+	border-top: #DADADA 2px solid;
+	border-bottom: #DADADA 2px solid;
+	text-align: left;
 	/* -webkit-transition: top 0.2s; */
 	@include border-box();
-	margin:0;
+	margin:2px 0 0 0;
+	padding-left:45px; 
 
 	&:hover {
-		color: $brand-color2;
+		color: #0AF;
+		background-color: #DADADA;
 	}
 }
