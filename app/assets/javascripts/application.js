@@ -15,8 +15,10 @@
 //= require jquery.ui.sortable
 //= require vendor/tinymce/tiny_mce
 //= require vendor/underscore/underscore-min
+//= require vendor/equalize/equalize.min.js
 //= require vendor/handlebars/handlebars.min.js
 //= require vendor/backbone/backbone-min
+//= require vendor/backbone/backbone.marionette/backbone.marionette.min.js
 //= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
 //= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
 //= require vendor/ckeditor/ckeditor.js

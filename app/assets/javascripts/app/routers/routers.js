@@ -1,13 +1,4 @@
-App.Router = Backbone.Router.extend({
-	routes:{
-		"":"index",
-		":id/edit":"edit-scientist",
-		"new":"edit-scientist",
-		":id":"edit-scientist"
-	}
-});
 
-var router = new App.Router();
 router.on('route:index', function () {
 	var scientist_index_view = new App.ScientistIndexView();
 	$("#bb-container").fadeOut(600, function () {

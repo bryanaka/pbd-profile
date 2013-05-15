@@ -23,6 +23,9 @@
 	.inline-editable.inline {
 		display: inline !important;
 	}
+	.navigate-profile {
+		width: 100%;
+	}
 </style>
 
 
@@ -34,24 +37,26 @@
 
 	<script id="scientist-index-template" type="text/x-handlebars-template">
 		<h1 class="grid__item one-whole">Edit Scientists</h1>
+
 		{{#each scientists}}
 			<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
 				<div class="scientistCard">
-					<a href="/scientists/{{this.id}}">
+					<a href="/scientists/{{this.id}}" class="navigate-profile">
 						<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
 						<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
 					</a>
 					<section class="scientistCard__buttonGroup">
 						{{! if can? :read, scientist }}
-							{{! link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" }}
-						<a href="#" class="button--blue">Edit</a>
+						<a href="/scientists/{{this.id}}" class="button--blue navigate-profile">
+							Edit
+						</a>
 						{{! end }}
 						{{! link_to 'Show', scientist, :class => "button" }}
-						<a href="#" class="button">Show</a>
 					</section>
 				</div>
 			</article>
 		{{/each}}
+
 	</script>
 
 	<script id="scientist-edit-template" type="text/x-handlebars-template">
@@ -59,21 +64,6 @@
 			<div class="profile__head" style="">
 				<article class="grid__item one-quarter portable-one-whole">
 					<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hi  {{first_name}}. This is your intro to PBD profile!" data-step="1">
-
-					<div class="bb-inedit">
-						<span class="bb-inedit__open">
-							<a href="#" class="button--red bb--edit">
-								<i class="icon-picture"></i> Change Picture
-							</a>
-						</span>
-						<span class="bb-inedit__field">
-							<input type="file" id="profile__img" style="width:90px;">
-							<a href="#" class="bb--close button--blue">
-								<i class="icon-save"></i>
-							</a>
-						</span>
-					</div>
-
 				</article>
 		
 				<section class="profile__name grid__item three-quarters lap-one-whole">
