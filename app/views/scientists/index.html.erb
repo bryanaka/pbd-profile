@@ -33,7 +33,7 @@
 	</div>
 
 	<script id="scientist-index-template" type="text/x-handlebars-template">
-		<h1 class="grid__item one-whole">Listing scientists</h1>
+		<h1 class="grid__item one-whole">Edit Scientists</h1>
 		{{#each scientists}}
 			<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
 				<div class="scientistCard">
@@ -58,7 +58,7 @@
 		<div class="mainContent--site grid">
 			<div class="profile__head" style="">
 				<article class="grid__item one-quarter portable-one-whole">
-					<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hey There, {{first_name}}. This is your intro to PBD profile!" data-step="1">
+					<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hi  {{first_name}}. This is your intro to PBD profile!" data-step="1">
 
 					<div class="bb-inedit">
 						<span class="bb-inedit__open">
@@ -78,7 +78,7 @@
 		
 				<section class="profile__name grid__item three-quarters lap-one-whole">
 					<h1 style="display:inline-block">
-						<span contenteditable="true" class="inline-editable" name="scientist_first_name" data-intro="To edit fields such as your first name, just click and edit them inline. No forms required." data-step="2">
+						<span contenteditable="true" class="inline-editable" name="scientist_first_name" data-intro="<h4 class='intro__title'>Editing</h4>Editing is easy. Just click and edit inline!" data-step="2">
 							{{first_name}}
 						</span>
 						<span contenteditable="true" class="inline-editable" name="scientist_last_name">
@@ -92,7 +92,7 @@
 					<h2>{{title}}</h2>
 					{{! This needs to be associated to scientist__titles model }}
 					<article class="profile__titles grid__item one-half hidden-palm">
-							<ul id="titles_sortable" data-intro="Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
+							<ul id="titles_sortable" data-intro="<h4 class='intro__title'>Titles</h4>Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
 								{{#each titles}}
 									<li class="sortable clearfix">
 										<span class="float-left">
@@ -106,7 +106,8 @@
 								{{/each}}
 							</ul>
 					</article>
-					<article class="profile__websites grid__item one-half hidden-palm" data-intro="Websites work similarly to titles. Double check your URLs!" data-step="4">
+					<article class="profile__websites grid__item one-half hidden-palm" 
+						data-intro="<h4 class='intro__title'>Websites</h4>These work similarly to titles. Double check your URLs!" data-step="4">
 						<h4>Websites:</h4>
 						<ul>
 							{{#each websites}}
@@ -132,7 +133,8 @@
 				</section>
 			</div>
 			<section class="profile__contact grid__item one-third portable-one-whole" 
-				data-intro="These Sections are just to make sure those who view your 
+				data-intro="<h4 class='intro__title'>Contact Info</h4>
+				These Sections are just to make sure those who view your 
 				profile will be able to get in contact with you. Make sure these are 
 				correct. If you need support for multiple locations and emails, let 
 				<a href='mailto:pbdwebmaster@lbl.gov'>PBD</a> know about it and we 
@@ -189,7 +191,8 @@
 			<section class=" profile__bio grid__item two-thirds lap-one-whole palm-one-whole">
 
 				<article class="profile__emphasis" 
-					data-intro="These larger areas are special ones. HTML is allowed 
+					data-intro="<h4 class='intro__title'>Emphasis and Research Summary</h4>
+					These larger areas are special ones. HTML is allowed 
 					inside this area, so you can style it however you 
 					please. Even thrown in some pictures from another website! 
 					We do not support direct uploads yet, but it is in the pipeline" 

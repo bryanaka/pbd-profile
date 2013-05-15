@@ -10,7 +10,7 @@
     </div>
     <div class="sideNav--fixed__linkGroup">
             <a href="#" class="sideNav--fixed__link">
-                <i class="icon-facetime-video right"></i> Theater
+                <i class="icon-play-sign right"></i> Theater
             </a>
     </div>
     <div class="sideNav--fixed__linkGroup">
@@ -21,20 +21,20 @@
     <% if can? :update, Video %>
         <div class="sideNav--fixed__linkGroup">
             <a href="/videos" class="sideNav--fixed__link">
-                Videos
+               <i class="icon-play-sign right"></i> Videos
             </a>
         </div>
     <% end %>
     <% if can? :update, News %>
         <div class="sideNav--fixed__linkGroup">
             <a href="/news" class="sideNav--fixed__link">
-                News
+                <i class="icon-rss-sign right"></i> News
             </a>
         </div>
     <% end %>
     <div class="sideNav--fixed__linkGroup">
         <a href="#" class="sideNav--fixed__link">
-            <i class="icon-remove-sign icon-large right"></i> Log Out 
+            <i class="icon-remove-sign right"></i> Log Out 
         </a>
     </div>
 </nav>

@@ -43,11 +43,9 @@ App.ScientistEditView = Backbone.View.extend({
 		this.model.set('id', id).fetch({
 			success: function (scientist) {
 				var data = scientist.toJSON();
-				console.log(data);
 				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
 				that._modelBinder.bind(that.model, that.el, that.bindings);
-				console.log(that);
 				return that;
 			}
 		});
@@ -57,10 +55,11 @@ App.ScientistEditView = Backbone.View.extend({
 		"blur .inline-editable":"fix_ckeditor",
 		"click #save":"saveProfile"
 	},
-	fix_ckeditor: function (e) {
-		$(e.target).css('top', '');
+	fix_ckeditor: function (event) {
+		$(event.target).css('top', '');
 	},
-	saveProfile: function (){
-
+	saveProfile: function (event){
+		event.preventDefault();
+		this.model.save();
 	}
 });

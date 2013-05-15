@@ -10,7 +10,7 @@ module Api
 			end
 			# GET api/v1/scientist/:id, returns JSON with nested profile, titles, websites
 			def show
-				@scientist = Scientist.find(params[:id])
+				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
 				render :json => @scientist
 			end
 			# POST api/v1/scientist, 
@@ -20,9 +20,10 @@ module Api
 			# PATCH/PUT api/v1/scientist/:id
 			def update
 				@scientist = Scientist.find(params[:id])
-				if @scientist.update_attributes!(permitted_params.scientist_full)
-					render :json => @scientists
-				end
+				authorize! :edit, @scientist
+				@scientist.update_attributes(permitted_params.scientist_full)
+				@scientist.save
+				render :json => @scientist
 			end
 			# DELETE api/v1/scientist/:id
 			def destroy
