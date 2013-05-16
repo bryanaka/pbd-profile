@@ -1,1 +1,20 @@
-<h1 class="grid__item one-whole">Listing scientists</h1>
+<h1 class="grid__item one-whole">Edit Scientists</h1>
+
+{{#each scientists}}
+	<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
+		<div class="scientistCard">
+			<a href="/scientists/{{this.id}}" class="navigate-profile" >
+				<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
+				<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
+			</a>
+			<section class="scientistCard__buttonGroup">
+				{{! if can? :read, scientist }}
+				<a href="/scientists/{{this.id}}" class="button--blue navigate-profile">
+					Edit
+				</a>
+				{{! end }}
+				{{! link_to 'Show', scientist, :class => "button" }}
+			</section>
+		</div>
+	</article>
+{{/each}}

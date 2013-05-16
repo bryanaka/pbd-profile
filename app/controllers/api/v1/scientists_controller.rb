@@ -19,10 +19,10 @@ module Api
 			end
 			# PATCH/PUT api/v1/scientist/:id
 			def update
-				@scientist = Scientist.find(params[:id])
+				#respond_with Scientist.update(params[:id], full_scientist_params)
+				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
 				authorize! :edit, @scientist
-				@scientist.update_attributes(permitted_params.scientist_full)
-				@scientist.save
+				@scientist.update_attributes!(permitted_params.scientist_full)
 				render :json => @scientist
 			end
 			# DELETE api/v1/scientist/:id
@@ -33,6 +33,18 @@ module Api
 			def show_by_slug
 				@scientist = Scientist.find_by_slug(params[:slug])
 				render :json => @scientist
+			end
+
+			private
+			
+			def full_scientist_params
+				#scientist_params = [:first_name, :last_name, :picture, :title, :slug]
+				profile_params =   [:id, :address1, :address2, :city, :company]
+				profile_params.push(:department, :department_url, :email, :emphasis)
+				profile_params.push(:location, :phone1, :phone2, :phone2_type)
+				profile_params.push(:positions_held, :prefix, :state, :summary, :zip_code)
+				website_params = [:name, :url, :description]
+				params.require(:scientist).permit(:first_name, :last_name, :title, profile: profile_params, websites_attributes: website_params, titles_attrbutes: [:title, :order])
 			end
 		
 		end

@@ -1,4 +1,5 @@
 App.Scientist = Backbone.DeepModel.extend({
+	paramRoot: 'scientist',
 	urlRoot: '/api/v1/scientists',
 	defaults: {
 		first_name: "First Name",
@@ -11,12 +12,5 @@ App.Scientist = Backbone.DeepModel.extend({
 		title: "Physical Biosciences Scientist",
 		// slug should be un-alterable
 		"profile.summary": ""
-	},
-	toJSON: function () {
-		var clone = _.clone(this.attributes);
-		var json = clone;
-		var full_json = _.extend(clone, {profile_attributes: clone.profile});
-		return full_json;
-		//this.prototype.toJSON();
 	}
 });

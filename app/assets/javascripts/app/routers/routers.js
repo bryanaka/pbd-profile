@@ -1,6 +1,9 @@
 
 router.on('route:index', function () {
 	var scientist_index_view = new App.ScientistIndexView();
+	if ( typeof introJs !== 'undefined' ){
+		introJs().exit();
+	}
 	$("#bb-container").fadeOut(600, function () {
 		$(".sideNav--fixed").css({
 			"position":"relative"

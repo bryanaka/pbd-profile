@@ -9,7 +9,6 @@ App.ScientistIndexView = Backbone.View.extend({
 				console.log(data);
 				var template = Handlebars.compile( $("#scientist-index-template").html() );
 				that.$el.html( template(data) );
-				$('#scientistGrid').equalize({children: 'article'});
 			}
 		});
 	},
@@ -18,7 +17,7 @@ App.ScientistIndexView = Backbone.View.extend({
 	},
 	routeProfile: function (event) {
 		event.preventDefault();
-		var href = $(event.target).attr('href').split(/scientists\//);
+		var href = $(event.target).closest('a').attr('href').split(/scientists\//);
 		console.log(href[1]);
 		router.navigate(href[1], { trigger: true } );
 	}
