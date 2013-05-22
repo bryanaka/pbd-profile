@@ -1,16 +1,16 @@
-<article class="scientistUnit grid__item" id="scientist--{{slug}}">
+<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
 	<div class="scientistCard">
-		<a href="/scientist/<{{id}}">
-			<span class="scientistCard__name">{{first_name}} {{last_name}}</span><br>
-			<img src="{{picture_url}}" class="scientistCard__thumb">
+		<a href="/scientists/{{this.id}}" class="navigate-profile" >
+			<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
+			<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
 		</a>
 		<section class="scientistCard__buttonGroup">
 			{{! if can? :read, scientist }}
-				{{! link_to 'Edit', edit_scientist_path(scientist), :class =>"button--blue" }}
-			<a href="#" class="button--blue">Edit</a>
+			<a href="/scientists/{{this.id}}" class="button--blue navigate-profile">
+				Edit
+			</a>
 			{{! end }}
 			{{! link_to 'Show', scientist, :class => "button" }}
-			<a href="#" class="button">Show</a>
 		</section>
 	</div>
 </article>

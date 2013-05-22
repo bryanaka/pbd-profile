@@ -1,6 +1,7 @@
 module Api
 	module V1
 		class ScientistsController < ApplicationController
+			wrap_parameters :scientist
 			respond_to :json
 
 			# GET api/v1/scientist, returns JSON list
@@ -21,8 +22,8 @@ module Api
 			def update
 				#respond_with Scientist.update(params[:id], full_scientist_params)
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
-				authorize! :edit, @scientist
-				@scientist.update_attributes!(permitted_params.scientist_full)
+				#authorize! :edit, @scientist
+				@scientist.update_attributes!(full_scientist_params)
 				render :json => @scientist
 			end
 			# DELETE api/v1/scientist/:id
@@ -42,8 +43,8 @@ module Api
 				profile_params =   [:id, :address1, :address2, :city, :company]
 				profile_params.push(:department, :department_url, :email, :emphasis)
 				profile_params.push(:location, :phone1, :phone2, :phone2_type)
-				profile_params.push(:positions_held, :prefix, :state, :summary, :zip_code)
-				website_params = [:name, :url, :description]
+				profile_params.push(:positions_held, :prefix, :state, :summary, :zip_code, :_destory)
+				website_params = [:id, :name, :url, :description, :_destory]
 				params.require(:scientist).permit(:first_name, :last_name, :title, profile: profile_params, websites_attributes: website_params, titles_attrbutes: [:title, :order])
 			end
 		

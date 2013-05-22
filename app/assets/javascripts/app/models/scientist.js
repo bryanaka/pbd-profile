@@ -1,6 +1,6 @@
 App.Scientist = Backbone.DeepModel.extend({
 	paramRoot: 'scientist',
-	urlRoot: '/api/v1/scientists',
+	urlRoot: '/api/v1/scientists/',
 	defaults: {
 		first_name: "First Name",
 		last_name: "Last Name",
@@ -9,7 +9,7 @@ App.Scientist = Backbone.DeepModel.extend({
 				url: ""
 			}
 		},
-		title: "Physical Biosciences Scientist",
+		title: "Staff Scientist",
 		// slug should be un-alterable
 		"profile.summary": ""
 	}

@@ -1,4 +1,5 @@
 App.Scientists = Backbone.Collection.extend({
+	//model: App.Scientist,
 	url: '/api/v1/scientists'
 });
 App.Scientists.comparator = function(scientist) {

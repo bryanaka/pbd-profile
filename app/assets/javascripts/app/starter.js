@@ -18,28 +18,28 @@ window.App = {};
 //    delete model.oldToJSON;
 //    return syncReturnValue;
 //  };
-var orgSync = Backbone.sync;
-Backbone.sync = function (method, model, options) {
+// var orgSync = Backbone.sync;
+// Backbone.sync = function (method, model, options) {
 
-  var orgToJSON = model.toJSON;
-  if (_.contains(['create', 'update'], method)) {
+//   var orgToJSON = model.toJSON;
+//   if (_.contains(['create', 'update'], method)) {
 
-    model.toJSON = function () {
-      if (model.paramRoot) {
-        var data = {};
-        data[model.paramRoot] = _.clone(model.attributes);
-        console.log('This is the data before sync');
-        console.log(data);
-        return data;
-      } else {
-        return _.clone(model.attributes);
-      }
-    };
-  }
+//     model.toJSON = function () {
+//       if (model.paramRoot) {
+//         var data = {};
+//         data[model.paramRoot] = _.clone(model.attributes);
+//         console.log('This is the data before sync');
+//         console.log(data);
+//         return data;
+//       } else {
+//         return _.clone(model.attributes);
+//       }
+//     };
+//   }
 
-  orgSync(method, model, options);
-  model.toJSON = orgToJSON;
-};
+//   orgSync(method, model, options);
+//   model.toJSON = orgToJSON;
+// };
 //events
 window.Eventer = {};
 

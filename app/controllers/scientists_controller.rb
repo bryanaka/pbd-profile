@@ -1,4 +1,5 @@
 class ScientistsController < ApplicationController
+	wrap_parameters :scientist
 
 	def index
 		@scientists = Scientist.order("last_name").all
