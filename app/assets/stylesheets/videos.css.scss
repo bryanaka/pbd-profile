@@ -2,6 +2,10 @@ td, th {
     min-width: 66px;
 }
 
+th {
+    padding: 0 10px 0 10px;
+}
+
 tr {
     height: 40px;
     vertical-align: middle;
@@ -21,6 +25,15 @@ div.input {
     margin-bottom: 10px;
 }
 
+#video_form {
+    width: 500px;
+}
+
 textarea.video_form {
     min-width: 500px;
+    max-width: 100%;
+}
+
+#all_videos {
+    display: inline-block;
 }

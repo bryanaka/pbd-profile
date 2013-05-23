@@ -1,16 +1,32 @@
-<% content_for :head do %>
-    <%= stylesheet_link_tag "videos" %>
-<% end %>
-
-<%= simple_form_for(@video) do |f| %>
-    <%= f.error_notification %>
-    <%= f.input :title, :input_html => {:class => "video_form"} %>
-    <%= f.input :date, :as => :date, :input_html => {:class => "video_form"} %>
-    <%= f.input :scientist, :input_html => {:class => "video_form"} %>
-    <%= f.input :vid_link, :input_html => {:class => "video_form"} %>
-    <%= f.input :category,
-        collection: ["Sci-Ops Series", "Brown Bag Series", "Invited Speaker", "Press Release", "Event", "Other"],
-        :input_html => {:class => "video_form"} %>
-    <%= f.input :description, as: :text, input_html: {:class => "video_form"} %>
-    <%= f.button :submit %>
+<%= form_for(@video, html: {id: "video_form", style: "width:'500px'"}) do |f| %>
+    <section name="Video Information">
+            <div>
+                <h1>Video Information</h1>
+            </div>
+            <div>
+                <%= f.label :title, "Title" %>
+                <%= f.text_field :title, placeholder: "Video Title" %>
+            </div>
+            <div>
+                <%= f.label :date, "Date Uploaded" %>
+                <%= f.text_field :date, placeholder: 'mm/dd/yyyy' %>
+            </div>
+            <div>
+                <%= f.label :scientist, "Scientist" %>
+                <%= f.text_field :scientist, placeholder: "Scientist Name" %>
+            </div>
+            <div>
+                <%= f.label :vid_link, "Link" %>
+                <%= f.url_field :vid_link, placeholder: "www.example.com" %>
+            </div>
+            <div>
+                <%= f.label :category, "Category" %>
+                <%= f.select :category, ["Sci-Ops Series", "Brown Bag Series", "Invited Speaker", "Press Release", "Event", "Other"] %>
+            </div>
+            <div>
+                <%= f.label :Description, "Description" %>
+                <%= f.text_area :description, :size => '20x30' %>
+            </div>
+            <%= f.button :submit %>
+    </section>
 <% end %>

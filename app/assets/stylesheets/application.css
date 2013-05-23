@@ -12,4 +12,9 @@
  *= require cyclotron/cyclotron-style.scss
  *= require scientist
  *= require vendor/intro/introjs.css
+ *= require vendor/jquery.idealforms.min.css
  */
+
+ .main-content {
+    display: inline-block;
+ }
