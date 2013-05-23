@@ -25,15 +25,14 @@ module Api
 			def update
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
 				#authorize! :edit, @scientist
-				pp params
 				@scientist.update_attributes!(scientist_params)
 				@scientist.profile.update_attributes!(profile_params)
-				@scientist.titles.each do |title|
-					old_title = ScientistTitles.find(title.id)
-					old_title.title = title.title
-					old_title.order = title.order
-					old_title.save!
-				end
+				#@scientist.titles.each do |title|
+				#	old_title = ScientistTitles.find(title.id)
+				#	old_title.title = title.title
+				#	old_title.order = title.order
+				#	old_title.save!
+				#end
 				# update attributes for each title and website
 				# loop through ids found on @scientist and find them, update them
 				# if not found, create a new title or website 

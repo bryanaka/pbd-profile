@@ -1,6 +1,7 @@
+require 'faker'
 Fabricator(:scientist_profile) do
-  prefix         "MyString"
-  positions_held "MyText"
+  prefix         "Dr."
+  positions_held { Faker::Company.bs }
   department     "MyString"
   department_url "MyString"
   company        "MyString"
