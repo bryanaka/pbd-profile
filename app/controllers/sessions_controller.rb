@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       if shibuser.confirmed
-        sessions[:user_eppn] = shibuser.eppn
+        session[:user_eppn] = shibuser.eppn
         redirect_to root_path, :notice => "You have been sucessfully logged in"
       else
         redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
     redirect_to root_path, :notice => "You have been logged out of PBD Portal"
   end
 
-  # private
+  private
 
   # def digest_shib_data(user)
   #   user.name   = request.env["HTTP_CN"]
