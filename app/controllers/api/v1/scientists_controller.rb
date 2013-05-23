@@ -1,7 +1,7 @@
+require 'pp'
 module Api
 	module V1
 		class ScientistsController < ApplicationController
-			wrap_parameters :scientist
 			respond_to :json
 
 			# GET api/v1/scientist, returns JSON list
@@ -20,10 +20,13 @@ module Api
 			end
 			# PATCH/PUT api/v1/scientist/:id
 			def update
-				#respond_with Scientist.update(params[:id], full_scientist_params)
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
 				#authorize! :edit, @scientist
-				@scientist.update_attributes!(full_scientist_params)
+				pp params
+				@scientist.update_attributes!(scientist_params)
+				@scientist.profile.update_attributes!(profile_params)
+				# update attributes for each title and website
+
 				render :json => @scientist
 			end
 			# DELETE api/v1/scientist/:id
@@ -37,15 +40,38 @@ module Api
 			end
 
 			private
-			
-			def full_scientist_params
-				#scientist_params = [:first_name, :last_name, :picture, :title, :slug]
+			# Not Working yet for nested params
+			#
+			# def full_scientist_params
+			# 	#scientist_params = [:first_name, :last_name, :picture, :title, :slug]
+			# 	profile_params =   [:id, :address1, :address2, :city, :company]
+			# 	profile_params.push(:department, :department_url, :email, :emphasis)
+			# 	profile_params.push(:location, :phone1, :phone2, :phone2_type)
+			# 	profile_params.push(:positions_held, :prefix, :state, :summary, :zip_code, :_destory)
+			# 	website_params = [:id, :name, :url, :description, :_destory]
+			# 	params.require(:scientist).permit(:first_name, :last_name, :title, profile: profile_params, websites_attributes: website_params, titles_attrbutes: [:title, :order])
+			# end
+			def scientist_params
+				scientist_params = [:first_name, :last_name, :picture, :title, :slug]
+				params.require(:scientist).permit(*scientist_params)
+			end
+
+			def profile_params
 				profile_params =   [:id, :address1, :address2, :city, :company]
 				profile_params.push(:department, :department_url, :email, :emphasis)
 				profile_params.push(:location, :phone1, :phone2, :phone2_type)
 				profile_params.push(:positions_held, :prefix, :state, :summary, :zip_code, :_destory)
+				params.require(:profile).permit(*profile_params)
+			end
+
+			def website_parmas
 				website_params = [:id, :name, :url, :description, :_destory]
-				params.require(:scientist).permit(:first_name, :last_name, :title, profile: profile_params, websites_attributes: website_params, titles_attrbutes: [:title, :order])
+				params.require(:websites).permit(*website_params)
+			end
+
+			def title_params
+				title_params = [:title, :order]
+				params.require(:titles).permit(*title_params)
 			end
 		
 		end
