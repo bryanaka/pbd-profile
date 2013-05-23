@@ -9,15 +9,18 @@ module Api
 				@scientists = Scientist.order("last_name").all
 				render :json => @scientists, :each_serializer => ScientistListSerializer
 			end
+
 			# GET api/v1/scientist/:id, returns JSON with nested profile, titles, websites
 			def show
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
 				render :json => @scientist
 			end
+
 			# POST api/v1/scientist, 
 			def create
 				respond_with Scientist.create(permitted_params.scientist_full)
 			end
+
 			# PATCH/PUT api/v1/scientist/:id
 			def update
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
@@ -25,10 +28,19 @@ module Api
 				pp params
 				@scientist.update_attributes!(scientist_params)
 				@scientist.profile.update_attributes!(profile_params)
+				@scientist.titles.each do |title|
+					old_title = ScientistTitles.find(title.id)
+					old_title.title = title.title
+					old_title.order = title.order
+					old_title.save!
+				end
 				# update attributes for each title and website
+				# loop through ids found on @scientist and find them, update them
+				# if not found, create a new title or website 
 
 				render :json => @scientist
 			end
+
 			# DELETE api/v1/scientist/:id
 			def destroy
 				respond_with Product.destroy(params[:id])
