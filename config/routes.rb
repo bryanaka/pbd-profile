@@ -2,7 +2,7 @@ PbdPortal::Application.routes.draw do
 
   resources :videos
 
-  root :to => 'videos#index'
+  root :to => 'pages#index'
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
