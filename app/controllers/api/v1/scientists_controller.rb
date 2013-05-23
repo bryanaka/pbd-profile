@@ -2,6 +2,9 @@ require 'pp'
 module Api
 	module V1
 		class ScientistsController < ApplicationController
+			rescue_from CanCan::AccessDenied do |exception|
+    		render :json => Scientist.includes(:profile, :titles, :websites).find(params[:id]), :status => :unauthorized
+  		end
 			respond_to :json
 
 			# GET api/v1/scientist, returns JSON list
@@ -24,7 +27,7 @@ module Api
 			# PATCH/PUT api/v1/scientist/:id
 			def update
 				@scientist = Scientist.includes(:profile, :titles, :websites).find(params[:id])
-				#authorize! :edit, @scientist
+				authorize! :edit, @scientist
 				@scientist.update_attributes!(scientist_params)
 				@scientist.profile.update_attributes!(profile_params)
 				#@scientist.titles.each do |title|
