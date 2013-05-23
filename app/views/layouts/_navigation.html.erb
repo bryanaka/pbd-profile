@@ -1,5 +1,9 @@
 <nav class="sideNav--fixed">
     <div class="sideNav--fixed__header">
+        <i class="icon-leaf icon-large"></i>
+        PBD Portal<br>
+    </div>
+    <div class="sideNav--fixed__header">
         <i class="icon-sitemap icon-large right"></i>
         Navigation
     </div>
@@ -8,16 +12,13 @@
             <i class="icon-beaker right"></i> Scientists
         </a>
     </div>
-    <div class="sideNav--fixed__linkGroup">
+    <% if can? :manage, User %>
+        <div class="sideNav--fixed__linkGroup">
             <a href="#" class="sideNav--fixed__link">
-                <i class="icon-play-sign right"></i> Theater
+                <i class="icon-group right"></i> Users 
             </a>
-    </div>
-    <div class="sideNav--fixed__linkGroup">
-        <a href="#" class="sideNav--fixed__link">
-            <i class="icon-group right"></i> Users 
-        </a>
-    </div>
+        </div>
+    <% end %>
     <% if can? :update, Video %>
         <div class="sideNav--fixed__linkGroup">
             <a href="/videos" class="sideNav--fixed__link">
@@ -32,9 +33,11 @@
             </a>
         </div>
     <% end %>
+    <% if current_user %>
     <div class="sideNav--fixed__linkGroup">
         <a href="#" class="sideNav--fixed__link">
             <i class="icon-remove-sign right"></i> Log Out 
         </a>
     </div>
+    <% end %>
 </nav>

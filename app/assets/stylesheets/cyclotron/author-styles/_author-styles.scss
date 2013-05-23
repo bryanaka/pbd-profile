@@ -2,6 +2,8 @@
 	width: 100%;
 	background-color: #333333;
 	border-bottom: #666 4px solid;
+	position: relative;
+	z-index: 2;
 
 	h1 {
 		margin: 0;
@@ -28,9 +30,16 @@
 }
 .mainContent {
 	text-align: center;
-	max-width: 1200px;
+	max-width: 1400px;
 	margin: 0 auto;
 	display: inline-block;
+}
+.mainContent--fitted {
+	text-align: center;
+	padding-left: 220px;
+	margin: 0 auto;
+	display: inline-block;
+	width: 100%;
 }
 .mainContent--site {
 	text-align: center;

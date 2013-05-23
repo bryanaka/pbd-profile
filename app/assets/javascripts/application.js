@@ -26,3 +26,13 @@
 //= require scientist
 //= require vendor/intro/intro.js
 //= require_self
+(function(){
+	var $flash = $('.flash_notice');
+	$(function(){
+		if ($flash !== []){
+			setTimeout(function(){
+				$flash.slideUp(600);
+			}, 3000);
+		}
+	});
+})();

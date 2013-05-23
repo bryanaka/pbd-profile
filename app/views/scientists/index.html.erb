@@ -1,19 +1,4 @@
 <style>
-	.bb-inedit {
-		display: inline-block;
-	}
-	.bb-inedit .bb-inedit__open {
-		display: inline-block;
-	}
-	.bb-inedit .bb-inedit__field {
-		display: none;
-	}
-	.bb-inedit.active .bb-inedit__open {
-		display: none;
-	}
-	.bb-inedit.active .bb-inedit__field {
-		display: inline-block;
-	}
 	.inline-editable {
 		display: inline-block;
 		max-height: 100%;
@@ -30,7 +15,7 @@
 </style>
 
 
-<div class="mainContent--scientist grid">
+<div class="mainContent--fitted grid" id="mainContent">
 	
 	<div id="bb-container">
 		
@@ -61,164 +46,160 @@
 	</script>
 
 	<script id="scientist-edit-template" type="text/x-handlebars-template">
-
-		<div class="mainContent--site grid">
-			<div class="profile__head" style="">
-				<article class="grid__item one-quarter portable-one-whole">
-					<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hi  {{first_name}}. This is your intro to PBD profile!" data-step="1">
-				</article>
+		<div class="profile__head" style="">
+			<article class="grid__item one-quarter portable-one-whole">
+				<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hi  {{first_name}}. This is your intro to PBD profile!" data-step="1">
+			</article>
 		
-				<section class="profile__name grid__item three-quarters lap-one-whole">
-					<h1 style="display:inline-block">
-						<span contenteditable="true" class="inline-editable" name="scientist_first_name" data-intro="<h4 class='intro__title'>Editing</h4>Editing is easy. Just click and edit inline!" data-step="2">
-							{{first_name}}
-						</span>
-						<span contenteditable="true" class="inline-editable" name="scientist_last_name">
-							{{last_name}}
-						</span>
-					</h1>
-					<a href="#" class="button--blue" id="save">
-						<i class="icon-save"></i> Save Profile
-					</a>
+			<section class="profile__name grid__item three-quarters lap-one-whole">
+				<h1 style="display:inline-block">
+					<span contenteditable="true" class="inline-editable" name="scientist_first_name" data-intro="<h4 class='intro__title'>Editing</h4>Editing is easy. Just click and edit inline!" data-step="2">
+						{{first_name}}
+					</span>
+					<span contenteditable="true" class="inline-editable" name="scientist_last_name">
+						{{last_name}}
+					</span>
+				</h1>
+				<a href="#" class="button--blue" id="save">
+					<i class="icon-save"></i> Save Profile
+				</a>
 
-					<h2>{{title}}</h2>
-					{{! This needs to be associated to scientist__titles model }}
-					<article class="profile__titles grid__item one-half hidden-palm">
-							<ul id="titles_sortable" data-intro="<h4 class='intro__title'>Titles</h4>Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
-								{{#each titles}}
-									<li class="sortable clearfix">
-										<span class="float-left">
-											<i class="icon-sort sort-handle"></i><br>
-											<i class="icon-remove delete-title"></i>
-										</span> 
-										<span contenteditable="true" class="">
-											{{title}}
-										</span>
-									</li>
-								{{/each}}
-							</ul>
-					</article>
-					<article class="profile__websites grid__item one-half hidden-palm" 
-						data-intro="<h4 class='intro__title'>Websites</h4>These work similarly to titles. Double check your URLs!" data-step="4">
-						<h4>Websites:</h4>
-						<ul>
-							{{#each websites}}
+				<h2>{{title}}</h2>
+				{{! This needs to be associated to scientist__titles model }}
+				<article class="profile__titles grid__item one-half hidden-palm">
+						<ul id="titles_sortable" data-intro="<h4 class='intro__title'>Titles</h4>Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
+							{{#each titles}}
 								<li class="sortable clearfix">
 									<span class="float-left">
 										<i class="icon-sort sort-handle"></i><br>
 										<i class="icon-remove delete-title"></i>
-									</span>
-									<span class="">
-										Name:
-										<span contenteditable="true" name="web_name">
-											{{name}}
-										</span><br>
-										URL:
-										<span name="web_url"contenteditable="true">
-											{{url}}
-										</span>
+									</span> 
+									<span contenteditable="true" class="">
+										{{title}}
 									</span>
 								</li>
 							{{/each}}
 						</ul>
-					</article>
-				</section>
-			</div>
-			<section class="profile__contact grid__item one-third portable-one-whole" 
-				data-intro="<h4 class='intro__title'>Contact Info</h4>
-				These Sections are just to make sure those who view your 
-				profile will be able to get in contact with you. Make sure these are 
-				correct. If you need support for multiple locations and emails, let 
-				<a href='mailto:pbdwebmaster@lbl.gov'>PBD</a> know about it and we 
-				will work with you" data-step="5">
-		
-				<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
-					<h3>Location Information</h3><br>
-					<span contenteditable="true" class="inline-editable" id="profile_company">
-						{{profile.company}}
-					</span>
-					<br>
-					<span contenteditable="true" class="inline-editable" id="profile_address1">
-						{{profile.address1}}
-					</span>
-					<span contenteditable="true" class="inline-editable" id="profile_address2">
-						{{profile.address2}}
-					</span>
-					<br>
-					<span contenteditable="true" class="inline-editable" id="profile_city">
-						{{profile.city}}
-					</span><!-- dirty hack to display correctly
-					--><span style="display:inline;">,</span>
-					<span contenteditable="true" class="inline-editable" id="profile_state">
-						{{profile.state}}
-					</span>
-					<span contenteditable="true" class="inline-editable" id="profile_zip_code">
-						{{profile.zip_code}}
-					</span>
-					<div>
-						USA
-					</div>
 				</article>
-		
-				<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
-					<h3>Contact Information</h3>
-					<span>Primary Number:</span> 
-					<span contenteditable="true" class="inline-editable">
-						{{profile.phone1}}
-					</span><br>
-					<span contenteditable="true" class="inline-editable">
-						{{profile.phone2_type}}
-					</span>: 
-					<span contenteditable="true" class="inline-editable">
-						{{profile.phone2}}
-					</span><br>
-					<span>E-Mail:</span> 
-					<span contenteditable="true" class="inline-editable" id="profile_email">
-						<a href="{{profile.email}}">{{profile.email}}</a>
-					</span><br>
+				<article class="profile__websites grid__item one-half hidden-palm" 
+					data-intro="<h4 class='intro__title'>Websites</h4>These work similarly to titles. Double check your URLs!" data-step="4">
+					<h4>Websites:</h4>
+					<ul>
+						{{#each websites}}
+							<li class="sortable clearfix">
+								<span class="float-left">
+									<i class="icon-sort sort-handle"></i><br>
+									<i class="icon-remove delete-title"></i>
+								</span>
+								<span class="">
+									Name:
+									<span contenteditable="true" name="web_name">
+										{{name}}
+									</span><br>
+									URL:
+									<span name="web_url"contenteditable="true">
+										{{url}}
+									</span>
+								</span>
+							</li>
+						{{/each}}
+					</ul>
 				</article>
-
 			</section>
-
-			<section class=" profile__bio grid__item two-thirds lap-one-whole palm-one-whole">
-
-				<article class="profile__emphasis" 
-					data-intro="<h4 class='intro__title'>Emphasis and Research Summary</h4>
-					These larger areas are special ones. HTML is allowed 
-					inside this area, so you can style it however you 
-					please. Even thrown in some pictures from another website! 
-					We do not support direct uploads yet, but it is in the pipeline" 
-					data-step="6">
-					<h3>Research Emphasis:</h3>
-					<div contenteditable="true" class="inline-editable" name="scientist_profile_emphasis">
-						{{{profile.emphasis}}}
-					</div>
-				</article>
-
-				{{#if profile.summary}}
-				<article id="scientist__summary" class="profile__summary">
-					<h3>Summary:</h3>
-					<div contenteditable="true" id="profile_summary" class="inline-editable">
-						{{{profile.summary}}}
-					</div>
-				</article>
-				{{else}}
-				<article id="scientist__summary" class="profile__summary">
-					<h3>Add a Summary! - Optional</h3>
-					<div contenteditable="true" id="profile_summary" class="inline-editable">
-						This is an **optional** area. Add a summary here!
-					</div>
-				</article>
-				{{/if}}
-
-			</section>
-
-			{{! if can? :update, @scientist }}
-				{{! link_to 'Edit', edit_scientist_path(@scientist) }}
-			{{! end }}
-			{{! link_to 'Back', scientists_path }}
-
 		</div>
+		<section class="profile__contact grid__item one-third portable-one-whole" 
+			data-intro="<h4 class='intro__title'>Contact Info</h4>
+			These Sections are just to make sure those who view your 
+			profile will be able to get in contact with you. Make sure these are 
+			correct. If you need support for multiple locations and emails, let 
+			<a href='mailto:pbdwebmaster@lbl.gov'>PBD</a> know about it and we 
+			will work with you" data-step="5">
+		
+			<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
+				<h3>Location Information</h3><br>
+				<span contenteditable="true" class="inline-editable" id="profile_company">
+					{{profile.company}}
+				</span>
+				<br>
+				<span contenteditable="true" class="inline-editable" id="profile_address1">
+					{{profile.address1}}
+				</span>
+				<span contenteditable="true" class="inline-editable" id="profile_address2">
+					{{profile.address2}}
+				</span>
+				<br>
+				<span contenteditable="true" class="inline-editable" id="profile_city">
+					{{profile.city}}
+				</span><!-- dirty hack to display correctly
+				--><span style="display:inline;">,</span>
+				<span contenteditable="true" class="inline-editable" id="profile_state">
+					{{profile.state}}
+				</span>
+				<span contenteditable="true" class="inline-editable" id="profile_zip_code">
+					{{profile.zip_code}}
+				</span>
+				<div>
+					USA
+				</div>
+			</article>
+		
+			<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+				<h3>Contact Information</h3>
+				<span>Primary Number:</span> 
+				<span contenteditable="true" class="inline-editable">
+					{{profile.phone1}}
+				</span><br>
+				<span contenteditable="true" class="inline-editable">
+					{{profile.phone2_type}}
+				</span>: 
+				<span contenteditable="true" class="inline-editable">
+					{{profile.phone2}}
+				</span><br>
+				<span>E-Mail:</span> 
+				<span contenteditable="true" class="inline-editable" id="profile_email">
+					<a href="{{profile.email}}">{{profile.email}}</a>
+				</span><br>
+			</article>
+
+		</section>
+
+		<section class=" profile__bio grid__item two-thirds lap-one-whole palm-one-whole">
+
+			<article class="profile__emphasis" 
+				data-intro="<h4 class='intro__title'>Emphasis and Research Summary</h4>
+				These larger areas are special ones. HTML is allowed 
+				inside this area, so you can style it however you 
+				please. Even thrown in some pictures from another website! 
+				We do not support direct uploads yet, but it is in the pipeline" 
+				data-step="6">
+				<h3>Research Emphasis:</h3>
+				<div contenteditable="true" class="inline-editable" name="scientist_profile_emphasis">
+					{{{profile.emphasis}}}
+				</div>
+			</article>
+
+			{{#if profile.summary}}
+			<article id="scientist__summary" class="profile__summary">
+				<h3>Summary:</h3>
+				<div contenteditable="true" id="profile_summary" class="inline-editable">
+					{{{profile.summary}}}
+				</div>
+			</article>
+			{{else}}
+			<article id="scientist__summary" class="profile__summary">
+				<h3>Add a Summary! - Optional</h3>
+				<div contenteditable="true" id="profile_summary" class="inline-editable">
+					This is an **optional** area. Add a summary here!
+				</div>
+			</article>
+			{{/if}}
+
+		</section>
+
+		{{! if can? :update, @scientist }}
+			{{! link_to 'Edit', edit_scientist_path(@scientist) }}
+		{{! end }}
+		{{! link_to 'Back', scientists_path }}
 	</script>
 	<script id="scientist-card-template" type="text/x-handlebars-template">
 		<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">

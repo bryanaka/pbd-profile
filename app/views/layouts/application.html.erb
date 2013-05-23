@@ -17,8 +17,8 @@
 	<%= yield(:head) %>
 </head>
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
+	<%= render 'layouts/messages' %>
 	<header class="mainHeader">
-		<%= render 'layouts/messages' %>
 		<h1>Welcome to The Portal</h1>
 	</header>
 	<%= render 'layouts/navigation' %>

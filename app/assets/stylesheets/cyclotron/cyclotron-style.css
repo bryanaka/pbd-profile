@@ -1636,11 +1636,13 @@ h6 {
   border-right: #D6D6D6 2px solid;
   height: 100%;
   vertical-align: top;
-  background-color: #EAEAEA; }
+  background-color: #EAEAEA;
+  top: 0;
+  z-index: 1; }
 
 .sideNav--fixed__header {
   text-align: center;
-  padding: 0.5rem;
+  padding: 0.75rem 0.5rem;
   color: #333; }
 
 .sideNav--fixed__link {
@@ -2004,7 +2006,9 @@ h6 {
 .mainHeader {
   width: 100%;
   background-color: #333333;
-  border-bottom: #666 4px solid; }
+  border-bottom: #666 4px solid;
+  position: relative;
+  z-index: 2; }
   .mainHeader h1 {
     margin: 0;
     color: #FAFAFA;
@@ -2028,9 +2032,16 @@ h6 {
 
 .mainContent {
   text-align: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: inline-block; }
+
+.mainContent--fitted {
+  text-align: center;
+  padding-left: 220px;
+  margin: 0 auto;
+  display: inline-block;
+  width: 100%; }
 
 .mainContent--site {
   text-align: center;
