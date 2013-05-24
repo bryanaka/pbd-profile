@@ -51,7 +51,7 @@ $class-type:            unquote(".");
     padding-left:$gutter;           /* [2] */
     vertical-align:top;             /* [3] */
     margin-left: - ($base-font-size/4);
-    margin-left: -0.25rem;
+    margin-left: -0.27rem;
     @if $mobile-first == true{
         width:100%;                 /* [4] */
     }

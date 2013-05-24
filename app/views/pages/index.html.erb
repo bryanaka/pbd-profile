@@ -1,4 +1,78 @@
+<style type="text/css">
+	.tile--flat {
+		border: #025076 3px solid;
+		background: #FAFAFA;
+		color: #025076;
+		height:200px;
+		vertical-align: bottom;
+		border-collapse: collapse;
+		text-align: left;
+		-webkit-transition: color 0.5s;
+		-moz-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: background 0.5s;
+		-moz-transition: background 0.5s;
+		transition: background 0.5s;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+	}
+	.tile--flat:hover {
+		background-color: #025076;
+		color: #FAFAFA;
+		-webkit-transition: color 0.5s;
+		-moz-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: background 0.5s;
+		-moz-transition: background 0.5s;
+		transition: background 0.5s;
+	}
+	.tile--flat .tile__icon {
+		position: absolute;
+		font-size: 4rem;
+		left: 45%;
+		top: 100%;
+		color: #FAFAFA;
+		-webkit-transition: top 0.5s;
+		-moz-transition: top 0.5s;
+		transition: top 0.5s;
+
+	}
+	.tile--flat:hover .tile__icon {
+		top:40%;
+		-webkit-transition: top 0.5s;
+		-moz-transition: top 0.5s;
+		transition: top 0.5s;
+	}
+	.mainFooter {
+		z-index: 3;
+		position: relative;
+	}
+</style>
+
 <div class="mainContent--fitted grid" id="mainContent">
-	<h1>This is the PBD Portal, the nervous system of our operations</h1>
-	
+	<hgroup class="grid__item one-whole">
+		<h1>Welcome to the PBD Portal</h1>
+		<h2>The Nervous system of our operations</h2>
+	</hgroup>
+	<article class="grid__item two-thirds portable-one-whole tile--flat">
+		<h2>Scientist Profiles</h2>
+		<i class="icon-beaker tile__icon"></i>
+	</article>
+	<article class="grid__item one-third portable-one-whole tile--flat">
+		<h2>Videos</h2>
+		<i class="icon-film tile__icon"></i>
+	</article>
+	<article class="grid__item one-half portable-one-whole tile--flat">
+		<h2>News</h2>
+		<i class="icon-rss-sign tile__icon"></i>
+	</article>
+	<article class="grid__item one-half portable-one-whole tile--flat">
+		<h2>Users</h2>
+		<i class="icon-user tile__icon"></i>
+	</article>
+	<article class="grid__item one-whole tile--flat">
+		<h2>API Docs</h2>
+		<i class="icon-book tile__icon"></i>
+	</article>
 </div>

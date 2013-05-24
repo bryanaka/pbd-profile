@@ -835,7 +835,7 @@ h6 {
   vertical-align: top;
   /* [3] */
   margin-left: -4.5px;
-  margin-left: -0.25rem;
+  margin-left: -0.27rem;
   width: 100%;
   /* [4] */
   -webkit-box-sizing: border-box;
@@ -2041,7 +2041,11 @@ h6 {
   padding-left: 220px;
   margin: 0 auto;
   display: inline-block;
-  width: 100%; }
+  width: 100%;
+  max-width: 1400px;
+  min-height: 92%;
+  padding-right: 20px;
+  padding-bottom: 20px; }
 
 .mainContent--site {
   text-align: center;
