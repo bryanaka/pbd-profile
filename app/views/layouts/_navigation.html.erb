@@ -8,9 +8,9 @@
         Navigation
     </div>
     <div class="sideNav--fixed__linkGroup">
-        <a href="edit-scientist_controller.php" class="sideNav--fixed__link">
+        <%= link_to scientists_path, :class => "sideNav--fixed__link" do %>
             <i class="icon-beaker right"></i> Scientists
-        </a>
+        <% end %>
     </div>
     <% if can? :manage, User %>
         <div class="sideNav--fixed__linkGroup">
