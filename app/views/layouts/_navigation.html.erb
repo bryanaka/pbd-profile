@@ -1,7 +1,9 @@
 <nav class="sideNav--fixed">
     <div class="sideNav--fixed__header">
-        <i class="icon-leaf icon-large"></i>
-        PBD Portal<br>
+        <%= link_to root_url do %>
+            <i class="icon-leaf icon-large"></i>
+            PBD Portal<br>
+        <% end %>
     </div>
     <div class="sideNav--fixed__header">
         <i class="icon-sitemap icon-large right"></i>
@@ -14,30 +16,36 @@
     </div>
     <% if can? :manage, User %>
         <div class="sideNav--fixed__linkGroup">
-            <a href="#" class="sideNav--fixed__link">
+            <%= link_to users_path, :class => "sideNav--fixed__link" do %>
                 <i class="icon-group right"></i> Users 
-            </a>
+            <% end %>
         </div>
     <% end %>
     <% if can? :update, Video %>
         <div class="sideNav--fixed__linkGroup">
-            <a href="/videos" class="sideNav--fixed__link">
+            <%= link_to videos_path, :class => "sideNav--fixed__link" do %>
                <i class="icon-play-sign right"></i> Videos
-            </a>
+            <% end %>
         </div>
     <% end %>
     <% if can? :update, News %>
         <div class="sideNav--fixed__linkGroup">
-            <a href="/news" class="sideNav--fixed__link">
+            <%= link_to news_index_path, :class => "sideNav--fixed__link" do %>
                 <i class="icon-rss-sign right"></i> News
-            </a>
+            <% end %>
         </div>
     <% end %>
     <% if current_user %>
-    <div class="sideNav--fixed__linkGroup">
-        <a href="#" class="sideNav--fixed__link">
-            <i class="icon-remove-sign right"></i> Log Out 
-        </a>
-    </div>
+        <div class="sideNav--fixed__linkGroup">
+            <%= link_to logout_path, :class => "sideNav--fixed__link" do %>
+                <i class="icon-signout right"></i> Log Out 
+            <% end %>
+        </div>
+    <% else %>
+        <div class="sideNav--fixed__linkGroup">
+            <%= link_to login_path, :class => "sideNav--fixed__link" do %>
+                <i class="icon-signin right"></i> Log in 
+            <% end %>
+        </div>
     <% end %>
 </nav>

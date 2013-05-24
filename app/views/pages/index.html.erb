@@ -3,7 +3,7 @@
 		border: #025076 3px solid;
 		background: #FAFAFA;
 		color: #025076;
-		height:200px;
+		height:150px;
 		vertical-align: bottom;
 		border-collapse: collapse;
 		text-align: left;
@@ -39,7 +39,7 @@
 
 	}
 	.tile--flat:hover .tile__icon {
-		top:40%;
+		top:35%;
 		-webkit-transition: top 0.5s;
 		-moz-transition: top 0.5s;
 		transition: top 0.5s;
@@ -55,24 +55,34 @@
 		<h1>Welcome to the PBD Portal</h1>
 		<h2>The Nervous system of our operations</h2>
 	</hgroup>
-	<article class="grid__item two-thirds portable-one-whole tile--flat">
-		<h2>Scientist Profiles</h2>
-		<i class="icon-beaker tile__icon"></i>
-	</article>
-	<article class="grid__item one-third portable-one-whole tile--flat">
-		<h2>Videos</h2>
-		<i class="icon-film tile__icon"></i>
-	</article>
-	<article class="grid__item one-half portable-one-whole tile--flat">
-		<h2>News</h2>
-		<i class="icon-rss-sign tile__icon"></i>
-	</article>
-	<article class="grid__item one-half portable-one-whole tile--flat">
-		<h2>Users</h2>
-		<i class="icon-user tile__icon"></i>
-	</article>
-	<article class="grid__item one-whole tile--flat">
-		<h2>API Docs</h2>
-		<i class="icon-book tile__icon"></i>
-	</article>
+	<%= link_to scientists_path, :class => "" do %>
+		<article class="grid__item one-half portable-one-whole tile--flat">
+			<h2>Scientist<br>Profiles</h2>
+			<i class="icon-beaker tile__icon"></i>
+		</article>
+	<% end %>
+	<%= link_to news_index_path, :class => "" do %>
+		<article class="grid__item one-half portable-one-whole tile--flat">
+			<h2>News</h2>
+			<i class="icon-rss-sign tile__icon"></i>
+		</article>
+	<% end %>
+	<%= link_to videos_path, :class => "" do %>
+		<article class="grid__item one-third portable-one-whole tile--flat">
+			<h2>Videos</h2>
+			<i class="icon-film tile__icon"></i>
+		</article>
+	<% end %>
+	<%= link_to users_path, :class => "" do %>
+		<article class="grid__item two-thirds portable-one-whole tile--flat">
+			<h2>Users</h2>
+			<i class="icon-user tile__icon"></i>
+		</article>
+	<% end %>
+	<%= link_to "#", :class => "" do %>
+		<article class="grid__item one-whole tile--flat">
+			<h2>API Docs</h2>
+			<i class="icon-book tile__icon"></i>
+		</article>
+	<% end %>
 </div>

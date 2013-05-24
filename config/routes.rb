@@ -1,11 +1,21 @@
 PbdPortal::Application.routes.draw do
 
-  resources :videos
-
   root :to => 'pages#index'
+
+  resources :videos
+  resources :news
+  
+  get "users" => "users#index"
 
   get "login" => "sessions#create"
   get "logout" => "sessions#destroy"
+
+
+  # Use Routes with Backbone
+  get "/scientists/"          => "scientists#index"
+  get "/scientists/:id"       => "scientists#index"
+  get "/scientists/:id/edit"  => "scientists#index"
+  get "/scientists/new"       => "scientists#index"
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
@@ -18,12 +28,6 @@ PbdPortal::Application.routes.draw do
       get "websites/all" => "websites#show_all"
     end
   end
-
-  # Use Routes with Backbone
-  get "/scientists/"          => "scientists#index"
-  get "/scientists/:id"       => "scientists#index"
-  get "/scientists/:id/edit"  => "scientists#index"
-  get "/scientists/new"       => "scientists#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
