@@ -7,7 +7,8 @@ class Scientist < ActiveRecord::Base
 	belongs_to :user
 	accepts_nested_attributes_for :profile, :websites, :titles
   
-  validates_presence_of :first_name, :last_name, :picture, :title
+  validates :first_name, :last_name, :title, :presence => true
+  validates :slug, :uniqueness => true
 
 	mount_uploader :picture, PictureUploader
 

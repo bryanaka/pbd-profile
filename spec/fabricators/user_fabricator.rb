@@ -5,5 +5,7 @@ Fabricator(:user) do
   eppn    { base_name + "@lbl.gov" }
   name    { base_name }
   email    { base_name + "@lbl.gov" }
-  picture { Faker::Internet.url + ".jpg" }
+  confirmed false
+  scientist_id nil
+  #picture { Faker::Internet.url + ".jpg" }
 end
