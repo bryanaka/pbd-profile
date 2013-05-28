@@ -1,21 +1,21 @@
 require 'faker'
 Fabricator(:scientist_profile) do
+  scientist
   prefix         "Dr."
-  positions_held { Faker::Company.bs }
-  department     "MyString"
-  department_url "MyString"
-  company        "MyString"
-  address1       "MyString"
-  address2       "MyString"
-  city           "MyString"
-  state          "MyString"
-  zip_code       1
-  phone1         "MyString"
-  phone2_type    "MyString"
-  phone2         "MyString"
-  email          "MyString"
-  summary        "MyText"
-  emphasis       "MyText"
-  location       "MyText"
-  scientist_id   1
+  department     { Faker::Company.name }
+  department_url { Faker::Internet.url }
+  company        "Lawrence Berkeley National Laboratory"
+  address1       { Faker::Address.street_address }
+  address2       { Faker::Address.secondary_address }
+  city           { Faker::Address.city }
+  state          { Faker::Address.state }
+  zip_code       { Faker::Address.zip_code }
+  phone1         { Faker::PhoneNumber.phone_number }
+  phone2_type    "Cell"
+  phone2         { Faker::PhoneNumber.cell_phone }
+  email          { Faker::Internet.safe_email }
+  summary        { Faker::Lorem.paragraphs.join("<br>\n") }
+  emphasis       { Faker::Lorem.paragraphs.join("<br>\n") }
+  location       "My Random Location"
+  #scientist_id   { self.scientist.id }
 end

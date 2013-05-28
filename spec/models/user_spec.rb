@@ -32,11 +32,6 @@ describe User do
   		expect {user2.save!}.to raise_error
   	end
 
-  	xit "should not be able to add invalid roles" do
-  		user = Fabricate(:user)
-  		expect { user.add_role :yodawg }
-
-  	end
   	xit "confirms automatically if scientist and save scientist id"
   	xit "doesn't confirm if not scientist"
   	xit "doesn't allow user to edit attributes except name"
@@ -60,7 +55,7 @@ describe User do
   		user.has_role?(:scientist).should be_true
   	end
 
-  	xit "can add resource specific roles"
+  	xit "can add resource specific resource scoped roles"
 
   	it "can revoke roles" do
   		user = Fabricate(:user)
