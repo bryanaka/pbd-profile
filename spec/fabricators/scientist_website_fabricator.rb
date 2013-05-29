@@ -3,5 +3,6 @@ Fabricator(:scientist_website) do
 	scientist
   name         { Faker::Company.name }
   url          { Faker::Internet.url }
-  description  { Faker::Lorem.paragraph }
+  description  { ("yo"*100) }
+  order 			 { rand(1..4) }
 end
