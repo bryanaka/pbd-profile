@@ -14,23 +14,45 @@
  *= require vendor/idealforms/jquery.idealforms.min.css
  *= require_self
  */
+body {
+	background: #FAFAFA;
+}
+.main-content {
+   display: inline-block;
+   width: 100%;
+   padding-left: 220px;
+   min-height: 100%;
+}
+.mainContent {
+	min-height: 100%;
+}
+.mainContent--fitted {
+	min-height: 100%;
+}
+.sideNav--fixed {
+	position: fixed;
+}
+.flash_notice {
+	display: block;
+	position: absolute;
+	z-index: 3;
+	background: #007000;
+	width: 100%;
+	color: #FAFAFA;
+	text-align: center;
+	border-bottom: #005900 5px solid;
+	padding: .25rem 0;
+}
 
- .main-content {
-    display: inline-block;
-    width: 100%;
-    padding-left: 220px;
- }
- .sideNav--fixed {
- 	position: fixed;
- }
- .flash_notice {
- 	display: block;
-position: absolute;
-z-index: 3;
-background: #007000;
-width: 100%;
-color: #FAFAFA;
-text-align: center;
-border-bottom: #005900 5px solid;
-padding: .25rem 0;
- }
+.mainFooter__section {
+	padding-bottom:1rem;
+}
+.mainFooter__title {
+	border-bottom: 2px #FAFAFA solid;
+	color: #FAFAFA;
+}
+.mainFooter__linkGroup {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 1rem;
+}

@@ -10,7 +10,7 @@
 	<title><%= content_for?(:title) ? yield(:title) : "PBD Portal" %></title>
 	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "LBNL Physical Biosciences Division Portal"%>">
 	<%= stylesheet_link_tag "application", :media => "all" %>
-	<link rel="stylesheet" type="text/css" href="/assets/font-awesome/css/font-awesome.min.css">
+	<%= stylesheet_link_tag "font-awesome/css/font-awesome.min.css", :media => "all" %>
 	<!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	-->
@@ -24,7 +24,30 @@
 	<%= render 'layouts/navigation' %>
 	<%= yield %>
 	<footer class="one-whole mainFooter" style="z-index:3;position:relative;">
-		hey this is the footer
+		<section class="grid__item one-third portable-one-whole mainFooter__section">
+			<h3 class="mainFooter__title">Berkeley Lab</h4>
+			<ul class="mainFooter__linkGroup">
+				<li><a href="#">A-Z Index</a></li>
+				<li><a href="#">News Center</a></li>
+				<li><a href="#">LBNL Profile</a></li>
+				<li><a href="#">Phone Book</a></li>
+			</ul>
+		</section>
+		<section class="grid__item one-third portable-one-whole mainFooter__section">
+			<h3 class="mainFooter__title">Physical Biosciences</h4>
+			<ul class="mainFooter__linkGroup">
+				<li><a href="#">PBD News</a></li>
+				<li><a href="#">Webcasts</a></li>
+				<li><a href="#">Scientist Profiles</a></li>
+			</ul>
+		</section>
+		<section class="grid__item one-third portable-one-whole mainFooter__section">
+			<h3 class="mainFooter__title">Web Resources</h4>
+			<ul class="mainFooter__linkGroup">
+				<li><a href="#">PBD API Documentation</a></li>
+				<li><a href="#">Contact the Webmaster</a></li>
+			</ul>
+		</section>
 	</footer>
 <%= javascript_include_tag "application" %>
 
