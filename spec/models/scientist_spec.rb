@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe Scientist do
+  context "if attributes are valid" do    
+    
+    it "has a valid factory" do
+      scientist = Fabricate(:scientist)
+      scientist.should be_valid
+    end
+
+  end
   
   context "if attributes are invalid" do
   	# I can't seem to get carrierwave to test correctly...
@@ -36,12 +44,22 @@ describe Scientist do
 
 	end
 	
-	context "if attributes are valid" do  	
-		
-		it "has a valid factory" do
-			scientist = Fabricate(:scientist)
-			scientist.should be_valid
-		end
+  describe "Scientist model's relations: " do
+    
+    context "Check if it can build and find relations" do
+      it "can build a profile"
+      it "can build a title"
+      it "can build a website"
+    end
 
-	end
+    context "limits of how many can exist per Scientist Model" do
+      it "only allows a maximum of 5 titles"
+      it "only allows a maximum of 4 websites"
+    end
+
+    context "shortcut and convience methods involving relations" do
+      it "uses title.order = 1 as primary title"
+    end
+
+  end
 end

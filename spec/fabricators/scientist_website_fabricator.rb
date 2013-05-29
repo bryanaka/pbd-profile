@@ -1,6 +1,7 @@
+require 'faker'
 Fabricator(:scientist_website) do
-  name         "MyString"
-  url          "MyString"
-  description  "MyString"
-  scientist_id 1
+	scientist
+  name         { Faker::Company.name }
+  url          { Faker::Internet.url }
+  description  { Faker::Lorem.paragraph }
 end
