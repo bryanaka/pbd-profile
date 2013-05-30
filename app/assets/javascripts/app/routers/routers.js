@@ -28,7 +28,10 @@ router.on('route:edit-scientist', function (id) {
 			$("#bb-container").fadeIn(500, function(){
 				Eventer.trigger("start_ckeditor", ".inline-editable");
 				$("#titles_sortable").sortable({
-					handle:".sort-handle"
+					handle:".sort-handle",
+					stop: function (event, ui) {
+						alert("New position: " + (ui.item.index() + 1 ) );
+					}
 				});
 				// styles are messed up for some reason.
 				// introJs().start();
