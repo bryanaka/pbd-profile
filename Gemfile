@@ -12,6 +12,7 @@ gem "strong_parameters", "~> 0.2.1"
 gem "carrierwave"
 gem "pg", "~> 0.15.1"
 gem "active_model_serializers", "~> 0.8.1"
+# gem 'backbone-nested-attributes'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
