@@ -1,31 +1,34 @@
 PbdPortal::Application.routes.draw do
 
-  root :to => 'pages#index'
+  scope :path => "/pbdportal" do
 
-  resources :videos
-  resources :news
+    root :to => 'pages#index'
   
-  get "users" => "users#index"
-
-  get "login" => "sessions#create"
-  get "logout" => "sessions#destroy"
-
-
-  # Use Routes with Backbone
-  get "/scientists/"          => "scientists#index"
-  get "/scientists/:id"       => "scientists#index"
-  get "/scientists/:id/edit"  => "scientists#index"
-  get "/scientists/new"       => "scientists#index"
-
-  namespace :api, defaults: {format: 'json'} do
-    namespace :v1 do
-      match "/scientists/:slug", :controller => "scientists", :action => "show_by_slug", :constraints => { :slug => /[a-zA-Z]+/ }
-      resources :scientists do
-        resources :websites
-        resources :titles, :controller => "scientists_titles"
+    resources :videos
+    resources :news
+    
+    get "users" => "users#index"
+  
+    get "login" => "sessions#create"
+    get "logout" => "sessions#destroy"
+  
+  
+    # Use Routes with Backbone
+    get "/scientists/"          => "scientists#index"
+    get "/scientists/:id"       => "scientists#index"
+    get "/scientists/:id/edit"  => "scientists#index"
+    get "/scientists/new"       => "scientists#index"
+  
+    namespace :api, defaults: {format: 'json'} do
+      namespace :v1 do
+        match "/scientists/:slug", :controller => "scientists", :action => "show_by_slug", :constraints => { :slug => /[a-zA-Z]+/ }
+        resources :scientists do
+          resources :websites
+          resources :titles, :controller => "scientists_titles"
+        end
+        resources :videos
+        get "websites/all" => "websites#show_all"
       end
-      resources :videos
-      get "websites/all" => "websites#show_all"
     end
   end
 
