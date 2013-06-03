@@ -1,6 +1,6 @@
 PbdPortal::Application.routes.draw do
 
-  scope :path => "/pbdportal" do
+  namespace :pbdportal, :as => "" do
 
     root :to => 'pages#index'
   
@@ -30,6 +30,7 @@ PbdPortal::Application.routes.draw do
         get "websites/all" => "websites#show_all"
       end
     end
+
   end
 
   # The priority is based upon order of creation:
