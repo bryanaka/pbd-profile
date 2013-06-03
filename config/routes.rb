@@ -1,6 +1,6 @@
 PbdPortal::Application.routes.draw do
 
-  namespace :pbdportal, :as => "" do
+  scope :pbdportal, :path => "/pbdportal" do
 
     root :to => 'pages#index'
   
