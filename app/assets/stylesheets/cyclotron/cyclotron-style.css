@@ -2098,3 +2098,34 @@ h6 {
   padding: 3px;
   border: #222 4px solid;
   background: #fafafa; }
+
+/*
+Scientists App
+*/
+.inline-editable {
+  display: inline-block;
+  max-height: 100%;
+  border: #0090D2 1px dashed;
+  padding: 5px; }
+
+.inline-editable.inline {
+  display: inline !important; }
+
+.navigate-profile.button--blue {
+  width: 100%;
+  left: -3px; }
+
+.notifications {
+  background: #008000;
+  color: #FAFAFA;
+  border-bottom: 3px #4CBB17 solid;
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  display: none; }
+
+.notifications--error {
+  background: #CC1100;
+  border-bottom: 3px #9D1309 solid; }

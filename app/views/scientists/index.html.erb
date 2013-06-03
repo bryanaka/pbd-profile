@@ -1,20 +1,3 @@
-<style>
-	.inline-editable {
-		display: inline-block;
-		max-height: 100%;
-		border: #0090D2 1px dashed;
-		padding: 5px;
-	}
-	.inline-editable.inline {
-		display: inline !important;
-	}
-	.navigate-profile.button--blue {
-		width: 100%;
-		left: -3px;
-	}
-</style>
-
-
 <div class="mainContent--fitted grid" id="mainContent">
 	
 	<div id="bb-container">
@@ -23,26 +6,7 @@
 
 	<script id="scientist-index-template" type="text/x-handlebars-template">
 		<h1 class="grid__item one-whole">Edit Scientists</h1>
-
-		{{#each scientists}}
-			<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
-				<div class="scientistCard">
-					<a href="/scientists/{{this.id}}" class="navigate-profile" >
-						<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
-						<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
-					</a>
-					<section class="scientistCard__buttonGroup">
-						{{! if can? :read, scientist }}
-						<a href="/scientists/{{this.id}}" class="button--blue navigate-profile">
-							Edit
-						</a>
-						{{! end }}
-						{{! link_to 'Show', scientist, :class => "button" }}
-					</section>
-				</div>
-			</article>
-		{{/each}}
-
+		<div id="scientists_list"></div>
 	</script>
 
 	<script id="scientist-edit-template" type="text/x-handlebars-template">
@@ -64,46 +28,17 @@
 					<i class="icon-save"></i> Save Profile
 				</a>
 
-				<h2>{{title}}</h2>
+				<h2>
+					<span contenteditable="true" class="inline-editable" id="scientist_primary_title">
+						{{title}}
+					</span>
+				</h2>
 				{{! This needs to be associated to scientist__titles model }}
 				<article class="profile__titles grid__item one-half hidden-palm">
-						<ul id="titles_sortable" data-intro="<h4 class='intro__title'>Titles</h4>Your Titles here are sortable, so place them how ever you would like by dragging the sort icon. Remove the Title with the Remove Icon." data-step="3">
-							{{#each titles}}
-								<li class="sortable clearfix">
-									<span class="float-left">
-										<i class="icon-sort sort-handle"></i><br>
-										<i class="icon-remove delete-title"></i>
-									</span> 
-									<span contenteditable="true" class="">
-										{{title}}
-									</span>
-								</li>
-							{{/each}}
-						</ul>
+
 				</article>
 				<article class="profile__websites grid__item one-half hidden-palm" 
-					data-intro="<h4 class='intro__title'>Websites</h4>These work similarly to titles. Double check your URLs!" data-step="4">
-					<h4>Websites:</h4>
-					<ul>
-						{{#each websites}}
-							<li class="sortable clearfix">
-								<span class="float-left">
-									<i class="icon-sort sort-handle"></i><br>
-									<i class="icon-remove delete-title"></i>
-								</span>
-								<span class="">
-									Name:
-									<span contenteditable="true" name="web_name">
-										{{name}}
-									</span><br>
-									URL:
-									<span name="web_url"contenteditable="true">
-										{{url}}
-									</span>
-								</span>
-							</li>
-						{{/each}}
-					</ul>
+
 				</article>
 			</section>
 		</div>

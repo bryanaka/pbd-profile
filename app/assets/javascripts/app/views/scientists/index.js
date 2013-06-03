@@ -1,25 +1,14 @@
 App.ScientistIndexView = Backbone.View.extend({
 	el: "#bb-container",
-	template: Handlebars.compile( $("#scientist-card-template").html() ),
+	template: $("#scientist-index-template").html(),
 	initialize: function () {
 		this.collection = new App.Scientists();
 	},
 	render: function () {
-		var that = this;
-		this.collection.fetch({
-			success: function (scientists) {
-				var scientists_data = scientists.toJSON();
-				console.log(scientists_data);
-				var buffer = "";
-				_.each(scientists_data[0].scientists, function(scientist, index, list) {
-					buffer += that.template(scientist);
-				});
-				that.$el.append(buffer);
-			},
-			error: function () {
-				throw("Scientists/index didn't load correctly");
-			}
-		});
+		this.$el.empty();
+		this.$el.append(this.template);
+		var scientist_card_list = new App.ScientistCardListView();
+		scientist_card_list.render();
 	},
 	events: {
 		"click .navigate-profile": "routeProfile"

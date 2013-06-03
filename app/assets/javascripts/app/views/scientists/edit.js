@@ -6,6 +6,7 @@ App.ScientistEditView = Backbone.View.extend({
 	bindings: {
 		"first_name":"[name=scientist_first_name]",
 		"last_name":"[name=scientist_last_name]",
+		"title": "#scientist_primary_title",
 		"profile.emphasis": {
 			selector: "[name=scientist_profile_emphasis]",
 			elAttribute: "html",
@@ -60,6 +61,27 @@ App.ScientistEditView = Backbone.View.extend({
 	},
 	saveProfile: function (event){
 		event.preventDefault();
-		this.model.save();
+		this.model.save({}, {
+			success: function () {
+				var $message = $("#notificationBar");
+				$message.text("Successfully Saved!");
+				$message.slideDown(600);
+				function slider() {
+					$message.slideUp();
+				}
+				setTimeout(slider, 5000);
+			},
+			error: function () {
+				var $message = $("#notificationBar");
+				$message.text("There was an error when saving.");
+				$message.toggleClass('notifications--error');
+				$message.slideDown(600);
+				function slider() {
+					$message.slideUp();
+				}
+				setTimeout(slider, 5000);
+			}
+		});
+
 	}
 });
