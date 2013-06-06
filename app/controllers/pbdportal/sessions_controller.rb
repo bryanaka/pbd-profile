@@ -4,10 +4,18 @@ class SessionsController < ApplicationController
   def create
     # Get Shibboleth Data, then digest it.
     # finally, find the user based on shib data
-    scientist = ScientistProfile.find_by_email(request.env["HTTP_EPPN"].downcase)
-    shibuser = User.find_by_eppn(request.env["HTTP_EPPN"].downcase)
+    http_eppn = request.env["HTTP_EPPN"]
+    http_mail = request.env["HTTP_MAIL"]
+    http_cn = request.env["HTTP_CN"]
+    http_eppn.downcase!
+    http_mail.downcase!
+    http_cn.downcase!.capitalize!
 
-    params = {eppn: request.env["HTTP_EPPN"].downcase, email: request.env["HTTP_MAIL"].downcase, name: request.env["HTTP_CN"].downcase.capitalize}
+
+    scientist = ScientistProfile.find_by_email(http_mail)
+    shibuser = User.find_by_eppn(http_eppn)
+
+    params = {eppn: http_eppn, email: http_mail, name: http_cn }
 
     # if the user is both a scientist and is not registered already
     # allow auto-confirmation and add scientist role
