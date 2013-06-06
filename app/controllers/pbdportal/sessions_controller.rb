@@ -1,3 +1,4 @@
+require 'pp'
 class SessionsController < ApplicationController
 
   # this definitely needs to be refactored.
@@ -10,6 +11,7 @@ class SessionsController < ApplicationController
     http_eppn.downcase!
     http_mail.downcase!
     http_cn.downcase!.capitalize!
+    pp http_eppn
 
 
     scientist = ScientistProfile.find_by_email(http_mail)
@@ -37,10 +39,10 @@ class SessionsController < ApplicationController
       # if user is not new and confirmed
       if shibuser.confirmed
         session[:user_eppn] = shibuser.eppn
-        redirect_to root_path, :notice => "You have been sucessfully logged in"
+        redirect_to root_path, :protocol => 'https', :notice => "You have been sucessfully logged in"
       # user not new and not yet confirmed
       else
-        redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
+        redirect_to root_path, :protocol => 'https', :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
       end
     end
 
