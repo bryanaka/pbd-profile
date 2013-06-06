@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 		@current_user ||= User.find_by_eppn(session[:user_eppn]) if session[:user_eppn]
 	end
 
+	def current_user_roles
+		@current_user.roles ||= current_user.roles
+	end
+	
 	def shib_user
 		@shib_user ||= User.find_by_eppn(request.env[:HTTP_EPPN])
 	end

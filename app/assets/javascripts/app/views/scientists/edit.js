@@ -9,8 +9,8 @@ App.ScientistEditView = Backbone.View.extend({
 		"title": "#scientist_primary_title",
 		"profile.emphasis": {
 			selector: "[name=scientist_profile_emphasis]",
-			elAttribute: "html",
-			converter: BindingHelpers.trim_p
+			elAttribute: "html"
+			// the trim p helper is creating problems with the CKeditor
 		},
 		"profile.company": {
 			selector: "#profile_company",

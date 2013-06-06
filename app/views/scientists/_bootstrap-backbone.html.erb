@@ -1,0 +1,34 @@
+<script>
+	<% tmp_user = current_user %>
+	var AppSettings = {};
+	AppSettings.current_user = <%=raw tmp_user.to_json %>;
+	AppSettings.current_user_roles = <%=raw tmp_user.roles.to_json %>;
+	AppSettings.current_roles = function () {
+		var roles = _.pluck(AppSettings.current_user_roles, 'name');
+		return roles;
+	}
+	AppSettings.has_role = function (roles) {
+		//var check_role = function (roles) {
+			var found = _.findWhere(AppSettings.current_roles(), roles);
+			if (found != null) {
+				return true;
+			} else {
+				return false;
+			}
+		//}
+		//if ( _.isArray(roles) ) {
+		//	var matches = [];
+		//	_.each(check_role, function (role, role_index, role_list){
+		//		matches.push( check_role(role) );
+		//	});
+		//	var found = _.findWhere(matches, true);
+		//	if (found != null) {
+		//		return true;
+		//	} else {
+		//		return false;
+		//	}
+		//} else {
+		//	check_role(roles);
+		//}
+	};
+</script>
