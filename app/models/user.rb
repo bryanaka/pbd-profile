@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :eppn, :confirmed, :scientist_id
 
   validates :eppn, :name, :email, :presence => true 
-	validates_uniqueness_of :eppn, :email, :name, :scientist_id
+	validates_uniqueness_of :eppn, :email, :name
+  validates_uniqueness_of :scientist_id, :allow_nil => true, :allow_blank => true
 
 
   # def current_user

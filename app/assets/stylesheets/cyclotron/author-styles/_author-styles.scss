@@ -108,9 +108,69 @@
 	border: #222 4px solid;
 	background: $off-white;
 }
-/*
-Scientists App
-*/
+/*	*****************************
+	PORTAL - NEEDS SORTING
+	***************************** */
+		.tile--flat {
+		border: #025076 3px solid;
+		background: #FAFAFA;
+		color: #025076;
+		height:150px;
+		vertical-align: bottom;
+		border-collapse: collapse;
+		text-align: left;
+		-webkit-transition: color 0.5s;
+		-moz-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: background 0.5s;
+		-moz-transition: background 0.5s;
+		transition: background 0.5s;
+		cursor: pointer;
+		position: relative;
+		overflow: hidden;
+	}
+	.tile--flat:hover {
+		background-color: #025076;
+		color: #FAFAFA;
+		-webkit-transition: color 0.5s;
+		-moz-transition: color 0.5s;
+		transition: color 0.5s;
+		-webkit-transition: background 0.5s;
+		-moz-transition: background 0.5s;
+		transition: background 0.5s;
+	}
+	.tile--flat .tile__icon {
+		position: absolute;
+		font-size: 4rem;
+		left: 45%;
+		top: 100%;
+		color: #FAFAFA;
+		-webkit-transition: top 0.5s;
+		-moz-transition: top 0.5s;
+		transition: top 0.5s;
+		-webkit-backface-visibility: hidden;
+		   -moz-backface-visibility: hidden;
+		   	-ms-backface-visibility: hidden;
+		   		backface-visibility: hidden;
+		-webkit-perspective: 1000;
+		   -moz-perspective: 1000;
+		   	-ms-perspective: 1000;
+		   		perspective: 1000;
+
+	}
+	.tile--flat:hover .tile__icon {
+		top:35%;
+		-webkit-transition: top 0.5s;
+		-moz-transition: top 0.5s;
+		transition: top 0.5s;
+	}
+	.mainFooter {
+		z-index: 3;
+		position: relative;
+	}
+/*	*****************************
+	Profile App
+	******************************/
 .inline-editable {
 	display: inline-block;
 	max-height: 100%;

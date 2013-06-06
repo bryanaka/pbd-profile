@@ -1,8 +1,15 @@
 <script>
-	<% tmp_user = current_user %>
 	var AppSettings = {};
-	AppSettings.current_user = <%=raw tmp_user.to_json %>;
-	AppSettings.current_user_roles = <%=raw tmp_user.roles.to_json %>;
+	<% if current_user %>
+		<% tmp_user = current_user %>
+		AppSettings.current_user = <%=raw tmp_user.to_json %>;
+		AppSettings.current_user_roles = <%=raw tmp_user.roles.to_json %>;
+	<% else %>
+		AppSettings.current_user = {
+			scientist_id: null
+		};
+		AppSettings.current_user_roles = null;
+	<% end %>
 	AppSettings.current_roles = function () {
 		var roles = _.pluck(AppSettings.current_user_roles, 'name');
 		return roles;
