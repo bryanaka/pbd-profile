@@ -1,6 +1,6 @@
 App.Scientist = Backbone.DeepModel.extend({
 	paramRoot: 'scientist',
-	urlRoot: '/api/v1/scientists/',
+	urlRoot: '/pbdportal/api/v1/scientists/',
 	defaults: {
 		first_name: "First Name",
 		last_name: "Last Name",
