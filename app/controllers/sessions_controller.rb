@@ -4,10 +4,19 @@ class SessionsController < ApplicationController
   def create
     # Get Shibboleth Data, then digest it.
     # finally, find the user based on shib data
-    scientist = ScientistProfile.find_by_email(request.env["HTTP_EPPN"])
-    shibuser = User.find_by_eppn(request.env["HTTP_EPPN"])
+    http_eppn = request.env["HTTP_EPPN"]
+    http_mail = request.env["HTTP_MAIL"]
+    http_cn = request.env["HTTP_CN"]
+    http_eppn.downcase!
+    http_mail.downcase!
+    http_cn.downcase!.capitalize!
+    puts http_eppn
 
-    params = {eppn: request.env["HTTP_EPPN"], email: request.env["HTTP_MAIL"], name: request.env["HTTP_CN"]}
+
+    scientist = ScientistProfile.find_by_email(http_mail)
+    shibuser = User.find_by_eppn(http_eppn)
+
+    params = {eppn: http_eppn, email: http_mail, name: http_cn }
 
     # if the user is both a scientist and is not registered already
     # allow auto-confirmation and add scientist role
@@ -24,15 +33,15 @@ class SessionsController < ApplicationController
     if shibuser.new?
       shibuser = User.new(params)
       WebmasterMailer.confirm_user_email(shibuser).deliver
-      redirect_to root_path, :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
+      redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       # if user is not new and confirmed
       if shibuser.confirmed
         session[:user_eppn] = shibuser.eppn
-        redirect_to root_path, :notice => "You have been sucessfully logged in"
+        redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been sucessfully logged in"
       # user not new and not yet confirmed
       else
-        redirect_to root_path, :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
+        redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
       end
     end
 
@@ -40,7 +49,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_eppn] = nil
-    redirect_to root_path, :notice => "You have been logged out of PBD Portal"
+    redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been logged out of PBD Portal"
   end
 
   private
