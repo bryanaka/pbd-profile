@@ -3,11 +3,11 @@
 @mixin font-add( $font-family: "", $url: "", $font-weight: normal, $font-style: normal ) {
 	@font-face {
     	font-family: "#{$font-family}";
-    	src: url('../#{$url}.eot');
-    	src: url('../#{$url}.eot?#iefix') format('embedded-opentype'),
-    	     url('../#{$url}.woff') format('woff'),
-    	     url('../#{$url}.ttf') format('truetype'),
-    	     url('../#{$url}.svg##{$font-family}') format('svg');
+    	src: url('/assets/#{$url}.eot');
+    	src: url('/assets/#{$url}.eot?#iefix') format('embedded-opentype'),
+    	     url('/assets/#{$url}.woff') format('woff'),
+    	     url('/assets/#{$url}.ttf') format('truetype'),
+    	     url('/assets/#{$url}.svg##{$font-family}') format('svg');
     	font-weight: $font-weight;
     	font-style:  $font-style;
 	}
