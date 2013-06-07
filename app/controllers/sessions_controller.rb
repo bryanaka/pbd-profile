@@ -33,15 +33,15 @@ class SessionsController < ApplicationController
     if shibuser.new?
       shibuser = User.new(params)
       WebmasterMailer.confirm_user_email(shibuser).deliver
-      redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
+      redirect_to root_url(:protocol => 'https'), :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
     else
       # if user is not new and confirmed
       if shibuser.confirmed
         session[:user_eppn] = shibuser.eppn
-        redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been sucessfully logged in"
+        redirect_to root_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
       # user not new and not yet confirmed
       else
-        redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
+        redirect_to root_url(:protocol => 'https'), :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
       end
     end
 
@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_eppn] = nil
-    redirect_to "https://pbd-www-test.lbl.gov/pbdportal", :notice => "You have been logged out of PBD Portal"
+    redirect_to root_url(:protocol => 'https'), :notice => "You have been logged out of PBD Portal"
   end
 
   private

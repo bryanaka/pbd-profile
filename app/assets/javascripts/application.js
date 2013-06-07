@@ -14,26 +14,14 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require vendor/tinymce/tiny_mce
+//= require ckeditor/init
 //= require vendor/underscore/underscore-min
-//= require vendor/equalize/equalize.min.js
 //= require vendor/handlebars/handlebars.min.js
 //= require vendor/backbone/backbone-min
 //= require vendor/backbone/backbone.marionette/backbone.marionette.min.js
 //= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
 //= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
-//= require vendor/ckeditor/ckeditor.js
 //= require app/app.js
 //= require scientist
 //= require vendor/intro/intro.js
 //= require_self
-
-(function(){
-	var $flash = $('.flash_notice');
-	$(function(){
-		if ($flash !== []){
-			setTimeout(function(){
-				$flash.slideUp(600);
-			}, 3000);
-		}
-	});
-})();

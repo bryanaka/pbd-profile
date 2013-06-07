@@ -4,22 +4,23 @@ gem 'rails', '3.2.13'
 # Universal Gems
 gem "jquery-rails"
 gem 'jquery-ui-rails'
+gem "pg", "~> 0.15.1"
 gem "cancan", "~> 1.6.10"
 gem "rolify"
 gem "simple_form", "~> 2.1.0"
 gem "figaro", ">= 0.6.4"
 gem "strong_parameters", "~> 0.2.1"
 gem "carrierwave"
-gem "pg", "~> 0.15.1"
 gem "active_model_serializers", "~> 0.8.1"
-gem "font-awesome-rails"
 # gem 'backbone-nested-attributes'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+# style and UI assets
+gem "font-awesome-rails"
+gem "ckeditor"
+gem "mini_magick"
 
 group :development do
 	gem "better_errors", ">= 0.8.0"
@@ -35,6 +36,9 @@ group :development, :test do
 	gem "jasmine"
 end
 
+# Deploy with Capistrano
+# gem 'capistrano'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -43,7 +47,6 @@ group :assets do
 	gem 'uglifier', '~> 2.1.0'
 	gem 'compass-rails'
 end
-
 
 group :test do
 	gem "database_cleaner", "~> 1.0.1"

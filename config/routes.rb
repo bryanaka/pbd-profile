@@ -1,4 +1,6 @@
 PbdPortal::Application.routes.draw do
+  
+  mount Ckeditor::Engine => '/ckeditor'
 
   scope :pbdportal, :path => "/pbdportal" do
 
@@ -9,15 +11,15 @@ PbdPortal::Application.routes.draw do
     
     get "users" => "users#index"
   
-    get "login" => "sessions#create"
-    get "logout" => "sessions#destroy"
+    match "login" => "sessions#create"
+    match "logout" => "sessions#destroy"
   
   
     # Use Routes with Backbone
-    get "/scientists/"          => "scientists#index"
-    get "/scientists/:id"       => "scientists#index"
-    get "/scientists/:id/edit"  => "scientists#index"
-    get "/scientists/new"       => "scientists#index"
+    match "/scientists/"          => "scientists#index"
+    match "/scientists/:id"       => "scientists#index"
+    match "/scientists/:id/edit"  => "scientists#index"
+    match "/scientists/new"       => "scientists#index"
   
     namespace :api, defaults: {format: 'json'} do
       namespace :v1 do
