@@ -12,7 +12,7 @@
  *= require scientist
  *= require vendor/intro/introjs.css
  *= require vendor/idealforms/jquery.idealforms.min.css
- *= require font-awesome/css/font-awesome.min.css
+ *= require font-awesome
  *= require_self
  */
 body {
