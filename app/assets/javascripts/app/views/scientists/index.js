@@ -16,7 +16,6 @@ App.ScientistIndexView = Backbone.View.extend({
 	routeProfile: function (event) {
 		event.preventDefault();
 		var href = $(event.target).closest('a').attr('href').split(/scientists\//);
-		console.log(href[1]);
 		router.navigate(href[1], { trigger: true } );
 	}
 });

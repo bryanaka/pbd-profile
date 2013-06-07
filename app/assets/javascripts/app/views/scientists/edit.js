@@ -6,11 +6,9 @@ App.ScientistEditView = Backbone.View.extend({
 	bindings: {
 		"first_name":"[name=scientist_first_name]",
 		"last_name":"[name=scientist_last_name]",
-		"title": "#scientist_primary_title",
-		"profile.emphasis": {
-			selector: "[name=scientist_profile_emphasis]",
+		"title": {
+			selector: "#scientist_primary_title",
 			elAttribute: "html"
-			// the trim p helper is creating problems with the CKeditor
 		},
 		"profile.company": {
 			selector: "#profile_company",
@@ -28,9 +26,34 @@ App.ScientistEditView = Backbone.View.extend({
 			selector: "#profile_city",
 			elAttribute: "text"
 		},
+		"profile.state": {
+			selector:"#profile_state",
+			elAttribute:"text"
+		},
+		"profile.zip_code": {
+			selector:"#profile_zip_code",
+			elAttribute:"text"
+		},
+		"profile.phone1": {
+			selector:"#profile_phone1",
+			elAttribute:"text"
+		},
+		"profile.phone2_type": {
+			selector:"#profile_phone2_type",
+			elAttribute:"text"
+		},
+		"profile.phone2": {
+			selector:"#profile_phone2",
+			elAttribute:"text"
+		},
 		"profile.email": {
 			selector: "#profile_email",
 			elAttribute: "text"
+		},
+		"profile.emphasis": {
+			selector: "[name=scientist_profile_emphasis]",
+			elAttribute: "html"
+			// the trim p helper is creating problems with the CKeditor
 		},
 		"profile.summary": {
 			selector: "#profile_summary",
@@ -54,12 +77,14 @@ App.ScientistEditView = Backbone.View.extend({
 	},
 	events: {
 		"blur .inline-editable":"fix_ckeditor",
-		"click #save":"saveProfile"
+		"click #action--Save":"saveProfile",
+		"click #action--Back":"gotoPortal"
 	},
 	fix_ckeditor: function (event) {
-		$(event.target).css('top', '');
+		// need to figure out how to fix the responsive problem with ckeditor
+		//$('.cke').css('top', '');
 	},
-	saveProfile: function (event){
+	saveProfile: function (event) {
 		event.preventDefault();
 		this.model.save({}, {
 			success: function () {
@@ -82,6 +107,13 @@ App.ScientistEditView = Backbone.View.extend({
 				setTimeout(slider, 5000);
 			}
 		});
-
+	},
+	gotoPortal: function (event) {
+		event.preventDefault();
+		if (history) {
+			history.back();
+		} else {
+			window.location = "//" + window.location.host + "/pbdportal";
+		}
 	}
 });

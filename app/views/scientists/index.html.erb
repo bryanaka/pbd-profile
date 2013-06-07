@@ -27,9 +27,12 @@
 						{{last_name}}
 					</span>
 				</h1>
-				<a href="#" class="button--blue" id="save">
-					<i class="icon-save"></i> Save Profile
+				<a href="#" class="button--blue" id="action--Save">
+					<i class="icon-save"></i> Save
 				</a>
+				<a href="#" class="button" id="action--Back">
+					<i class="icon-step-backward"></i> Go Back
+ 				</a>
 
 				<h2>
 					<span contenteditable="true" class="inline-editable" id="scientist_primary_title">
@@ -84,13 +87,13 @@
 			<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 				<h3>Contact Information</h3>
 				<span>Primary Number:</span> 
-				<span contenteditable="true" class="inline-editable">
+				<span contenteditable="true" class="inline-editable" id="profile_phone1">
 					{{profile.phone1}}
 				</span><br>
-				<span contenteditable="true" class="inline-editable">
+				<span contenteditable="true" class="inline-editable" id="profile_phone2_type">
 					{{profile.phone2_type}}
 				</span>: 
-				<span contenteditable="true" class="inline-editable">
+				<span contenteditable="true" class="inline-editable" id="profile_phone2">
 					{{profile.phone2}}
 				</span><br>
 				<span>E-Mail:</span> 

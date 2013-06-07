@@ -27,7 +27,7 @@ var BindingHelpers = {
 	optional_add: function (direction, value) {
 		var new_value = BindingHelpers.trim_p(direction, value);
 		// this allows us to designate an area as option by using **optional** 
-		if (new_value !== "" || new_value !== null || new_value !== undefined) {
+		if (new_value != null) {
 			match = new_value.match(/.*\*\*optional\*\*.*/ig, "");
 			if (match !== null || new_value === "<p>&nbsp;</p>"){
 				return "";

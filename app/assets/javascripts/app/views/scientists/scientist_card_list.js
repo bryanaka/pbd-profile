@@ -9,7 +9,6 @@ App.ScientistCardListView = Backbone.View.extend({
 		this.collection.fetch({
 			success: function (scientists) {
 				var scientists_data = scientists.toJSON();
-				console.log(scientists_data);
 				// render all scientists if user is admin
 				if ( AppSettings.has_role('admin') ) {
 					var buffer = "";
@@ -41,7 +40,6 @@ App.ScientistCardListView = Backbone.View.extend({
 	routeProfile: function (event) {
 		event.preventDefault();
 		var href = $(event.target).closest('a').attr('href').split(/scientists\//);
-		console.log(href[1]);
 		router.navigate(href[1], { trigger: true } );
 	}
 });
