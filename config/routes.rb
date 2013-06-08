@@ -4,8 +4,11 @@ PbdPortal::Application.routes.draw do
 
   scope :pbdportal, :path => "/pbdportal" do
 
-    root :to => 'pages#index'
-  
+    root :to => 'sessions#create'
+
+    match "home" => "pages#index"
+    match "unconfirmed" => "pages#unconfirmed"
+      
     resources :videos
     resources :news
     
