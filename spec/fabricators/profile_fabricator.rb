@@ -1,6 +1,5 @@
 require 'faker'
-Fabricator(:scientist_profile) do
-  scientist
+Fabricator(:profile, from: :scientist_profile) do
   prefix         "Dr."
   department     { Faker::Company.name }
   department_url { Faker::Internet.url }
@@ -17,5 +16,5 @@ Fabricator(:scientist_profile) do
   summary        { Faker::Lorem.paragraphs.join("<br>\n") }
   emphasis       { Faker::Lorem.paragraphs.join("<br>\n") }
   location       "My Random Location"
-  #scientist_id   { self.scientist.id }
+  scientist_id   nil
 end

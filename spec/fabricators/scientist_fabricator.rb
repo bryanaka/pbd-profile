@@ -1,5 +1,6 @@
 require 'faker'
 Fabricator(:scientist) do
+  profile 	 { Fabricate(:profile) }
   first_name { Faker::Name.first_name }
   last_name  { Faker::Name.last_name }
   #picture		 { { :url => Faker::Name.first_name[0] + Faker::Name.last_name + ".jpg" } }

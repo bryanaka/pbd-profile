@@ -1,6 +1,6 @@
 class ScientistProfile < ActiveRecord::Base
   belongs_to :scientist
   #validates_presence_of :company, :department
-  validates_presence_of :phone1, :email, :address1, :city, :state, :zip_code, :emphasis, :scientist, :scientist_id
+  validates_presence_of :phone1, :email, :address1, :city, :state, :zip_code, :emphasis
   validates_uniqueness_of :scientist_id, :email
 end

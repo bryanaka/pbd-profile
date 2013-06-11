@@ -24,69 +24,91 @@ describe Api::V1::ScientistsController do
       assigns(:scientists).should eq([scientist])
     end
 
-    it "renders JSON to the client" do
+    it "renders JSON to the client as a collection" do
+      # this test needs to be refactored to test for actual json vs one attribute
       3.times do
         Fabricate(:scientist)
       end
-      @scientist = Scientist.find(2)
+      @scientist1 = Scientist.find(1)
+      @scientist2 = Scientist.find(2)
+      @scientist3 = Scientist.find(3)
       get :index, {}, valid_session
-      response.body.should include(@scientist.first_name)
+      response.body.should include(@scientist1.first_name)
+      response.body.should include(@scientist2.last_name)
+      response.body.should include(@scientist3.slug)
+    end
+
+    context "should only render what is needed" do
+
+      it "does not render any profile attributes"
+      it "does not render any website attributes"
+      it "should only render the first title"
+
     end
     
   end
 
   describe "GET show" do
-    it "assigns the requested scientist as @scientist" do
-      scientist = Scientist.create! valid_attributes
-      get :show, {:id => scientist.to_param}, valid_session
-      assigns(:scientist).should eq(scientist)
+    before :each do
+      3.times do
+        Fabricate(:scientist)
+      end
+      @scientist = Scientist.find( rand(1..3) )
+      @scientist1 = Scientist.find(1)
+      @scientist2 = Scientist.find(2)
+      @scientist3 = Scientist.find(3)
     end
-  end
 
-  describe "GET new" do
-    it "assigns a new scientist as @scientist" do
-      get :new, {}, valid_session
-      assigns(:scientist).should be_a_new(Scientist)
-    end
-  end
-
-  describe "GET edit" do
     it "assigns the requested scientist as @scientist" do
-      scientist = Scientist.create! valid_attributes
-      get :edit, {:id => scientist.to_param}, valid_session
-      assigns(:scientist).should eq(scientist)
+      get :show, {:id => @scientist1.to_param}, valid_session
+      assigns(:scientist).should eq(@scientist1)
     end
+
+    it "renders scientist JSON to the client" do
+      # this test needs to be refactored to test for actual json vs one attribute
+      get :show, { :id => @scientist.to_param }, valid_session
+      response.body.should include(@scientist.last_name)
+    end
+
+    it "renders the profile JSON in the response" do
+      get :show, { :id => @scientist.to_param }, valid_session
+      response.body.should include(@scientist.profile.address1)
+    end
+
+    it "renders the websites JSON in the response"
+
+    it "renders the titles JSON in the response"
   end
 
   describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Scientist" do
+    context "with valid params" do
+      xit "creates a new Scientist" do
         expect {
           post :create, {:scientist => valid_attributes}, valid_session
         }.to change(Scientist, :count).by(1)
       end
 
-      it "assigns a newly created scientist as @scientist" do
+      xit "assigns a newly created scientist as @scientist" do
         post :create, {:scientist => valid_attributes}, valid_session
         assigns(:scientist).should be_a(Scientist)
         assigns(:scientist).should be_persisted
       end
 
-      it "redirects to the created scientist" do
+      xit "redirects to the created scientist" do
         post :create, {:scientist => valid_attributes}, valid_session
         response.should redirect_to(Scientist.last)
       end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved scientist as @scientist" do
+    context "with invalid params" do
+      xit "assigns a newly created but unsaved scientist as @scientist" do
         # Trigger the behavior that occurs when invalid params are submitted
         Scientist.any_instance.stub(:save).and_return(false)
         post :create, {:scientist => {  }}, valid_session
         assigns(:scientist).should be_a_new(Scientist)
       end
 
-      it "re-renders the 'new' template" do
+      xit "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Scientist.any_instance.stub(:save).and_return(false)
         post :create, {:scientist => {  }}, valid_session
@@ -97,7 +119,7 @@ describe Api::V1::ScientistsController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested scientist" do
+      xit "updates the requested scientist" do
         scientist = Scientist.create! valid_attributes
         # Assuming there are no other scientists in the database, this
         # specifies that the Scientist created on the previous line
@@ -107,13 +129,13 @@ describe Api::V1::ScientistsController do
         put :update, {:id => scientist.to_param, :scientist => { "these" => "params" }}, valid_session
       end
 
-      it "assigns the requested scientist as @scientist" do
+      xit "assigns the requested scientist as @scientist" do
         scientist = Scientist.create! valid_attributes
         put :update, {:id => scientist.to_param, :scientist => valid_attributes}, valid_session
         assigns(:scientist).should eq(scientist)
       end
 
-      it "redirects to the scientist" do
+      xit "redirects to the scientist" do
         scientist = Scientist.create! valid_attributes
         put :update, {:id => scientist.to_param, :scientist => valid_attributes}, valid_session
         response.should redirect_to(scientist)
@@ -121,7 +143,7 @@ describe Api::V1::ScientistsController do
     end
 
     describe "with invalid params" do
-      it "assigns the scientist as @scientist" do
+      xit "assigns the scientist as @scientist" do
         scientist = Scientist.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Scientist.any_instance.stub(:save).and_return(false)
@@ -129,7 +151,7 @@ describe Api::V1::ScientistsController do
         assigns(:scientist).should eq(scientist)
       end
 
-      it "re-renders the 'edit' template" do
+      xit "re-renders the 'edit' template" do
         scientist = Scientist.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Scientist.any_instance.stub(:save).and_return(false)
@@ -140,14 +162,14 @@ describe Api::V1::ScientistsController do
   end
 
   describe "DELETE destroy" do
-    it "destroys the requested scientist" do
+    xit "destroys the requested scientist" do
       scientist = Scientist.create! valid_attributes
       expect {
         delete :destroy, {:id => scientist.to_param}, valid_session
       }.to change(Scientist, :count).by(-1)
     end
 
-    it "redirects to the scientists list" do
+    xit "redirects to the scientists list" do
       scientist = Scientist.create! valid_attributes
       delete :destroy, {:id => scientist.to_param}, valid_session
       response.should redirect_to(scientists_url)
