@@ -16,4 +16,15 @@ class User < ActiveRecord::Base
     false
   end
 
+  def is_scientist?
+    
+  end
+
+private
+  
+  def check_if_scientist
+    # should automatically check the database for scientists 
+    # with the same email on creation and then assign them as a scientist
+  end
+
 end

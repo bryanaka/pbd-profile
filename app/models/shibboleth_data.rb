@@ -35,16 +35,23 @@ class ShibbolethData
 		@user ||= User.find_by_eppn(@eppn)
 	end
 
-	#dependancy injection?
 	def has_user?
 		@user != nil ? true : false
 	end
 
 	def confirmed?
-		if @user != nil
+		if self.has_user?
 			return @user.confirmed?
 		else 
 			return false
+		end
+	end
+
+	def is_scientist?
+		if self.has_user?
+			return @user.is_scientist?
+		else
+			false
 		end
 	end
 

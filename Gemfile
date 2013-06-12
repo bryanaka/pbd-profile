@@ -55,6 +55,7 @@ group :test do
 	gem "launchy"
 	gem "guard-rspec"
 	gem "faker"
+	gem "sqlite3"
 end
 
 group :production do

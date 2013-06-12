@@ -4,28 +4,24 @@ class MockRequest < Struct.new(:env)
 end
 
 describe ShibbolethData  do
-	before :all do
-		
-		#@scientist = Fabricate(:user)
-		#@unconfirmed_user = Fabricate(:user)
-	end
 
 	before :each do
+		# confirmed user
 		Fabricate(:user, eppn: "bmrobles@lbl.gov", email: "bmrobles@lbl.gov", name: "Bryan Robles", confirmed: true)
 		request = MockRequest.new( { "HTTP_EPPN" => "bmrobles@lbl.gov", "HTTP_MAIL" => "bmrobles@lbl.gov", "HTTP_CN" => "Bryan Robles" } )
-		@data = ShibbolethData.new(request)
+		@confirmed_data = ShibbolethData.new(request)
 	end
 
 	context "object is is valid" do
 
 		it "with the mock request params" do
-			@data.should be_valid
+			@confirmed_data.should be_valid
 		end
 
 	end
 
 
-	describe "initializing an object" do
+	describe "Initializing an ShibbolethData object" do
 
 		before :each do
 			messy_request = MockRequest.new( { "HTTP_EPPN" => "bmroBLes@lBl.Gov", "HTTP_MAIL" => "bmroblEs@lBl.gov", "HTTP_CN" => "BrYan RoBles" } )
@@ -46,46 +42,72 @@ describe ShibbolethData  do
 		end
 
 		it "should find a user if it exists and return true" do
-			@data.user.should eq( User.find_by_eppn(@data.eppn) )
+			@confirmed_data.user.should eq( User.find_by_eppn(@confirmed_data.eppn) )
 		end
 
 	end
 
-	describe "can check the state of the current user" do
+	describe "can check the state of the current user." do
 		
 		before :each do
 			# scientist user
-			scientist_request = MockRequest.new( { "HTTP_EPPN" => "yodawg@lbl.gov", "HTTP_MAIL" => "yodawg@lbl.gov", "HTTP_CN" => "Yo Dawg" } )
+			scientist = Fabricate :scientist do
+				profile
+			end
+			scientist.save!
+			scientist_user = Fabricate(:user, scientist_id: scientist.id)
+			scientist_request = MockRequest.new( { "HTTP_EPPN" => scientist_user.eppn , "HTTP_MAIL" => scientist_user.email, "HTTP_CN" => scientist_user.name } )
 			@scientist_data = ShibbolethData.new(scientist_request)
+
+			# pending user
+			#pending_user = Fabricate(:user)
+			#pending_request MockRequest.new( { "HTTP_EPPN" => pending_user.eppn , "HTTP_MAIL" => pending_user.email, "HTTP_CN" => pending_user.name } )
+			#@pending_data = ShibbolethData.new(pending_request)
+
 			# unconfirmed user
 			unconfirmed_request = MockRequest.new( { "HTTP_EPPN" => "yodawg@lbl.gov", "HTTP_MAIL" => "yodawg@lbl.gov", "HTTP_CN" => "Yo Dawg" } )
 			@unconfirmed_data = ShibbolethData.new(unconfirmed_request)
 		end
 
-		context "and the user is confirmed" do
+		context "When the user is confirmed" do
 			it "should find the user and #has_user should return true" do
-				pp @data
-				@data.has_user?.should be_true
+				@confirmed_data.has_user?.should be_true
 			end
+			it "#confirmed? should return true" do
+				@confirmed_data.confirmed?.should be_true
+			end
+
 		end
 
-		context "and the user is a scientist" do
-			it ""
+		context "When the user is a scientist" do
+			
+			it "#has_user? should return true" do
+				@scientist_data.has_user?.should be_true	
+			end
+			
+			it "#confirmed? should return true" do
+				@scientist_data.confirmed?.should be_true
+			end
+			
+			it "#is_scientist? :scientist should return true" do
+				@scientist_data.is_scientist?.should be_true
+			end
+
 		end
 		
-		context "and is registered but is unconfirmed" do
+		context "When user is registered but is unconfirmed (pending confirmation) " do
 			
 			it "it finds the user" do 
-				@data.user.should_not be_nil
+				@confirmed_data.user.should_not be_nil
 			end
 
-			it "it returns false when it is not confirmed" do
-				@data.user.confirmed?.should be_false
+			it "#confirmed? returns false" do
+				@unconfirmed_data.confirmed?.should be_false
 			end
 
 		end
 
-		context "and there is no user" do
+		context "When the user is unconfirmed" do
 			
 			it "returns nil when accessing user" do
 				@unconfirmed_data.user.should be_nil
