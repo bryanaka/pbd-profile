@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates :eppn, :name, :email, :presence => true 
 	validates_uniqueness_of :eppn, :email, :name
   validates_uniqueness_of :scientist_id, :allow_nil => true, :allow_blank => true
+  belongs_to :scientist
 
 
   # def current_user

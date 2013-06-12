@@ -59,10 +59,12 @@ describe ShibbolethData  do
 			scientist_request = MockRequest.new( { "HTTP_EPPN" => scientist_user.eppn , "HTTP_MAIL" => scientist_user.email, "HTTP_CN" => scientist_user.name } )
 			@scientist_data = ShibbolethData.new(scientist_request)
 
+			# Pending User - Not correctly building the user? it keeps failing my tests...
+
 			# pending user
-			#pending_user = Fabricate(:user)
-			#pending_request MockRequest.new( { "HTTP_EPPN" => pending_user.eppn , "HTTP_MAIL" => pending_user.email, "HTTP_CN" => pending_user.name } )
-			#@pending_data = ShibbolethData.new(pending_request)
+			# pending_user = Fabricate(:user, eppn: "klmontgomery@lbl.gov", email: "klmontgomery@lbl.gov", name: "Kelly Montgomery", confirmed: false)
+			# pending_request MockRequest.new( { "HTTP_EPPN" => pending_user.eppn , "HTTP_MAIL" => pending_user.email, "HTTP_CN" => pending_user.name } )
+			# @pending_data = ShibbolethData.new(pending_request)
 
 			# unconfirmed user
 			unconfirmed_request = MockRequest.new( { "HTTP_EPPN" => "yodawg@lbl.gov", "HTTP_MAIL" => "yodawg@lbl.gov", "HTTP_CN" => "Yo Dawg" } )
@@ -98,11 +100,11 @@ describe ShibbolethData  do
 		context "When user is registered but is unconfirmed (pending confirmation) " do
 			
 			it "it finds the user" do 
-				@confirmed_data.user.should_not be_nil
+				@pending_data.user.should_not be_nil
 			end
 
 			it "#confirmed? returns false" do
-				@unconfirmed_data.confirmed?.should be_false
+				@pending_data.confirmed?.should be_false
 			end
 
 		end
