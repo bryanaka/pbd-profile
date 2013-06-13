@@ -1,0 +1,31 @@
+# if you want to use sqlite in development
+# add sqlite gem to the combined group
+# 
+# development:
+#   adapter: sqlite3
+#   database: db/development.sqlite3
+#   pool: 15
+#   timeout: 5000
+#
+# Sensitive Data is protected with Figaro
+
+common: &postgres
+  adapter: postgresql
+  host: pbd-postgres.lbl.gov
+  username: ENV["DB_USER"]
+  password: ENV["DB_PASSWORD"]
+  pool: 15
+
+development:
+  <<: *postgres
+  database: pbd_portal-dev
+
+test:
+  adapter: sqlite3
+  database: db/test/testdb<%= ENV['TEST_ENV_NUMBER'] %>.sqlite3
+  pool: 15
+  timeout: 5000
+
+production:
+  <<: *postgres
+  database: pbd_portal
