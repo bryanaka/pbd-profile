@@ -2,31 +2,50 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 # Universal Gems
-gem "jquery-rails"
-gem 'jquery-ui-rails'
+# ==============
+
+# DB and ORM
+# --------------
 gem "pg", "~> 0.15.1"
+gem "strong_parameters", "~> 0.2.1"
+
+# Authorization Logic
+# --------------
 gem "cancan", "~> 1.6.10"
 gem "rolify"
+
+# Data Sanitation
+# --------------
+# gem "loofah"
+# gem "loofah-activerecord"
+
+# API
+# --------------
+gem "active_model_serializers", "~> 0.8.1"
+
+# File IO 
+# --------------
+gem "carrierwave"
+gem "mini_magick"
+
+# helper gems
+# --------------
 gem "simple_form", "~> 2.1.0"
 gem "figaro", ">= 0.6.4"
-gem "strong_parameters", "~> 0.2.1"
-gem "carrierwave"
-gem "active_model_serializers", "~> 0.8.1"
-# gem 'backbone-nested-attributes'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# style and UI assets
+# gem-wrapped assets
+# --------------
 gem "font-awesome-rails"
 gem "ckeditor"
-gem "mini_magick"
+gem "jquery-rails"
+gem 'jquery-ui-rails'
+# gem 'backbone-nested-attributes'
 
 group :development do
 	gem "better_errors", ">= 0.8.0"
 	gem "binding_of_caller", ">= 0.6.9"
 	gem 'quiet_assets'
-	# use this when you need new seed data
+	# use this when you need new seed data. Commented out for safety
 	# gem "seed_dumper"
 end
 
@@ -36,11 +55,7 @@ group :development, :test do
 	gem "jasmine"
 end
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# Gems used only for assets and not required
-# in production environments by default.
+# Gems used only for assets and not required in production environments by default.
 group :assets do
 	gem 'sass-rails',   '~> 3.2.6'
  	gem 'coffee-rails'
@@ -56,8 +71,14 @@ group :test do
 	gem "guard-rspec"
 	gem "faker"
 	gem "sqlite3"
+	gem "poltergeist"
 end
+
+# Deploy with Capistrano
+# gem 'capistrano'
 
 group :production do
 	gem "unicorn", "~> 4.6.2"
+	# or use puma instead
+	# gem "puma"
 end
