@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20130607135924) do
     t.text     "location"
     t.integer  "scientist_id"
     t.string   "publications_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "scientist_titles", :force => true do |t|
