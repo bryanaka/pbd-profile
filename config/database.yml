@@ -12,8 +12,8 @@
 common: &postgres
   adapter: postgresql
   host: pbd-postgres.lbl.gov
-  username: ENV["DB_USER"]
-  password: ENV["DB_PASSWORD"]
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
   pool: 15
 
 development:
