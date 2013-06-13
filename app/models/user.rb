@@ -29,13 +29,12 @@ class User < ActiveRecord::Base
   end
 
   def consume_shibboleth_data!(request=request)
-    raise "You need to pass in the request object" if !request
+    raise "You need to pass in the request object" if !request.env
     self.eppn  = request.env["HTTP_EPPN"]
     self.email = request.env["HTTP_MAIL"]
-    self.name  = request.env["HTTP_CN"]  
+    self.name  = request.env["HTTP_CN"]
+    self
   end
-
-private
   
   def register_scientist!
     if !self.is_scientist?
@@ -53,6 +52,8 @@ private
       return true
     end
   end
+
+private
 
   def capitalize_all_names(name)
     parts = []
