@@ -12,6 +12,10 @@ class Scientist < ActiveRecord::Base
 
 	mount_uploader :picture, PictureUploader
 
+	def full_name
+		return "#{self.first_name} #{self.last_name}"
+	end
+
 	private
 		
 		def create_slug

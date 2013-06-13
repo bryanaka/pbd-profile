@@ -1,45 +1,29 @@
 class SessionsController < ApplicationController
 
   def create
+    @user = User.find_by_eppn( request.env["HTTP_EPPN"].downcase )
+    
+    # if not registered
+    if @user.nil?
+      @user = User.new
+      @user.consume_shibboleth_data!(request).save!
+    end
+
+    @user.register_scientist!
+
+    if @user.is_scientist?
+      redirect_to scientists_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
+    end
+    
+    if @user.confirmed?
+      session[:user_eppn] = shibuser.eppn
+      redirect_to home_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
+    else
+      redirect_to unconfirmed_url(:protocol => 'https'), :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 5 business days, please contact pbdwebmaster@lbl.gov"
+    end
+    
+
   end
-
-
-  # this definitely needs to be refactored.
-#  def create
-    # Get Shibboleth Data, then digest it.
-    # finally, find the user based on shib data
-
-    # This should be a model
-  #   shib_data = ShibbolethData.new(request)
-    
-
-  #   # if the user is both a scientist and is not registered already
-  #   # allow auto-confirmation and add scientist role
-    
-
-  #   shibuser ||= NullUser.new
-  #   # User is completely new
-  #   if shibuser.new?
-  #     shibuser = User.new(params)
-  #     WebmasterMailer.confirm_user_email(shibuser).deliver
-  #     redirect_to unconfirmed_url(:protocol => 'https'), :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 2 business days, please contact pbdwebmaster@lbl.gov"
-  #   else
-  #     # if user is not new and confirmed
-  #     if shibuser.confirmed
-  #       # user is a scientist
-  #       if current_user.has_role? :scientist
-
-  #       else
-  #         session[:user_eppn] = shibuser.eppn
-  #         redirect_to home_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
-  #       end
-  #     # user not new and not yet confirmed
-  #     else
-  #       redirect_to unconfirmed_url(:protocol => 'https'), :notice => "You are still on the waiting list to be confirmed. If 2 business days have passed, please contact pbdwebmaster@lbl.gov"
-  #     end
-  #   end
-
-  # end
 
   def destroy
     session[:user_eppn] = nil
