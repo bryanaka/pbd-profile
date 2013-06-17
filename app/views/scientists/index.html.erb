@@ -1,5 +1,6 @@
 <% content_for :scripts do %>
 	<%= render "bootstrap-backbone" %>
+	<%= javascript_include_tag "vendor/keyboardjs/keyboard.js" %>
 <% end %>
 <div class="mainContent--fitted grid" id="mainContent">
 	
@@ -27,11 +28,11 @@
 						{{last_name}}
 					</span>
 				</h1>
-				<a href="#" class="button--blue" id="action--Save">
+				<a href="#" class="button--green" id="action--Save">
 					<i class="icon-save"></i> Save
 				</a>
-				<a href="#" class="button" id="action--Back">
-					<i class="icon-step-backward"></i> Go Back
+				<a href="#" class="button--red" id="action--Back">
+					<i class="icon-remove-circle"></i> Exit
  				</a>
 
 				<h2>
@@ -149,14 +150,12 @@
 					<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
 					<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
 				</a>
-				<section class="scientistCard__buttonGroup">
-					{{! if can? :read, scientist }}
-					<a href="/scientists/{{this.id}}" class="button--blue navigate-profile">
-						Edit
-					</a>
-					{{! end }}
-					{{! link_to 'Show', scientist, :class => "button" }}
-				</section>
+				{{! if can? :read, scientist }}
+				<a href="/scientists/{{this.id}}" class="button--green navigate-profile">
+					Edit
+				</a>
+				{{! end }}
+				{{! link_to 'Show', scientist, :class => "button" }}
 			</div>
 		</article>
 	</script>

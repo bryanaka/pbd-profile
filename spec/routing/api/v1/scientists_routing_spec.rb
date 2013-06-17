@@ -5,7 +5,7 @@ describe Api::V1::ScientistsController do
 	describe "routing" do
 		
 		it "gets #index" do
-			get("/pbdportal/api/v1/scientists").should route_to(api_v1_scientists_path, :action => "index", :format => "json")
+			get("/pbdportal/api/v1/scientists").should route_to(api_v1_scientists_path, :format => "json")
 		end
 
 		it "puts #update" do

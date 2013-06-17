@@ -37,11 +37,18 @@
 	padding: .35em;
 	padding: .35rem;
 	text-align: center;
-	height: 100%;
+	height: 240px;
 	width: 100%;
 	position:relative;
 	left:-12px;
 	margin:0;
+	.button, .button--green {
+		margin: 0;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom:20px;
+	}
 
 }
 .scientistCard__thumb {
@@ -65,9 +72,6 @@
 	top:-12px;
 	width:113%;
 	left:-5px;
-	.button, .button--blue {
-		margin: 0;
-	}
 }
 .profile__img {
 	padding: 3px;

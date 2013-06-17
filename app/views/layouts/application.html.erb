@@ -19,6 +19,9 @@
 	<%= render 'layouts/messages' %>
 	<header class="mainHeader">
 		<h1>Welcome to The PBD Portal</h1>
+		<h4 class="navUser">
+			Hello, <%= current_user.name %>
+		</h4>
 	</header>
 	<%= render 'layouts/navigation' %>
 	<%= yield %>
