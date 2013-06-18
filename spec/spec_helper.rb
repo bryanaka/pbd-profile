@@ -6,6 +6,7 @@ require 'email_spec'
 require 'rspec/autorun'
 require "capybara/rspec"
 require 'capybara/poltergeist'
+require "rack_session_access/capybara"
 #require 'helpers'
     
 # Requires supporting ruby files with custom matchers and macros, etc,

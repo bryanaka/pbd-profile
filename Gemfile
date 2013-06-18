@@ -16,8 +16,8 @@ gem "rolify"
 
 # Data Sanitation
 # --------------
-# gem "loofah"
-# gem "loofah-activerecord"
+gem "loofah"
+gem "loofah-activerecord"
 
 # API
 # --------------
@@ -72,6 +72,8 @@ group :test do
 	gem "faker"
 	gem "sqlite3"
 	gem "poltergeist"
+	gem "shoulda-matchers"
+	gem "rack_session_access"
 end
 
 # Deploy with Capistrano
