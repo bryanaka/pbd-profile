@@ -185,6 +185,7 @@ GEM
       ffi (>= 0.5.0)
     rb-kqueue (0.2.0)
       ffi (>= 0.5.0)
+    rdiscount (2.1.6)
     rdoc (3.12.2)
       json (~> 1.4)
     rolify (3.2.0)
@@ -280,6 +281,7 @@ DEPENDENCIES
   quiet_assets
   rack_session_access
   rails (= 3.2.13)
+  rdiscount
   rolify
   rspec-rails (~> 2.13.0)
   sass-rails (~> 3.2.6)

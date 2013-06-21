@@ -32,6 +32,7 @@ gem "mini_magick"
 # --------------
 gem "simple_form", "~> 2.1.0"
 gem "figaro", ">= 0.6.4"
+gem 'rdiscount'
 
 # gem-wrapped assets
 # --------------
