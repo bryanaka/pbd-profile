@@ -49,6 +49,19 @@ describe ScientistProfile do
 
   end
 
+  xit "trims the additional whitespace on save" do
+    full_scientist.attributes.each_pair do |key, value|
+      fu
+    end
+    full_scientist.profile.city = "berkeley         "
+    full_scientist.save!
+    full_scientist.profile.city.should eq("berkeley")
+
+    full_scientist.profile.state = "CA\t\t\t\t\t\t\t\t"
+    full_scientist.save!
+    full_scientist.profile.state.should eq("CA")
+  end
+
 
   context "with valid attributes" do
   	
@@ -65,9 +78,20 @@ describe ScientistProfile do
 
   context "with invalid attributes" do
 
-  	it "is invalid without phone1" do
-  		Fabricate.build(:profile, :phone1 => nil).should_not be_valid 		
-  	end
+    required_attributes = [:phone1, :email, :address1, :city, :state, :zip_code, :emphasis]
+
+    required_attributes.each do |attribute|
+      it { should validate_presence_of(attribute) }
+    end
+
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_uniqueness_of(:scientist_id) }
+
+    xit "should convert numbers into a consistant format" do
+      # take in a number
+      # strip away everything but the numbers
+      # use number_to_phone to change it to correct format
+    end
 
   	xit "is invalid if phone2 is set but phone2_type is not" do
   		profile = Fabricate(:profile, :phone2_type => nil)
@@ -79,51 +103,9 @@ describe ScientistProfile do
   		expect { profile.phone2_type }.to be_nil
   	end
 
-  	#it "is invalid if phone2_type is not cell, fax, secondary, or other"
-  	
-  	it "is invalid without an email" do
-  		Fabricate.build(:profile, :email => nil).should_not be_valid
-  	end
-
-  	it "is invalid if it has a duplicate email" do
-			Fabricate(:profile, :email => "yodawg@example.com")
-			profile1 = Fabricate.build(:profile, :email => "yodawg@example.com")
-			profile1.should_not be_valid
-			expect { profile1.save! }.to raise_error
-  	end
-  	
-  	it "is invalid without an address1" do
-  		Fabricate.build(:profile, :address1 => nil).should_not be_valid
-  	end
-
-  	it "is invalid without a city" do
-  		Fabricate.build(:profile, :city => nil).should_not be_valid
-  	end
-
-  	it "is invalid without a state" do
-  		Fabricate.build(:profile, :state => nil).should_not be_valid
-  	end
-
-  	it "is invalid without a zip code" do
-  		Fabricate.build(:profile, :zip_code => nil).should_not be_valid
-  	end
-
-  	it "is invalid without a emphasis" do
-  		Fabricate.build(:profile, :emphasis => nil).should_not be_valid
-  	end
 
   	xit "is invalid without a related scientist" do
   		Fabricate.build(:profile, :scientist => nil).should_not be_valid
-  	end
-
-  	it "should have a unique scientist_id" do
-  		profile1 = Fabricate(:profile)
-  		profile1.scientist_id = 5
-      profile1.save!
-  		profile2 = Fabricate.build(:profile)
-  		profile2.scientist_id = 5
-  		profile2.should_not be_valid
-  		expect { profile2.save! }.to raise_error
   	end
 
   end

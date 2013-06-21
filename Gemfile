@@ -18,6 +18,7 @@ gem "rolify"
 # --------------
 gem "loofah"
 gem "loofah-activerecord"
+gem "strip_attributes", "~> 1.2"
 
 # API
 # --------------

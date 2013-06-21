@@ -6,4 +6,6 @@ class ScientistProfile < ActiveRecord::Base
 
   xss_foliate :except => [:emphasis, :summary]
   xss_foliate :strip => [:emphasis, :summary]
+
+  strip_attributes
 end

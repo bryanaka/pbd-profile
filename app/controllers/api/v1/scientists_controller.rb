@@ -45,7 +45,7 @@ module Api
 
 			# DELETE api/v1/scientist/:id
 			def destroy
-				respond_with Product.destroy(params[:id])
+				# respond_with Scientist.destroy(params[:id])
 			end
 
 			def show_by_slug

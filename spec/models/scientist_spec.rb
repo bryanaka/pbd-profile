@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Scientist do
+
+  # let!(:required_attributes) { [:first_name, :last_name, :title] }
+
+
   context "if attributes are valid" do    
     
     it "has a valid factory" do
@@ -10,36 +14,20 @@ describe Scientist do
 
   end
   
-  context "if attributes are invalid" do
+  context "is invalid if attributes are do not match specific criteria" do
   	# I can't seem to get carrierwave to test correctly...
-  	it "is invalid without first name" do
-  		scientist = Fabricate.build(:scientist, :first_name => nil)
-  		scientist.should_not be_valid
-  	end
-
-  	it "is invalid without last name" do
-  		scientist = Fabricate.build(:scientist, :last_name => nil)
-  		scientist.should_not be_valid
-  	end
+    required_attributes = [:first_name, :last_name, :title]
+    
+    required_attributes.each do |attribute|
+      it { should validate_presence_of(attribute) }
+    end
+    
+    it { should validate_uniqueness_of(:slug) }
 
   	it "should create slug before save" do
   		scientist = Fabricate.build(:scientist, :slug => nil)
   		scientist.save!
   		scientist.slug.should_not be_nil
-  	end
-
-  	it "is invalid and raises exception if it doesn't have a unique slug" do
-  		scientist = Fabricate.build(:scientist, :slug => "yodawg")
-  		scientist1 = Fabricate.build(:scientist, :slug => "yodawg")
-  		scientist.save!
-  		scientist.should be_valid
-  		scientist1.should_not be_valid
-  		expect { scientist1.save! }.to raise_error
-  	end
-
-  	it "is invalid wihtout a title" do
-  		scientist = Fabricate.build(:scientist, :first_name => nil)
-  		scientist.should_not be_valid
   	end
 
 	end
