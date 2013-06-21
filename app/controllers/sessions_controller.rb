@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
   def create
+    if !session[:user_eppn].nil?
+      redirect_to home_url(protocol:'https')
+      return
+    end
     
     http_eppn = request.env["HTTP_EPPN"]
     http_eppn.nil? ? http_eppn : http_eppn.downcase!
@@ -17,25 +21,24 @@ class SessionsController < ApplicationController
 
     if @user.is_scientist?
       session[:user_eppn] = @user.eppn
-      redirect_to scientists_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
+      redirect_to scientists_url(protocol: 'https'), notice: "You have been sucessfully logged in"
       return
     end
     
     if @user.confirmed?
       session[:user_eppn] = @user.eppn
-      redirect_to home_url(:protocol => 'https'), :notice => "You have been sucessfully logged in"
+      redirect_to home_url(protocol: 'https'), notice: "You have been sucessfully logged in"
       return
     else
-      redirect_to unconfirmed_url(:protocol => 'https'), :notice => "You have been placed in the waiting list to be confirmed. If you are not confirmed in 5 business days, please contact pbdwebmaster@lbl.gov"
+      redirect_to unconfirmed_url(protocol: 'https'), notice: "You have been placed in the waiting list to be confirmed. If you are not confirmed in 5 business days, please contact pbdwebmaster@lbl.gov"
       return
     end
     
-
   end
 
   def destroy
     session[:user_eppn] = nil
-    redirect_to home_url(:protocol => 'https'), :notice => "You have been logged out of PBD Portal"
+    redirect_to home_url(protocol: 'https'), notice: "You have been logged out of PBD Portal"
   end
 
   def is_scientist?(user)
