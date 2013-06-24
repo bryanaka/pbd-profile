@@ -41,21 +41,6 @@ class SessionsController < ApplicationController
     redirect_to home_url(protocol: 'https'), notice: "You have been logged out of PBD Portal"
   end
 
-  def is_scientist?(user)
-    scientist = ScientistProfile.find_by_email(@http_mail)
-    if scientist && !user
-      shibuser = User.new(params)
-      shibuser.confirmed = true
-      shibuser.add_role :scientist
-      shibuser.scientist_id = scientist.scientist_id
-      shibuser.save
-    elsif !scientist && user
-
-    else
-      return false
-    end
-  end
-
   private
 
   # def digest_shib_data(user)

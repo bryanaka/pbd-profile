@@ -35,7 +35,10 @@ describe Scientist do
   describe "Scientist model's relations: " do
     
     context "Check if it can build and find relations" do
-      it "can build a profile"
+      it "builds a profile associated with the scientist automatically" do
+        Fabricate(:scientist).profile.should_not be_nil
+      end
+      
       it "can build a title"
       it "can build a website"
     end

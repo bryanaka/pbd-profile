@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
 		@current_user ||= User.find_by_eppn(session[:user_eppn]) if session[:user_eppn]
 	end
 
+	def current_user_has_role?(role)
+		begin
+			@current_user.has_role?(role)
+		rescue NoMethodError
+			false
+		end
+	end
+
 	def current_user_roles
 		@current_user.roles ||= current_user.roles
 	end
@@ -20,5 +28,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	helper_method :current_user
+	helper_method :current_user_has_role?
 
 end

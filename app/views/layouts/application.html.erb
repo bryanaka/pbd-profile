@@ -18,10 +18,12 @@
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
 	<%= render 'layouts/messages' %>
 	<header class="mainHeader">
-		<h1>Welcome to The PBD Portal</h1>
-		<h4 class="navUser">
-			Hello, <%= current_user.name %>
-		</h4>
+		<h1>Welcome to The PBD <% if current_user_has_role? :scientist then %>Scienists<% end; %> Portal</h1>
+		<% if current_user %>
+			<h4 class="navUser">
+				Hello, <%= current_user.name %>
+			</h4>
+		<% end %>
 	</header>
 	<%= render 'layouts/navigation' %>
 	<%= yield %>

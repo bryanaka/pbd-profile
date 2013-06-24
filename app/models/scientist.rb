@@ -1,5 +1,6 @@
 class Scientist < ActiveRecord::Base
 	before_save :create_slug
+	#after_save 	:create_profile
 
 	has_one		:profile, :dependent => :destroy, :class_name => "ScientistProfile"
 	has_one 	:user
@@ -21,5 +22,9 @@ class Scientist < ActiveRecord::Base
 		def create_slug
 			self.slug ||= (self.first_name[0] + self.last_name).downcase!
 		end
+
+		#def create_profile
+		#	seld.build_profile
+		#end
 
 end
