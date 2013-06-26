@@ -2022,6 +2022,12 @@ h6 {
     display: inline-block;
     float: right; }
 
+.mainHeader__title {
+  color: #e1e1e1;
+  text-decoration: none; }
+  .mainHeader__title:hover {
+    color: #FAFAFA; }
+
 .right {
   text-align: right; }
 
@@ -2199,3 +2205,11 @@ h6 {
 .notifications--error {
   background: #CC1100;
   border-bottom: 3px #9D1309 solid; }
+
+/*
+=======================
+Markdown Helpers
+=======================
+*/
+.markdown--docs {
+  text-align: left; }

@@ -7,17 +7,21 @@ PbdPortal::Application.routes.draw do
   scope :pbdportal, :path => "/pbdportal" do
 
     root :to => 'sessions#create'
+    
+    match "/home" => "pages#index"
+    match "/unconfirmed" => "pages#unconfirmed"
+    
+    get '/docs' => 'high_voltage/pages#show', :id => 'index'
+    get '/docs/api' => 'high_voltage/pages#show', :id => 'api/index'
+    get '/docs/:id' => 'high_voltage/pages#show'
 
-    match "home" => "pages#index"
-    match "unconfirmed" => "pages#unconfirmed"
-      
     resources :videos
     resources :news
     
-    get "users" => "users#index"
+    get "/users" => "users#index"
   
-    match "login" => "sessions#create"
-    match "logout" => "sessions#destroy"
+    match "/login" => "sessions#create"
+    match "/logout" => "sessions#destroy"
   
   
     # Use Routes with Backbone

@@ -10,6 +10,11 @@
             <i class="icon-beaker right"></i> Scientists
         <% end %>
     </div>
+    <div class="sideNav--fixed__linkGroup">
+        <%= link_to "/pbdportal/docs", :class => "sideNav--fixed__link" do %>
+            <i class="icon-book right"></i> Documentation
+        <% end %>
+    </div>
     <% if can? :manage, User %>
         <div class="sideNav--fixed__linkGroup">
             <%= link_to users_path, :class => "sideNav--fixed__link" do %>

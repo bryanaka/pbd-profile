@@ -20,7 +20,14 @@
 		float: right;
 	}
 }
+.mainHeader__title {
+	color: darken(#FAFAFA,10%);
+	text-decoration: none;
 
+	&:hover {
+		color: #FAFAFA;
+	}
+}
 .right {
 	text-align: right;
 }
@@ -215,3 +222,25 @@
 	background: #CC1100;
 	border-bottom: 3px #9D1309 solid;
 }
+/*
+=======================
+Markdown Helpers
+=======================
+*/
+
+.markdown--docs {
+	text-align: left;
+
+	h1 {
+
+	}
+
+	h2 {
+
+	}
+	h3 {}
+
+}
+
+
+

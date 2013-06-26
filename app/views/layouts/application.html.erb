@@ -18,7 +18,9 @@
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
 	<%= render 'layouts/messages' %>
 	<header class="mainHeader">
-		<h1>Welcome to The PBD <% if current_user_has_role? :scientist then %>Scienists<% end; %> Portal</h1>
+		<a href="/pbdportal" class="mainHeader__title">
+			<h1>Welcome to The PBD <% if current_user_has_role? :scientist then %>Scientists<% end; %> Portal</h1>
+		</a>
 		<% if current_user %>
 			<h4 class="navUser">
 				Hello, <%= current_user.name %>

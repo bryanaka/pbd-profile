@@ -1,6 +1,6 @@
 <div class="mainContent--fitted grid" id="mainContent">
 	<hgroup class="grid__item one-whole">
-		<h1>Welcome to the PBD <% if current_user_has_role? :scientist then %>Scienists <% end; %> Portal</h1>
+		<h1>Welcome to the PBD <% if current_user_has_role? :scientist then %>Scientists <% end; %> Portal</h1>
 		<h2>As a distinguished scientist, you play a vital role in our continued collaboration to produce great research</h2>
 	</hgroup>
 	<%= link_to scientists_path, :class => "" do %>
@@ -9,7 +9,7 @@
 			<i class="icon-beaker tile__icon"></i>
 		</article>
 	<% end %>
-	<%= link_to "#", :class => "" do %>
+	<%= link_to "/pbdportal/docs", :class => "" do %>
 		<article class="grid__item one-third portable-one-whole tile--flat">
 			<h2>Documentation</h2>
 			<i class="icon-info-sign tile__icon"></i>
@@ -39,9 +39,9 @@
 			</article>
 		<% end %>
 	<% end %>
-	<%= link_to "#", :class => "" do %>
+	<%= link_to "/pbdportal/docs/api", :class => "" do %>
 		<article class="grid__item one-whole tile--flat">
-			<h2>API Docs: Coming Soon!</h2>
+			<h2>API Docs</h2>
 			<i class="icon-book tile__icon"></i>
 		</article>
 	<% end %>

@@ -8,8 +8,9 @@
 	</div>
 
 	<script id="scientist-index-template" type="text/x-handlebars-template">
-		<h1 class="grid__item one-whole">Edit Scientists</h1>
-		<div id="scientists_list"></div>
+		<h1 class="grid__item one-whole">Edit Your Profile</h1>
+		<h4>As a distinguished scientist, you play a vital role in our continued collaboration to produce great research</h4>
+		<div id="scientists_list" class="scientistsList"></div>
 	</script>
 
 	<script id="scientist-edit-template" type="text/x-handlebars-template">
@@ -128,7 +129,7 @@
 			</article>
 			{{else}}
 			<article id="scientist__summary" class="profile__summary">
-				<h3>Add a Summary! - Optional</h3>
+				<h3>Add a Summary</h3>
 				<div contenteditable="true" id="profile_summary" class="inline-editable">
 					This is an **optional** area. Add a summary here!
 				</div>

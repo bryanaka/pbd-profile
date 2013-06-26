@@ -1,0 +1,105 @@
+<section class="mainContent--fitted markdown--docs">
+	<h1>API Documentation - Version 1.0.0-rc2</h1>
+	<p>
+		The PBD Portal provides REST JSON API for most of it's resources. Currently, the API as a whole is open to the public, allowing all available requests within our API. These can be called via Sever-Side or Client-Side code.
+	</p>
+	<h3>
+		<a href="/pbdportal<%= url_for page_path(:id => "api/ruby-example") %>">
+			Ruby Example
+		</a>
+	</h3>
+	<h3>
+		<a href="/pbdportal<%= url_for page_path(:id => "api/c-sharp-example") %>">
+			C# Example
+		</a>
+	</h3>
+	<h3>
+		<a href="/pbdportal<%= url_for page_path(:id => "api/php-example") %>">
+			PHP Example
+		</a>
+	</h3>
+	<h2>API Resources</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Resource</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>
+					<h3>Scientist Resources</h3>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Collection</strong><br>
+					<strong>GET</strong><br>
+					<code>/api/v1/scientists/</code>
+				</td>
+				<td>
+					<p>
+						Returns all currently registered scientists in the portal. Attributes <code>/api/v1/scientists/	</code> included are <code>first_name, last_name, picture, title, slug, id </code>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Record</strong><br>
+					<strong>GET</strong><br>
+					<code>/api/v1/scientists/:id</code>
+					<code>/api/v1/scientists/:slug</code>
+				</td>
+				<td>
+					<p>
+						Returns a single scientist record with profile data included
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h3>Scientist Website Resources</h3>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Collection</strong><br>
+					<strong>GET</strong><br>
+					<code>/api/v1/websites/all</code>
+				</td>
+				<td>
+					<p>
+						Returns all websites registered in the portal
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Collection</strong><br>
+					<strong>GET, POST</strong><br>
+					<code>/api/v1/scientists/:scientist_id/websites</code>
+				</td>
+				<td>
+					<p>
+						Returns all websites that belong to a specified scientist.
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<strong>Record</strong><br>
+					<strong>GET, PUT, PATCH, DELETE</strong><br>
+					<code>/api/v1/scientists/:scientist_id/websites/:website_id</code>
+				</td>
+				<td>
+					<p>
+						Returns a single website record that belongs to the specified scientist.
+					</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
