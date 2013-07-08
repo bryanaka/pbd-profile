@@ -6,5 +6,7 @@ Fabricator(:scientist) do
   #picture		 { { :url => Faker::Name.first_name[0] + Faker::Name.last_name + ".jpg" } }
   title      "Scientist Dude"
   slug       { Faker::Name.first_name[0] + Faker::Name.last_name }
+  visible 		false
+  tester 			true
   #after_create { |picture| picture.file = File.open(File.join(Rails.root,'spec','support','img','logo.png')) }
 end

@@ -2,12 +2,13 @@ PbdPortal::Application.routes.draw do
   
   match "/" => "sessions#create"
 
-  mount Ckeditor::Engine => '/ckeditor'
+  mount Ckeditor::Engine => 'ckeditor'
 
   scope :pbdportal, :path => "/pbdportal" do
 
     root :to => 'sessions#create'
-    
+    mount Ckeditor::Engine => '/ckeditor'
+
     match "/home" => "pages#index"
     match "/unconfirmed" => "pages#unconfirmed"
     
