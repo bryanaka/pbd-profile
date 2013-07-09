@@ -9,14 +9,21 @@ class Ability
 		elsif user.has_role? :admin
 			can :manage, [Scientist, ScientistProfile, ScientistWebsite, ScientistTitle, Video, News]
 			can [:read, :update], User, :id => user.id
+			can [:read, :create, :destory], Ckeditor::Picture
+			can [:read, :create, :destory], Ckeditor::AttachmentFile
 		elsif user.has_role? :scientist
 			can :manage, [ScientistWebsite, ScientistTitle], :scientist_id => user.scientist_id
 			can :update, Scientist, :id => user.scientist_id
 			can :update, ScientistProfile, :scientist_id => user.scientist_id
 			can :update, User, :id => user.id
 			can :read, :all
+			can [:read, :create, :destory], Ckeditor::Picture
+			can [:read, :create, :destory], Ckeditor::AttachmentFile
 		else
 			can :read, :all
+			can [:read, :create], Ckeditor::Picture
+			can [:read, :create], Ckeditor::AttachmentFile
+			can :access, :ckeditor   # needed to access Ckeditor filebrowser
 		end
 
 	# Define abilities for the passed in user here. For example:

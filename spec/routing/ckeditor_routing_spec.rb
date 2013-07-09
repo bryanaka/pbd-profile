@@ -1,4 +1,4 @@
 require "spec_helper"
 
-describe Ckeditor::Engine do
-end
+# describe Ckeditor::Engine do
+# end
