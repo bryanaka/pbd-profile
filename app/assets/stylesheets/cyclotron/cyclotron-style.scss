@@ -27,19 +27,19 @@
 @import "cyclotron-settings",
 		"cyclotron-variables";
 /* Mixins and Functions */
-@import "cyclotron-mixins/mixins",
-		"cyclotron-functions/functions";
+@import "mixins/mixins",
+		"functions/functions";
 /* Base Files */
-@import "cyclotron-base/cyclotron-base.scss";
+@import "base/base";
 /* Grid and responsive related manners */
-@import "cyclotron-grid-responsive/cyclotron-grid-responsive.scss";
+@import "grids/grid-responsive";
 /* Typography and text Styling */
-@import "cyclotron-typography/cyclotron-typography.scss";
+@import "typography/typography";
 /* Navigation */
-@import "cyclotron-nav/cyclotron-nav.scss";
+@import "nav/nav";
 /* Helper Classes and Utilities */
-@import "cyclotron-helpers/cyclotron-helpers.scss";
+@import "helpers/helpers.scss";
 /* User Interface Elements */
-@import "cyclotron-ui/cyclotron-ui.scss";
+@import "ui/ui";
 /* Author Styles */
 @import "author-styles/author-styles.scss";

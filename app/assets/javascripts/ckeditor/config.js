@@ -31,48 +31,50 @@ CKEDITOR.editorConfig = function( config ) {
   config.filebrowserUploadUrl = "/pbdportal/ckeditor/attachment_files";
 
   // Rails CSRF token
-  config.filebrowserParams = function(){
-    var csrf_token = jQuery('meta[name=csrf-token]').attr('content'),
-        csrf_param = jQuery('meta[name=csrf-param]').attr('content'),
-        params = {};
+  // config.filebrowserParams = function(){
+  //   var csrf_token = jQuery('meta[name=csrf-token]').attr('content'),
+  //       csrf_param = jQuery('meta[name=csrf-param]').attr('content'),
+  //       params = {};
 
-    if (csrf_param !== undefined && csrf_token !== undefined) {
-      params[csrf_param] = csrf_token;
-    }
+  //   if (csrf_param !== undefined && csrf_token !== undefined) {
+  //     params[csrf_param] = csrf_token;
+  //   }
 
-    return params;
-  };
+  //   return params;
+  // };
+  // //
+  // xhr.setRequestHeader("X-CSRF-Token", $("meta[name='csrf-token']").attr("content"));
 
-  config.addQueryString = function (url, params) {
-    var queryString = [];
+  // config.addQueryString = function (url, params) {
+  //   var queryString = [];
 
-    if (!params)
-      return url;
-    else {
-      for (var i in params)
-        queryString.push(i + "=" + encodeURIComponent(params[ i ]));
-    }
+  //   if (!params)
+  //     return url;
+  //   else {
+  //     for (var i in params)
+  //       queryString.push(i + "=" + encodeURIComponent(params[ i ]));
+  //   }
 
-    return url + ( ( url.indexOf("?") != -1 ) ? "&" : "?" ) + queryString.join("&");
-  };
+  //   return url + ( ( url.indexOf("?") != -1 ) ? "&" : "?" ) + queryString.join("&");
+  // };
 
-  // Integrate Rails CSRF token into file upload dialogs (link, image, attachment and flash)
-  CKEDITOR.on('dialogDefinition', function (ev) {
-    // Take the dialog name and its definition from the event data.
-    var dialogName = ev.data.name;
-    var dialogDefinition = ev.data.definition;
-    var content, upload;
+  // // Integrate Rails CSRF token into file upload dialogs (link, image, attachment and flash)
+  // CKEDITOR.on('dialogDefinition', function (ev) {
+  //   // Take the dialog name and its definition from the event data.
+  //   var dialogName = ev.data.name;
+  //   var dialogDefinition = ev.data.definition;
+  //   var content, upload;
 
-    if ($.inArray(dialogName, ['link', 'image', 'attachment', 'flash']) > -1) {
-      content = (dialogDefinition.getContents('Upload') || dialogDefinition.getContents('upload'));
-      upload = (content === null ? null : content.get('upload'));
+  //   if ($.inArray(dialogName, ['link', 'image', 'attachment', 'flash']) > -1) {
+  //     content = (dialogDefinition.getContents('Upload') || dialogDefinition.getContents('upload'));
+  //     upload = (content === null ? null : content.get('upload'));
 
-      if (upload && upload.filebrowser['params'] === null) {
-        upload.filebrowser['params'] = config.filebrowserParams();
-        upload.action = config.addQueryString(upload.action, upload.filebrowser['params']);
-      }
-    }
-  });
+  //     if (upload && upload.filebrowser['params'] === null) {
+  //       upload.filebrowser['params'] = config.filebrowserParams();
+  //       upload.action = config.addQueryString(upload.action, upload.filebrowser['params']);
+  //     }
+  //   }
+  // });
 
   /* Extra plugins */
   // works only with en, ru, uk locales

@@ -50,6 +50,7 @@ $gutter: $gutter-base + ($base-font-size / 4);
 /** true evaluates to using silent classes */
 $use-silent-grid-classes:    false;
 
+$use-bryans-tmpfix: true;
 /* 
 ** At which point should lap(read lap sized devices) and 
 ** desk(read desk sized devices) breakpoints kick in? 

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 ** Cyclotron Framwework
 ** Author: Bryan M. Robles
@@ -794,12 +795,121 @@ h6 {
 \*------------------------------------*/
 /**
  * CONTENTS
+ * INTRODUCTION.........How the grid system works.
  * VARIABLES............Your settings.
+ * MIXINS...............Library mixins.
  * GRID SETUP...........Build the grid structure.
  * WIDTHS...............Build our responsive widths around our breakpoints.
+ * PUSH.................Push classes.
+ * PULL.................Pull classes.
+ */
+/*------------------------------------*\
+    $INTRODUCTION
+\*------------------------------------*/
+/**
+ * csswizardry grids provides you with widths to suit a number of breakpoints
+ * designed around devices of a size you specify. Out of the box, csswizardry
+ * grids caters to the following types of device:
+ *
+ * palm     --  palm-based devices, like phones and small tablets
+ * lap      --  lap-based devices, like iPads or laptops
+ * portable --  all of the above
+ * desk     --  stationary devices, like desktop computers
+ * regular  --  any/all types of device
+ *
+ * These namespaces are then used in the library to give you the ability to
+ * manipulate your layouts based around them, for example:
+ *
+   <div class="grid__item  one-whole  lap--one-half  desk--one-third">
+ *
+ * This would give you a grid item which is 100% width unless it is on a lap
+ * device, at which point it become 50% wide, or it is on a desktop device, at
+ * which point it becomes 33.333% width.
+ *
+ * csswizardry grids also has push and pull classes which allow you to nudge
+ * grid items left and right by a defined amount. These follow the same naming
+ * convention as above, but are prepended by either `push--` or `pull--`, for
+ * example:
+ *
+   `class="grid__item  one-half  push--one-half"`
+ *
+ * This would give you a grid item which is 50% width and pushed over to the
+ * right by 50%.
+ *
+ * All classes in csswizardry grids follow this patten, so you should fairly
+ * quickly be able to piece together any combinations you can imagine, for
+ * example:
+ *
+   `class="grid__item  one-whole  lap--one-half  desk--one-third  push--desk--one-third"`
+ *
+   `class="grid__item  one-quarter  palm--one-half  push--palm--one-half"`
+ *
+   `class="grid__item  palm--one-third  desk--five-twelfths"`
+ */
+/*------------------------------------*\
+    $VARIABLES
+\*------------------------------------*/
+/**
+ * If you are building a non-responsive site but would still like to use
+ * csswizardry-grids, set this to ‘false’:
  */
 /**
- * Do not edit the following variables.
+ * Is this build mobile first? Setting to ‘true’ means that all grids will be
+ * 100% width if you do not apply a more specific class to them.
+ */
+/**
+ * Set the spacing between your grid items.
+ */
+/**
+ * Would you like Sass’ silent classes, or regular CSS classes?
+ */
+/**
+ * Would you like push and pull classes enabled?
+ */
+/**
+ * Using `inline-block` means that the grid items need their whitespace removing
+ * in order for them to work correctly. Set the following to true if you are
+ * going to achieve this by manually removing/commenting out any whitespace in
+ * your HTML yourself.
+ *
+ * Setting this to false invokes a hack which cannot always be guaranteed,
+ * please see the following for more detail:
+ *
+ * github.com/csswizardry/csswizardry-grids/commit/744d4b23c9d2b77d605b5991e54a397df72e0688
+ * github.com/csswizardry/inuit.css/issues/170#issuecomment-14859371
+ */
+/* do not change directly */
+/**
+ * Define your breakpoints. The first value is the prefix that shall be used for
+ * your classes (e.g. `.palm--one-half`), the second value is the media query
+ * that the breakpoint fires at.
+ */
+/**
+ * Define which namespaced breakpoints you would like to generate for each of
+ * widths, push and pull. This is handy if you only need pull on, say, desk, or
+ * you only need a new width breakpoint at mobile sizes. It allows you to only
+ * compile as much CSS as you need. All are turned on by default, but you can
+ * add and remove breakpoints at will.
+ *
+ * Push and pull shall only be used if `$push` and/or `$pull` and `$responsive`
+ * have been set to ‘true’.
+ */
+/**
+ * You do not need to edit anything from this line onward; csswizardry-grids is
+ * good to go. Happy griddin’!
+ */
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+/**
+ * These mixins are for the library to use only, you should not need to modify
+ * them at all.
+ *
+ * Enclose a block of code with a media query as named in `$breakpoints`.
+ */
+/**
+ * Drop relative positioning into silent classes which can’t take advantage of
+ * the `[class*="push--"]` and `[class*="pull--"]` selectors.
  */
 /*------------------------------------*\
     $GRID SETUP
@@ -807,7 +917,7 @@ h6 {
 /**
  * 1. Allow the grid system to be used on lists.
  * 2. Remove any margins and paddings that might affect the grid system.
- * 3. Apply a negative 'margin-left' to negate the columns' gutters.
+ * 3. Apply a negative `margin-left` to negate the columns’ gutters.
  */
 .grid {
   list-style: none;
@@ -824,7 +934,6 @@ h6 {
  * 2. Space columns apart.
  * 3. Align columns to the tops of each other.
  * 4. Full-width unless told to behave otherwise.
- * 4.5 Added By Bryan - inline-block white-space is 1/4 root font-size
  * 5. Required to combine fluid widths and fixed gutters.
  */
 .grid__item {
@@ -834,8 +943,6 @@ h6 {
   /* [2] */
   vertical-align: top;
   /* [3] */
-  margin-left: -4.5px;
-  margin-left: -0.27rem;
   width: 100%;
   /* [4] */
   -webkit-box-sizing: border-box;
@@ -843,16 +950,78 @@ h6 {
   -moz-box-sizing: border-box;
   /* [5] */
   box-sizing: border-box;
-  /* [5] */ }
+  /* [5] */
+  margin-left: -4.5px;
+  margin-left: -0.27rem; }
+
+/**
+ * Reversed grids allow you to structure your source in the opposite order to
+ * how your rendered layout will appear. Extends `.grid`.
+ */
+.grid--rev {
+  direction: rtl;
+  text-align: left; }
+  .grid--rev > .grid__item {
+    direction: ltr;
+    text-align: left; }
+
+/**
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ * Extends `.grid`.
+ */
+.grid--full {
+  margin-left: 0; }
+  .grid--full > .grid__item {
+    padding-left: 0; }
+
+/**
+ * Align the entire grid to the right. Extends `.grid`.
+ */
+.grid--right {
+  text-align: right; }
+  .grid--right > .grid__item {
+    text-align: left; }
+
+/**
+ * Centered grids align grid items centrally without needing to use push or pull
+ * classes. Extends `.grid`.
+ */
+.grid--center {
+  text-align: center; }
+  .grid--center > .grid__item {
+    text-align: left; }
+
+/**
+ * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+ * `.grid`.
+ */
+.grid--middle > .grid__item {
+  vertical-align: middle; }
+
+.grid--bottom > .grid__item {
+  vertical-align: bottom; }
+
+/**
+ * Create grids with narrower gutters. Extends `.grid`.
+ */
+.grid--narrow {
+  margin-left: -12.25px; }
+  .grid--narrow > .grid__item {
+    padding-left: 12.25px; }
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+.grid--wide {
+  margin-left: -49px; }
+  .grid--wide > .grid__item {
+    padding-left: 49px; }
 
 /*------------------------------------*\
     $WIDTHS
 \*------------------------------------*/
 /**
- * These next bits get worked out for you.
- */
-/**
- * Create our widths, prefixed by the specified namespace.
+ * Create our width classes, prefixed by the specified namespace.
  */
 /**
  * Our regular, non-responsive width classes.
@@ -957,404 +1126,416 @@ h6 {
   width: 91.666%; }
 
 /**
-* Our breakpoint specific widths classes.
-*/
-@media only screen and (max-width: 480px) {
+ * Our responsive classes, if we have enabled them.
+ */
+@media only screen and (max-width: palm-end) {
   /**
    * Whole
    */
-  .palm-one-whole {
+  .palm--one-whole {
     width: 100%; }
 
   /**
    * Halves
    */
-  .palm-one-half, .palm-two-quarters, .palm-three-sixths, .palm-four-eighths, .palm-five-tenths, .palm-six-twelfths {
+  .palm--one-half, .palm--two-quarters, .palm--three-sixths, .palm--four-eighths, .palm--five-tenths, .palm--six-twelfths {
     width: 50%; }
 
   /**
    * Thirds
    */
-  .palm-one-third, .palm-two-sixths, .palm-four-twelfths {
+  .palm--one-third, .palm--two-sixths, .palm--four-twelfths {
     width: 33.333%; }
 
-  .palm-two-thirds, .palm-four-sixths, .palm-eight-twelfths {
+  .palm--two-thirds, .palm--four-sixths, .palm--eight-twelfths {
     width: 66.666%; }
 
   /**
    * Quarters
    */
-  .palm-one-quarter, .palm-two-eighths, .palm-three-twelfths {
+  .palm--one-quarter, .palm--two-eighths, .palm--three-twelfths {
     width: 25%; }
 
-  .palm-three-quarters, .palm-six-eighths, .palm-nine-twelfths {
+  .palm--three-quarters, .palm--six-eighths, .palm--nine-twelfths {
     width: 75%; }
 
   /**
    * Fifths
    */
-  .palm-one-fifth, .palm-two-tenths {
+  .palm--one-fifth, .palm--two-tenths {
     width: 20%; }
 
-  .palm-two-fifths, .palm-four-tenths {
+  .palm--two-fifths, .palm--four-tenths {
     width: 40%; }
 
-  .palm-three-fifths, .palm-six-tenths {
+  .palm--three-fifths, .palm--six-tenths {
     width: 60%; }
 
-  .palm-four-fifths, .palm-eight-tenths {
+  .palm--four-fifths, .palm--eight-tenths {
     width: 80%; }
 
   /**
    * Sixths
    */
-  .palm-one-sixth, .palm-two-twelfths {
+  .palm--one-sixth, .palm--two-twelfths {
     width: 16.666%; }
 
-  .palm-five-sixths, .palm-ten-twelfths {
+  .palm--five-sixths, .palm--ten-twelfths {
     width: 83.333%; }
 
   /**
    * Eighths
    */
-  .palm-one-eighth {
+  .palm--one-eighth {
     width: 12.5%; }
 
-  .palm-three-eighths {
+  .palm--three-eighths {
     width: 37.5%; }
 
-  .palm-five-eighths {
+  .palm--five-eighths {
     width: 62.5%; }
 
-  .palm-seven-eighths {
+  .palm--seven-eighths {
     width: 87.5%; }
 
   /**
    * Tenths
    */
-  .palm-one-tenth {
+  .palm--one-tenth {
     width: 10%; }
 
-  .palm-three-tenths {
+  .palm--three-tenths {
     width: 30%; }
 
-  .palm-seven-tenths {
+  .palm--seven-tenths {
     width: 70%; }
 
-  .palm-nine-tenths {
+  .palm--nine-tenths {
     width: 90%; }
 
   /**
    * Twelfths
    */
-  .palm-one-twelfth {
+  .palm--one-twelfth {
     width: 8.333%; }
 
-  .palm-five-twelfths {
+  .palm--five-twelfths {
     width: 41.666%; }
 
-  .palm-seven-twelfths {
+  .palm--seven-twelfths {
     width: 58.333%; }
 
-  .palm-eleven-twelfths {
+  .palm--eleven-twelfths {
     width: 91.666%; } }
 @media only screen and (min-width: 481px) and (max-width: 799px) {
   /**
    * Whole
    */
-  .lap-one-whole {
+  .lap--one-whole {
     width: 100%; }
 
   /**
    * Halves
    */
-  .lap-one-half, .lap-two-quarters, .lap-three-sixths, .lap-four-eighths, .lap-five-tenths, .lap-six-twelfths {
+  .lap--one-half, .lap--two-quarters, .lap--three-sixths, .lap--four-eighths, .lap--five-tenths, .lap--six-twelfths {
     width: 50%; }
 
   /**
    * Thirds
    */
-  .lap-one-third, .lap-two-sixths, .lap-four-twelfths {
+  .lap--one-third, .lap--two-sixths, .lap--four-twelfths {
     width: 33.333%; }
 
-  .lap-two-thirds, .lap-four-sixths, .lap-eight-twelfths {
+  .lap--two-thirds, .lap--four-sixths, .lap--eight-twelfths {
     width: 66.666%; }
 
   /**
    * Quarters
    */
-  .lap-one-quarter, .lap-two-eighths, .lap-three-twelfths {
+  .lap--one-quarter, .lap--two-eighths, .lap--three-twelfths {
     width: 25%; }
 
-  .lap-three-quarters, .lap-six-eighths, .lap-nine-twelfths {
+  .lap--three-quarters, .lap--six-eighths, .lap--nine-twelfths {
     width: 75%; }
 
   /**
    * Fifths
    */
-  .lap-one-fifth, .lap-two-tenths {
+  .lap--one-fifth, .lap--two-tenths {
     width: 20%; }
 
-  .lap-two-fifths, .lap-four-tenths {
+  .lap--two-fifths, .lap--four-tenths {
     width: 40%; }
 
-  .lap-three-fifths, .lap-six-tenths {
+  .lap--three-fifths, .lap--six-tenths {
     width: 60%; }
 
-  .lap-four-fifths, .lap-eight-tenths {
+  .lap--four-fifths, .lap--eight-tenths {
     width: 80%; }
 
   /**
    * Sixths
    */
-  .lap-one-sixth, .lap-two-twelfths {
+  .lap--one-sixth, .lap--two-twelfths {
     width: 16.666%; }
 
-  .lap-five-sixths, .lap-ten-twelfths {
+  .lap--five-sixths, .lap--ten-twelfths {
     width: 83.333%; }
 
   /**
    * Eighths
    */
-  .lap-one-eighth {
+  .lap--one-eighth {
     width: 12.5%; }
 
-  .lap-three-eighths {
+  .lap--three-eighths {
     width: 37.5%; }
 
-  .lap-five-eighths {
+  .lap--five-eighths {
     width: 62.5%; }
 
-  .lap-seven-eighths {
+  .lap--seven-eighths {
     width: 87.5%; }
 
   /**
    * Tenths
    */
-  .lap-one-tenth {
+  .lap--one-tenth {
     width: 10%; }
 
-  .lap-three-tenths {
+  .lap--three-tenths {
     width: 30%; }
 
-  .lap-seven-tenths {
+  .lap--seven-tenths {
     width: 70%; }
 
-  .lap-nine-tenths {
+  .lap--nine-tenths {
     width: 90%; }
 
   /**
    * Twelfths
    */
-  .lap-one-twelfth {
+  .lap--one-twelfth {
     width: 8.333%; }
 
-  .lap-five-twelfths {
+  .lap--five-twelfths {
     width: 41.666%; }
 
-  .lap-seven-twelfths {
+  .lap--seven-twelfths {
     width: 58.333%; }
 
-  .lap-eleven-twelfths {
+  .lap--eleven-twelfths {
     width: 91.666%; } }
 @media only screen and (max-width: 799px) {
   /**
    * Whole
    */
-  .portable-one-whole {
+  .portable--one-whole {
     width: 100%; }
 
   /**
    * Halves
    */
-  .portable-one-half, .portable-two-quarters, .portable-three-sixths, .portable-four-eighths, .portable-five-tenths, .portable-six-twelfths {
+  .portable--one-half, .portable--two-quarters, .portable--three-sixths, .portable--four-eighths, .portable--five-tenths, .portable--six-twelfths {
     width: 50%; }
 
   /**
    * Thirds
    */
-  .portable-one-third, .portable-two-sixths, .portable-four-twelfths {
+  .portable--one-third, .portable--two-sixths, .portable--four-twelfths {
     width: 33.333%; }
 
-  .portable-two-thirds, .portable-four-sixths, .portable-eight-twelfths {
+  .portable--two-thirds, .portable--four-sixths, .portable--eight-twelfths {
     width: 66.666%; }
 
   /**
    * Quarters
    */
-  .portable-one-quarter, .portable-two-eighths, .portable-three-twelfths {
+  .portable--one-quarter, .portable--two-eighths, .portable--three-twelfths {
     width: 25%; }
 
-  .portable-three-quarters, .portable-six-eighths, .portable-nine-twelfths {
+  .portable--three-quarters, .portable--six-eighths, .portable--nine-twelfths {
     width: 75%; }
 
   /**
    * Fifths
    */
-  .portable-one-fifth, .portable-two-tenths {
+  .portable--one-fifth, .portable--two-tenths {
     width: 20%; }
 
-  .portable-two-fifths, .portable-four-tenths {
+  .portable--two-fifths, .portable--four-tenths {
     width: 40%; }
 
-  .portable-three-fifths, .portable-six-tenths {
+  .portable--three-fifths, .portable--six-tenths {
     width: 60%; }
 
-  .portable-four-fifths, .portable-eight-tenths {
+  .portable--four-fifths, .portable--eight-tenths {
     width: 80%; }
 
   /**
    * Sixths
    */
-  .portable-one-sixth, .portable-two-twelfths {
+  .portable--one-sixth, .portable--two-twelfths {
     width: 16.666%; }
 
-  .portable-five-sixths, .portable-ten-twelfths {
+  .portable--five-sixths, .portable--ten-twelfths {
     width: 83.333%; }
 
   /**
    * Eighths
    */
-  .portable-one-eighth {
+  .portable--one-eighth {
     width: 12.5%; }
 
-  .portable-three-eighths {
+  .portable--three-eighths {
     width: 37.5%; }
 
-  .portable-five-eighths {
+  .portable--five-eighths {
     width: 62.5%; }
 
-  .portable-seven-eighths {
+  .portable--seven-eighths {
     width: 87.5%; }
 
   /**
    * Tenths
    */
-  .portable-one-tenth {
+  .portable--one-tenth {
     width: 10%; }
 
-  .portable-three-tenths {
+  .portable--three-tenths {
     width: 30%; }
 
-  .portable-seven-tenths {
+  .portable--seven-tenths {
     width: 70%; }
 
-  .portable-nine-tenths {
+  .portable--nine-tenths {
     width: 90%; }
 
   /**
    * Twelfths
    */
-  .portable-one-twelfth {
+  .portable--one-twelfth {
     width: 8.333%; }
 
-  .portable-five-twelfths {
+  .portable--five-twelfths {
     width: 41.666%; }
 
-  .portable-seven-twelfths {
+  .portable--seven-twelfths {
     width: 58.333%; }
 
-  .portable-eleven-twelfths {
+  .portable--eleven-twelfths {
     width: 91.666%; } }
 @media only screen and (min-width: 800px) {
   /**
    * Whole
    */
-  .desk-one-whole {
+  .desk--one-whole {
     width: 100%; }
 
   /**
    * Halves
    */
-  .desk-one-half, .desk-two-quarters, .desk-three-sixths, .desk-four-eighths, .desk-five-tenths, .desk-six-twelfths {
+  .desk--one-half, .desk--two-quarters, .desk--three-sixths, .desk--four-eighths, .desk--five-tenths, .desk--six-twelfths {
     width: 50%; }
 
   /**
    * Thirds
    */
-  .desk-one-third, .desk-two-sixths, .desk-four-twelfths {
+  .desk--one-third, .desk--two-sixths, .desk--four-twelfths {
     width: 33.333%; }
 
-  .desk-two-thirds, .desk-four-sixths, .desk-eight-twelfths {
+  .desk--two-thirds, .desk--four-sixths, .desk--eight-twelfths {
     width: 66.666%; }
 
   /**
    * Quarters
    */
-  .desk-one-quarter, .desk-two-eighths, .desk-three-twelfths {
+  .desk--one-quarter, .desk--two-eighths, .desk--three-twelfths {
     width: 25%; }
 
-  .desk-three-quarters, .desk-six-eighths, .desk-nine-twelfths {
+  .desk--three-quarters, .desk--six-eighths, .desk--nine-twelfths {
     width: 75%; }
 
   /**
    * Fifths
    */
-  .desk-one-fifth, .desk-two-tenths {
+  .desk--one-fifth, .desk--two-tenths {
     width: 20%; }
 
-  .desk-two-fifths, .desk-four-tenths {
+  .desk--two-fifths, .desk--four-tenths {
     width: 40%; }
 
-  .desk-three-fifths, .desk-six-tenths {
+  .desk--three-fifths, .desk--six-tenths {
     width: 60%; }
 
-  .desk-four-fifths, .desk-eight-tenths {
+  .desk--four-fifths, .desk--eight-tenths {
     width: 80%; }
 
   /**
    * Sixths
    */
-  .desk-one-sixth, .desk-two-twelfths {
+  .desk--one-sixth, .desk--two-twelfths {
     width: 16.666%; }
 
-  .desk-five-sixths, .desk-ten-twelfths {
+  .desk--five-sixths, .desk--ten-twelfths {
     width: 83.333%; }
 
   /**
    * Eighths
    */
-  .desk-one-eighth {
+  .desk--one-eighth {
     width: 12.5%; }
 
-  .desk-three-eighths {
+  .desk--three-eighths {
     width: 37.5%; }
 
-  .desk-five-eighths {
+  .desk--five-eighths {
     width: 62.5%; }
 
-  .desk-seven-eighths {
+  .desk--seven-eighths {
     width: 87.5%; }
 
   /**
    * Tenths
    */
-  .desk-one-tenth {
+  .desk--one-tenth {
     width: 10%; }
 
-  .desk-three-tenths {
+  .desk--three-tenths {
     width: 30%; }
 
-  .desk-seven-tenths {
+  .desk--seven-tenths {
     width: 70%; }
 
-  .desk-nine-tenths {
+  .desk--nine-tenths {
     width: 90%; }
 
   /**
    * Twelfths
    */
-  .desk-one-twelfth {
+  .desk--one-twelfth {
     width: 8.333%; }
 
-  .desk-five-twelfths {
+  .desk--five-twelfths {
     width: 41.666%; }
 
-  .desk-seven-twelfths {
+  .desk--seven-twelfths {
     width: 58.333%; }
 
-  .desk-eleven-twelfths {
+  .desk--eleven-twelfths {
     width: 91.666%; } }
+/*------------------------------------*\
+    $PUSH
+\*------------------------------------*/
+/**
+ * Push classes, to move grid items over to the right by certain amounts.
+ */
+/*------------------------------------*\
+    $PULL
+\*------------------------------------*/
+/**
+ * Pull classes, to move grid items back to the left by certain amounts.
+ */
 /* ==========================================================================
    Visibility Utilities
    Inspired by Twitter Bootstrap and Foundation
@@ -1409,25 +1590,6 @@ h6 {
   .hidden-print {
     display: none	   !important; } }
 /* End if statement */
-/*------------------------------------*\
-    $PUSH
-\*------------------------------------*/
-/**
- * Push classes, to move grid items over to the right by certain amounts.
- */
-/**
- * Not a particularly great selector, but the DRYest way to do things.
- */
-/*------------------------------------*\
-    $PULL
-\*------------------------------------*/
-/**
- * Pull classes, to move grid items over to the right by certain amounts.
- */
-/**
- * Not a particularly great selector, but the DRYest way to do things.
- */
-/* endif */
 /* Typography and text Styling */
 /* Mixin defined here because this is the only place it should be used. */
 /* ========================================
@@ -2130,7 +2292,9 @@ h6 {
   transition: background 0.5s;
   cursor: pointer;
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  padding: 16px;
+  padding: 1rem; }
   .tile--flat h2 {
     z-index: 5;
     position: absolute; }

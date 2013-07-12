@@ -1,7 +1,5 @@
 /* =================================================
  	Grid and Responsive Utilities
    ================================================= */
-@import "csswizardry-grids",
-		"visibility-utilities",
-		"push",
-		"pull";
+@import "grid",
+		"visibility-utilities";
