@@ -4,9 +4,6 @@ var ScientistsRoute = Ember.Route.extend({
 
 	model: function() {
 		return Scientist.find();
-	},
-	renderTemplate: function() {
-		this.render({ outlet: 'main' });
 	}
 
 });

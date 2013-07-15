@@ -26,9 +26,11 @@ var ScientistProfile = DS.Model.extend({
 
   summary: DS.attr('string'),
 
-  emphasis: DS.attr('string')
+  emphasis: DS.attr('string'),
+  scientist: DS.belongsTo('Scientist')
+
 
 });
 
-module.exports = Profile;
+module.exports = ScientistProfile;
 

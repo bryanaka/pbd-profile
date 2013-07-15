@@ -1,6 +1,6 @@
 var ScientistProfile = require('../models/scientist_profile');
 
-var NewProfileRoute = Ember.Route.extend({
+var NewScientistProfileRoute = Ember.Route.extend({
 
   renderTemplate: function() {
     this.render('edit_profile', {controller: 'new_profile'});
@@ -19,5 +19,5 @@ var NewProfileRoute = Ember.Route.extend({
 
 });
 
-module.exports = NewProfileRoute;
+module.exports = NewScientistProfileRoute;
 

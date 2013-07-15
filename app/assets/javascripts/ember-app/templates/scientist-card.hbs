@@ -1,0 +1,11 @@
+<article class="scientistUnit grid__item" {{bindAttr id="slug"}}>
+	<div class="scientistCard">
+		{{#linkTo 'scientists.edit' this class="navigate-profile"}}
+			<span class="scientistCard__name">{{fullName}}</span><br>
+			<img {{bindAttr src="picture.picture.url"}} class="scientistCard__thumb">
+		{{/linkTo}}
+		{{#linkTo 'scientists.edit' this class='button--green navigate-profile'}}
+			Edit
+		{{/linkTo}}
+	</div>
+</article>
