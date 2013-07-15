@@ -1,0 +1,80 @@
+<h2>Profile</h2>
+
+<form {{action save on="submit"}}>
+  
+  <p>
+    <label for="prefix">Prefix</label><br>
+    {{view Ember.TextField valueBinding="prefix" id="prefix"}}
+  </p>
+  
+  <p>
+    <label for="department">Department</label><br>
+    {{view Ember.TextField valueBinding="department" id="department"}}
+  </p>
+  
+  <p>
+    <label for="department_url">Department url</label><br>
+    {{view Ember.TextField valueBinding="department_url" id="department_url"}}
+  </p>
+  
+  <p>
+    <label for="company">Company</label><br>
+    {{view Ember.TextField valueBinding="company" id="company"}}
+  </p>
+  
+  <p>
+    <label for="address1">Address1</label><br>
+    {{view Ember.TextField valueBinding="address1" id="address1"}}
+  </p>
+  
+  <p>
+    <label for="address2">Address2</label><br>
+    {{view Ember.TextField valueBinding="address2" id="address2"}}
+  </p>
+  
+  <p>
+    <label for="city">City</label><br>
+    {{view Ember.TextField valueBinding="city" id="city"}}
+  </p>
+  
+  <p>
+    <label for="state">State</label><br>
+    {{view Ember.TextField valueBinding="state" id="state"}}
+  </p>
+  
+  <p>
+    <label for="zip_code">Zip code</label><br>
+    {{view Ember.TextField valueBinding="zip_code" id="zip_code"}}
+  </p>
+  
+  <p>
+    <label for="phone1">Phone1</label><br>
+    {{view Ember.TextField valueBinding="phone1" id="phone1"}}
+  </p>
+  
+  <p>
+    <label for="phone2">Phone2</label><br>
+    {{view Ember.TextField valueBinding="phone2" id="phone2"}}
+  </p>
+  
+  <p>
+    <label for="email">Email</label><br>
+    {{view Ember.TextField valueBinding="email" id="email"}}
+  </p>
+  
+  <p>
+    <label for="summary">Summary</label><br>
+    {{view Ember.TextField valueBinding="summary" id="summary"}}
+  </p>
+  
+  <p>
+    <label for="emphasis">Emphasis</label><br>
+    {{view Ember.TextField valueBinding="emphasis" id="emphasis"}}
+  </p>
+  
+  <p>
+    <button type="submit">Save</button>
+  </p>
+
+</form>
+

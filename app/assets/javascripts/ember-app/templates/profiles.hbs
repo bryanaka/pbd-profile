@@ -1,0 +1,45 @@
+<h2>Profiles</h2>
+
+{{#linkTo "new_profile"}}New Profile{{/linkTo}}
+
+<table>
+  <thead>
+    <th>prefix</th>
+    <th>department</th>
+    <th>department_url</th>
+    <th>company</th>
+    <th>address1</th>
+    <th>address2</th>
+    <th>city</th>
+    <th>state</th>
+    <th>zip_code</th>
+    <th>phone1</th>
+    <th>phone2</th>
+    <th>email</th>
+    <th>summary</th>
+    <th>emphasis</th>
+  </thead>
+  <tbody>
+    {{#each profile in controller}}
+    <tr>
+      <td>{{profile.prefix}}</td>
+      <td>{{profile.department}}</td>
+      <td>{{profile.department_url}}</td>
+      <td>{{profile.company}}</td>
+      <td>{{profile.address1}}</td>
+      <td>{{profile.address2}}</td>
+      <td>{{profile.city}}</td>
+      <td>{{profile.state}}</td>
+      <td>{{profile.zip_code}}</td>
+      <td>{{profile.phone1}}</td>
+      <td>{{profile.phone2}}</td>
+      <td>{{profile.email}}</td>
+      <td>{{profile.summary}}</td>
+      <td>{{profile.emphasis}}</td>
+      <td>{{#linkTo "profile" profile}}view{{/linkTo}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+

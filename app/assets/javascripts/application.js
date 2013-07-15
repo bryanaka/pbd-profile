@@ -15,13 +15,7 @@
 //= require jquery.ui.sortable
 //= require vendor/tinymce/tiny_mce
 //= require ckeditor/init
-//= require vendor/underscore/underscore-min
-//= require vendor/handlebars/handlebars.min.js
-//= require vendor/backbone/backbone-min
-//= require vendor/backbone/backbone.marionette/backbone.marionette.min.js
-//= require vendor/backbone/backbone.deep-model/backbone.deep-model.min.js
-//= require vendor/backbone/backbone.modelbinder/backbone.modelbinder.min.js
-//= require app/app.js
+//= require ember-app/application
 //= require scientist
 //= require vendor/intro/intro.js
 //= require_self

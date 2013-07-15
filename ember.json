@@ -1,0 +1,5 @@
+{
+  "jsPath": "app/assets/javascripts/ember-app",
+  "modules": "cjs"
+}
+
