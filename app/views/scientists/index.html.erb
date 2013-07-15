@@ -49,6 +49,7 @@
 				</article>
 			</section>
 		</div>
+
 		<section class="profile__contact grid__item one-third portable-one-whole" 
 			data-intro="<h4 class='intro__title'>Contact Info</h4>
 			These Sections are just to make sure those who view your 
@@ -57,43 +58,15 @@
 			<a href='mailto:pbdwebmaster@lbl.gov'>PBD</a> know about it and we 
 			will work with you" data-step="5">
 		
-			<article class="profile__address grid__item one-whole lap-one-half palm-one-whole">
-				<h3>Location Information</h3><br>
-				<span contenteditable="true" class="inline-editable" id="profile_company">
-					{{profile.company}}
-				</span>
-				<br>
-				<span contenteditable="true" class="inline-editable" id="profile_address1">
-					{{profile.address1}}
-				</span>
-				<span contenteditable="true" class="inline-editable" id="profile_address2">
-					{{profile.address2}}
-				</span>
-				<br>
-				<span contenteditable="true" class="inline-editable" id="profile_city">
-					{{profile.city}}
-				</span><!-- dirty hack to display correctly
-				--><span style="display:inline;">,</span>
-				<span contenteditable="true" class="inline-editable" id="profile_state">
-					{{profile.state}}
-				</span>
-				<span contenteditable="true" class="inline-editable" id="profile_zip_code">
-					{{profile.zip_code}}
-				</span>
-				<div>
-					USA
-				</div>
-			</article>
-		
 			<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
 				<h3>Contact Information</h3>
-				<span>Primary Number:</span> 
+				<span>Primary Num:</span> 
 				<span contenteditable="true" class="inline-editable" id="profile_phone1">
 					{{profile.phone1}}
 				</span><br>
-				<span contenteditable="true" class="inline-editable" id="profile_phone2_type">
-					{{profile.phone2_type}}
-				</span>: 
+				<span>
+					Secondary Num:
+				</span>
 				<span contenteditable="true" class="inline-editable" id="profile_phone2">
 					{{profile.phone2}}
 				</span><br>
@@ -102,7 +75,12 @@
 					<a href="{{profile.email}}">{{profile.email}}</a>
 				</span><br>
 			</article>
-
+			<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+				<h3>Websites</h3>
+				{{#each websites}}
+					<a href="{{url}}">{{name}}</a>
+				{{/each}}
+			</article>
 		</section>
 
 		<section class=" profile__bio grid__item two-thirds lap-one-whole palm-one-whole">

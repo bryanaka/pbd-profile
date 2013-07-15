@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
 
 	private
 
-	def permitted_params
-		@permitted_params ||= PermittedParams.new(params, current_user)
-	end
-
 	def current_user
 		@current_user ||= User.find_by_eppn(session[:user_eppn]) if session[:user_eppn]
 	end
@@ -21,6 +17,10 @@ class ApplicationController < ActionController::Base
 
 	def current_user_roles
 		@current_user.roles ||= current_user.roles
+	end
+
+	def permitted_params
+		@permitted_params ||= PermittedParams.new(params, current_user)
 	end
 	
 	def shib_user
