@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.sortable
+//= require vendor/historyjs/jquery.history.js
 //= require vendor/tinymce/tiny_mce
 //= require ckeditor/init
 //= require vendor/underscore/underscore-min

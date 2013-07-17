@@ -19,4 +19,4 @@
 //= require_tree ./routers
 //= require_self
 
-Backbone.history.start({pushState: true, root: "/pbdportal/scientists"});
+Backbone.history.start({pushState: Modernizr.history, root: "/pbdportal/scientists"});

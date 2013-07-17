@@ -1793,7 +1793,7 @@ h6 {
 .sideNav--fixed {
   width: 200px;
   display: inline-block;
-  margin: 0 0.5em 0 0;
+  margin: 0 8px 0 0;
   margin: 0 0.5rem 0 0;
   border-right: #D6D6D6 2px solid;
   height: 100%;
@@ -1804,6 +1804,7 @@ h6 {
 
 .sideNav--fixed__header {
   text-align: center;
+  padding: 16px 8px;
   padding: 1rem 0.5rem;
   color: #333;
   text-decoration: none; }
@@ -2176,9 +2177,11 @@ h6 {
     margin: 0;
     color: #FAFAFA;
     padding: 10px 10px 0 10px;
+    font-size: 28px;
     font-size: 1.75rem;
     display: inline-block; }
   .mainHeader h4 {
+    margin: 16px 16px 0 0;
     margin: 1rem 1rem 0 0;
     color: #FAFAFA;
     display: inline-block;
@@ -2198,11 +2201,13 @@ h6 {
   text-align: center; }
 
 .cyclotronTitle {
+  font-size: 64px;
   font-size: 4rem;
   font-weight: 400;
   letter-spacing: 10px;
   text-align: center;
   font-family: "Steelfish";
+  margin: 8px 0 8px 12px;
   margin: .5rem 0 0.5rem .75rem; }
 
 .mainContent {
@@ -2230,11 +2235,13 @@ h6 {
 .hero {
   background: #032a34;
   color: #fafafa;
+  padding: 0 16px;
   padding: 0 1rem;
   border-bottom: #2794d2 4px solid;
   background: #032a34 url("/assets/img/tiny_grid1.png") 10px 8px repeat repeat; }
   .hero p {
     text-align: justify;
+    font-size: 16px;
     font-size: 1rem;
     font-weight: 300; }
 
@@ -2311,6 +2318,7 @@ h6 {
 
 .tile--flat .tile__icon {
   position: absolute;
+  font-size: 64px;
   font-size: 4rem;
   left: 45%;
   top: 27%;
@@ -2350,6 +2358,20 @@ h6 {
 
 .inline-editable.inline {
   display: inline !important; }
+
+.profile__websites-list {
+  list-style: none;
+  padding-left: 0; }
+
+.profile__websites-list-item {
+  padding-bottom: 16px;
+  padding-bottom: 1rem; }
+
+.profile__summary {
+  padding-bottom: 32px;
+  padding-bottom: 1.5rem; }
+  .profile__summary div {
+    min-width: 95%; }
 
 .navigate-profile.button--blue {
   width: 100%;

@@ -1,7 +1,7 @@
 .sideNav--fixed {
 	width:200px;
 	display: inline-block;
-	margin:0 0.5em 0 0;
+	margin:0 8px 0 0;
 	margin:0 0.5rem 0 0;
 	border-right: #D6D6D6 2px solid;
 	height: 100%;
@@ -13,6 +13,7 @@
 
 .sideNav--fixed__header {
 	text-align: center;
+	padding: 16px 8px;
 	padding: 1rem 0.5rem;
 	color: #333;
 	text-decoration: none;

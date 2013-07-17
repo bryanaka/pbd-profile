@@ -147,7 +147,7 @@ CKEDITOR.editorConfig = function( config ) {
         ['NumberedList', 'BulletedList'],
         ['Outdent', 'Indent', '-', 'Blockquote'],
         ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-        ['Link', 'Unlink', 'Anchor', 'Image'],
+        ['Link', 'Unlink', 'Anchor'],
         ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar']
     ];
 

@@ -8,14 +8,7 @@ App.ScientistIndexView = Backbone.View.extend({
 		this.$el.empty();
 		this.$el.append(this.template);
 		var scientist_card_list = new App.ScientistCardListView();
+		document.title = "Scientists || PBD Portal";
 		scientist_card_list.render();
-	},
-	events: {
-		"click .navigate-profile": "routeProfile"
-	},
-	routeProfile: function (event) {
-		event.preventDefault();
-		var href = $(event.target).closest('a').attr('href').split(/scientists\//);
-		router.navigate(href[1], { trigger: true } );
 	}
 });

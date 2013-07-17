@@ -10,15 +10,13 @@
 	<title><%= content_for?(:title) ? yield(:title) : "PBD Portal" %></title>
 	<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "LBNL Physical Biosciences Division Portal"%>">
 	<%= stylesheet_link_tag "application", :media => "all" %>
-	<!--
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-	-->
 	<%= yield(:head) %>
 </head>
 <body class="<%= controller_name %>" data-action="<%= action_name %>">
 	<%= render 'layouts/messages' %>
 	<header class="mainHeader">
-		<a href="/pbdportal" class="mainHeader__title">
+		<a href="/pbdportal/home" class="mainHeader__title">
 			<h1>Welcome to The PBD <% if current_user_has_role? :scientist then %>Scientist<% end; %> Portal</h1>
 		</a>
 		<% if current_user %>

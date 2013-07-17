@@ -14,7 +14,7 @@
 	</script>
 
 	<script id="scientist-edit-template" type="text/x-handlebars-template">
-		<div class="profile__head" style="">
+		<div class="profile__head">
 			<article class="grid__item one-quarter portable-one-whole">
 				<img src="{{picture.picture.url}}" class="profile__img" data-intro="Hi  {{first_name}}. This is your intro to PBD profile!" data-step="1">
 			</article>
@@ -31,7 +31,7 @@
 				<a href="#" class="button--green" id="action--Save">
 					<i class="icon-save"></i> Save
 				</a>
-				<a href="#" class="button--red" id="action--Back">
+				<a href="/scientists/#" class="button--red" id="action--Back">
 					<i class="icon-remove-circle"></i> Exit
  				</a>
 
@@ -42,9 +42,6 @@
 				</h2>
 				{{! This needs to be associated to scientist__titles model }}
 				<article class="profile__titles grid__item one-half hidden-palm">
-
-				</article>
-				<article class="profile__websites grid__item one-half hidden-palm" 
 
 				</article>
 			</section>
@@ -68,18 +65,26 @@
 					Secondary Num:
 				</span>
 				<span contenteditable="true" class="inline-editable" id="profile_phone2">
+				{{#if profile.phone2}}
 					{{profile.phone2}}
+				{{else}}
+					N/A
+				{{/if}}
 				</span><br>
 				<span>E-Mail:</span> 
 				<span contenteditable="true" class="inline-editable" id="profile_email">
 					<a href="{{profile.email}}">{{profile.email}}</a>
 				</span><br>
 			</article>
-			<article class="profile__location grid__item one-whole lap-one-half palm-one-whole">
+			<article class="profile__websites grid__item one-whole lap-one-half palm-one-whole">
 				<h3>Websites</h3>
+				<ul class="profile__websites-list">
 				{{#each websites}}
-					<a href="{{url}}">{{name}}</a>
+					<li class="profile__websites-list-item"><a href="{{url}}">{{name}}</a></li>
+				{{else}}
+					<li>No Websites Listed</li>
 				{{/each}}
+				</ul>
 			</article>
 		</section>
 
@@ -121,15 +126,16 @@
 		{{! end }}
 		{{! link_to 'Back', scientists_path }}
 	</script>
+
 	<script id="scientist-card-template" type="text/x-handlebars-template">
 		<article class="scientistUnit grid__item" id="scientist--{{this.slug}}">
 			<div class="scientistCard">
-				<a href="/scientists/{{this.id}}" class="navigate-profile" >
+				<a href="/scientists/#{{this.id}}" class="navigate-profile" >
 					<span class="scientistCard__name">{{this.first_name}} {{this.last_name}}</span><br>
 					<img src="{{this.picture.picture.url}}" class="scientistCard__thumb">
 				</a>
 				{{! if can? :read, scientist }}
-				<a href="/scientists/{{this.id}}" class="button--green navigate-profile">
+				<a href="/scientists/#{{this.id}}" class="button--green navigate-profile">
 					Edit
 				</a>
 				{{! end }}
@@ -137,6 +143,16 @@
 			</div>
 		</article>
 	</script>
+	
+	<script id="scientist-website-list-template" type="text/x-handlebars-template">
+		<li class="profile__websites-list-item">
+			<a href="#" id="action--DeleteWebsite" data-id="{{id}}">
+				<i class="icon-remove-circle"></i>
+			</a>
+			<a href="{{url}}">{{name}}</a>
+		</li>
+	</script>
+	
 	<script id="scientist-title-template" type="text/x-handlebars-template">
 		<li class="scientist-title sortable clearfix">
 			<span class="float-left">

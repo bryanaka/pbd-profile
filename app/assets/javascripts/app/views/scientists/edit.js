@@ -10,36 +10,8 @@ App.ScientistEditView = Backbone.View.extend({
 			selector: "#scientist_primary_title",
 			elAttribute: "html"
 		},
-		"profile.company": {
-			selector: "#profile_company",
-			elAttribute: "text"
-		},
-		"profile.address1": {
-			selector: "#profile_address1",
-			elAttribute: "text"
-		},
-		"profile.address2": {
-			selector: "#profile_address2",
-			elAttribute: "text"
-		},
-		"profile.city": {
-			selector: "#profile_city",
-			elAttribute: "text"
-		},
-		"profile.state": {
-			selector:"#profile_state",
-			elAttribute:"text"
-		},
-		"profile.zip_code": {
-			selector:"#profile_zip_code",
-			elAttribute:"text"
-		},
 		"profile.phone1": {
 			selector:"#profile_phone1",
-			elAttribute:"text"
-		},
-		"profile.phone2_type": {
-			selector:"#profile_phone2_type",
 			elAttribute:"text"
 		},
 		"profile.phone2": {
@@ -69,6 +41,7 @@ App.ScientistEditView = Backbone.View.extend({
 				var data = scientist.toJSON();
 				var template = Handlebars.compile( $("#scientist-edit-template").html() );
 				that.$el.html( template(data) );
+				document.title = data.first_name + " " + data.last_name + " || PBD Portal";
 				that._modelBinder.bind(that.model, that.el, that.bindings);
 				return that;
 			}
@@ -109,11 +82,9 @@ App.ScientistEditView = Backbone.View.extend({
 		});
 	},
 	gotoPortal: function (event) {
-		event.preventDefault();
-		if (history) {
+		if (Modernizr.history) {
 			history.back();
-		} else {
-			window.location = "//" + window.location.host + "/pbdportal";
+			event.preventDefault();
 		}
 	}
 });

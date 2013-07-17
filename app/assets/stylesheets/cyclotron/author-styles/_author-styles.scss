@@ -9,11 +9,13 @@
 		margin: 0;
 		color: #FAFAFA;
 		padding: 10px 10px 0 10px;
+		font-size: 28px;
 		font-size: 1.75rem;
 		display: inline-block;
 	}
 
 	h4 {
+		margin: 16px 16px 0 0;
 		margin: 1rem 1rem 0 0;
 		color: #FAFAFA;
 		display: inline-block;
@@ -36,11 +38,13 @@
 	text-align:center;
 }
 .cyclotronTitle {
+	font-size: 64px;
 	font-size: 4rem;
 	font-weight: 400;
 	letter-spacing: 10px;
 	text-align: center;
 	font-family: "Steelfish";
+	margin: 8px 0 8px 12px;
 	margin: .5rem 0 0.5rem .75rem;
 }
 .mainContent {
@@ -68,12 +72,14 @@
 .hero {
 	background: darken(#0A7B99, 21%);
 	color: $off-white;
+	padding: 0 16px;
 	padding: 0 1rem;
 	border-bottom: darken(#A4D3EE, 30%) 4px solid;
 	background: darken(#0A7B99, 21%) url("/assets/img/tiny_grid1.png") 10px 8px repeat repeat;
 
 	p {
 		text-align: justify;
+		font-size: 16px;
 		font-size: 1rem;
 		font-weight: 300;
 	}
@@ -163,6 +169,7 @@
 	}
 	.tile--flat .tile__icon {
 		position: absolute;
+		font-size: 64px;
 		font-size: 4rem;
 		left: 45%;
 		top: 27%;
@@ -203,6 +210,22 @@
 }
 .inline-editable.inline {
 	display: inline !important;
+}
+.profile__websites-list {
+	list-style: none;
+	padding-left: 0;
+}
+.profile__websites-list-item {
+	padding-bottom: 16px;
+	padding-bottom: 1rem;
+}
+.profile__summary {
+	padding-bottom: 32px;
+	padding-bottom: 1.5rem;
+// this needs to really be applied to both ckeditor instances
+	div {
+		min-width: 95%;
+	}
 }
 .navigate-profile.button--blue {
 	width: 100%;
