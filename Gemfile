@@ -84,6 +84,7 @@ end
 
 group :production do
 	gem "unicorn", "~> 4.6.2"
+	gem 'newrelic_rpm'
 	# or use puma instead
 	# gem "puma"
 end
