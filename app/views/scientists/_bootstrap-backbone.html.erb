@@ -14,13 +14,19 @@
 		var roles = _.pluck(AppSettings.current_user_roles, 'name');
 		return roles;
 	}
-	AppSettings.has_role = function (roles) {
-		var found = _.findWhere(AppSettings.current_roles(), roles);
-		if (!!found === true) {
-			return true;
-		} else {
-			return false;
+	AppSettings.has_role = function (role) {
+		var currentRoles = AppSettings.current_roles(),
+			numberOfRoles = currentRoles.length,
+			roleMatch = false;
+		for (var i = 0, n = numberOfRoles; i <= n; i++) {
+			if (currentRoles[i] === role) {
+				roleMatch = true;
+				return true
+			} else {
+				roleMatch = false;
+			}
 		}
+		return false;
 		//
 		//if ( _.isArray(roles) ) {
 		//	var matches = [];
