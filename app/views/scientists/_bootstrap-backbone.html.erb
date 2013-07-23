@@ -2,8 +2,8 @@
 	var AppSettings = {};
 	<% if current_user %>
 		<% tmp_user = current_user %>
-		AppSettings.current_user = <%=raw tmp_user.to_json %>;
-		AppSettings.current_user_roles = <%=raw tmp_user.roles.to_json %>;
+		AppSettings.current_user = JSON.parse('<%=raw tmp_user.to_json %>');
+		AppSettings.current_user_roles = JSON.parse('<%=raw tmp_user.roles.to_json %>');
 	<% else %>
 		AppSettings.current_user = {
 			scientist_id: null
@@ -15,14 +15,13 @@
 		return roles;
 	}
 	AppSettings.has_role = function (roles) {
-		//var check_role = function (roles) {
-			var found = _.findWhere(AppSettings.current_roles(), roles);
-			if (found != null) {
-				return true;
-			} else {
-				return false;
-			}
-		//}
+		var found = _.findWhere(AppSettings.current_roles(), roles);
+		if (!!found === true) {
+			return true;
+		} else {
+			return false;
+		}
+		//
 		//if ( _.isArray(roles) ) {
 		//	var matches = [];
 		//	_.each(check_role, function (role, role_index, role_list){

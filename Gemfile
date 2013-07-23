@@ -44,6 +44,8 @@ gem "jquery-rails"
 gem 'jquery-ui-rails'
 # gem 'backbone-nested-attributes'
 
+gem 'newrelic_rpm'
+
 group :development do
 	gem "better_errors", ">= 0.8.0"
 	gem "binding_of_caller", ">= 0.6.9"
@@ -84,7 +86,6 @@ end
 
 group :production do
 	gem "unicorn", "~> 4.6.2"
-	gem 'newrelic_rpm'
 	# or use puma instead
 	# gem "puma"
 end
